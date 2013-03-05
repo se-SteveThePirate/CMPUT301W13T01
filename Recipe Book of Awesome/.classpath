@@ -4,7 +4,6 @@
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="/home/dsk06/cscrs/c301/android-sdk-linux/platforms/android-15/android.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="file:/home/dsk06/cscrs/c301/android-sdk-linux/docs/reference"/>
