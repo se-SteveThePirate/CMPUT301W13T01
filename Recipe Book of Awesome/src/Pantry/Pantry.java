@@ -46,7 +46,7 @@ public class Pantry {
     return newIngredient;
   }
 
-  public void deleteComment(Ingredient ingredient) {
+  public void deleteIngredient(Ingredient ingredient) {
     String name = ingredient.getName();
     System.out.println("The following ingredient was deleted: " + name);
     database.delete(MySQLiteHelper.TABLE_COMMENTS, MySQLiteHelper.COLUMN_ID
