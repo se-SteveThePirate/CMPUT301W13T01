@@ -4,10 +4,10 @@ package Helpers;
 import java.util.List;
 import java.util.Random;
 
+import ca.dreamteam.recipebook.PantryActivity;
 import ca.dreamteam.recipebook.R;
 
 import Models.Ingredient;
-import Pantry.Pantry;
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,14 +16,14 @@ import android.widget.EditText;
 import android.*;
 
 public class DatabaseManager extends ListActivity {
-  private Pantry datasource;
+  private PantryActivity datasource;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_pantry);
     
-    datasource = new Pantry();
+    datasource = new PantryActivity();
     datasource.open();
 
     List<Ingredient> values = datasource.getAllIngredients();

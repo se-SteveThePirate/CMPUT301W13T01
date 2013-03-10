@@ -13,7 +13,7 @@
             android:id="@+id/add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onClick"
+            android:onClick="addIngredientToDB"
             android:text="Add Item" />
 
         <Button
@@ -26,9 +26,10 @@
     </LinearLayout>
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/ingredientName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Ingredient name"
         android:ems="10" >
 
         <requestFocus />
@@ -37,9 +38,7 @@
     <ListView
         android:id="@android:id/list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-         >
-
+        android:layout_height="wrap_content" >
     </ListView>
 
 </LinearLayout>

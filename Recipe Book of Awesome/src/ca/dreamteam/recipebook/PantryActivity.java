@@ -1,18 +1,24 @@
-package Pantry;
-
+package ca.dreamteam.recipebook;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import Helpers.MySQLiteHelper;
 import Models.Ingredient;
+import android.app.Activity;
+import android.R.*;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.View;
+import android.widget.EditText;
+import ca.dreamteam.recipebook.R;
 
-public class Pantry {
+public class PantryActivity extends Activity{
 
   // Database fields
   private SQLiteDatabase database;
@@ -31,7 +37,32 @@ public class Pantry {
   public void close() {
     dbHelper.close();
   }
+  
+  @Override
+  //Creates the Activity and several variables
+  public void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+      setContentView(R.layout.activity_pantry);
+      IngredientsDataSource(getBaseContext());
+      open();
+  }
 
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+      getMenuInflater().inflate(R.menu.activity_pantry, menu);
+      return true;
+  }
+  
+  //Primary job is to get the inputted string for the ingredient name and call the createIngredient method
+  public void addIngredientToDB(View view) {
+	  	EditText ingredientET = (EditText) findViewById(R.id.ingredientName);
+	  	String ingredient = ingredientET.getText().toString();
+	  	
+	  	createIngredient(ingredient);
+	  
+  }
+  
+  //I really don't know what this cursor thing is supposed to do. Anyone have any guidance?? -Steve
   public Ingredient createIngredient(String ingredient) {
     ContentValues values = new ContentValues();
     values.put(MySQLiteHelper.COLUMN_COMMENT, ingredient);

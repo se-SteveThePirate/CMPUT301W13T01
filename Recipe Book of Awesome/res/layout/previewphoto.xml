@@ -7,8 +7,8 @@
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="318dp"
-        android:layout_height="318dp"
-        android:src="@drawable/imagepreview" />
+        android:layout_height="318dp" />
+        <!-- android:src="@drawable/imagepreview" -->
 
     <Button
         android:id="@+id/button1"
