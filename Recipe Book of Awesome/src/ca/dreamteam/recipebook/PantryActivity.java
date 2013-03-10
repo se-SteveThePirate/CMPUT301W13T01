@@ -25,6 +25,7 @@ public class PantryActivity extends Activity{
   private MySQLiteHelper dbHelper;
   private String[] allColumns = { MySQLiteHelper.COLUMN_ID,
       MySQLiteHelper.COLUMN_COMMENT };
+  private float amount;
 
   public void IngredientsDataSource(Context context) {
     dbHelper = new MySQLiteHelper(context);
@@ -32,6 +33,7 @@ public class PantryActivity extends Activity{
 
   public void open() throws SQLException {
     database = dbHelper.getWritableDatabase();
+    //dbHelper.onCreate(database);
   }
 
   public void close() {
@@ -56,8 +58,9 @@ public class PantryActivity extends Activity{
   //Primary job is to get the inputted string for the ingredient name and call the createIngredient method
   public void addIngredientToDB(View view) {
 	  	EditText ingredientET = (EditText) findViewById(R.id.ingredientName);
+	  	EditText amountET = (EditText) findViewById(R.id.ingredientAmount);
 	  	String ingredient = ingredientET.getText().toString();
-	  	
+	  	amount = Float.parseFloat(amountET.getText().toString());
 	  	createIngredient(ingredient);
 	  
   }
@@ -65,15 +68,18 @@ public class PantryActivity extends Activity{
   //I really don't know what this cursor thing is supposed to do. Anyone have any guidance?? -Steve
   public Ingredient createIngredient(String ingredient) {
     ContentValues values = new ContentValues();
-    values.put(MySQLiteHelper.COLUMN_COMMENT, ingredient);
+    values.put(MySQLiteHelper.COLUMN_ID, ingredient);
+    values.put(MySQLiteHelper.COLUMN_COMMENT, amount);
     long insertId = database.insert(MySQLiteHelper.TABLE_COMMENTS, null,
         values);
     Cursor cursor = database.query(MySQLiteHelper.TABLE_COMMENTS,
-        allColumns, MySQLiteHelper.COLUMN_ID + " = " + insertId, null,
-        null, null, null);
+        allColumns, null, null, null, null, null);
     cursor.moveToFirst();
-    Ingredient newIngredient = cursorToIngredient(cursor);
-    cursor.close();
+    //Ingredient newIngredient = cursorToIngredient(cursor);
+    //cursor.close();
+    Ingredient newIngredient = new Ingredient();
+    newIngredient.setAmount(amount);
+    newIngredient.setName(ingredient);
     return newIngredient;
   }
 
@@ -103,8 +109,8 @@ public class PantryActivity extends Activity{
 
   private Ingredient cursorToIngredient(Cursor cursor) {
 	Ingredient ingredient = new Ingredient();
-	ingredient.setAmount(cursor.getInt(0));
-	ingredient.setName(cursor.getString(1));
+	ingredient.setAmount(cursor.getFloat(1));
+	ingredient.setName(cursor.getString(0));
     return ingredient;
   }
 } 

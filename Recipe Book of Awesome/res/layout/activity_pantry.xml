@@ -34,6 +34,15 @@
 
         <requestFocus />
     </EditText>
+    
+    <EditText
+        android:id="@+id/ingredientAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Amount of Ingredient"
+        android:inputType="numberDecimal"
+        android:ems="10" >
+    </EditText>
 
     <ListView
         android:id="@android:id/list"
