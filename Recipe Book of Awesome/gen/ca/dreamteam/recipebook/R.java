@@ -20,15 +20,15 @@ public final class R {
         public static final int button2=0x7f070002;
         public static final int button3=0x7f070001;
         public static final int button4=0x7f070003;
-        public static final int button5=0x7f070013;
-        public static final int button6=0x7f070014;
-        public static final int button7=0x7f070015;
+        public static final int button5=0x7f070012;
+        public static final int button6=0x7f070013;
+        public static final int button7=0x7f070014;
         public static final int delete=0x7f07000e;
         public static final int editText1=0x7f070005;
         public static final int editText2=0x7f070007;
         public static final int editText3=0x7f07000b;
         public static final int group=0x7f07000c;
-        public static final int imageView1=0x7f070012;
+        public static final int imageView1=0x7f070015;
         public static final int ingredientAmount=0x7f070010;
         public static final int ingredientName=0x7f07000f;
         public static final int listView1=0x7f070011;
@@ -44,15 +44,16 @@ public final class R {
         public static final int activity_new_picture=0x7f030001;
         public static final int activity_pantry=0x7f030002;
         public static final int activity_recipe_menu=0x7f030003;
-        public static final int pantry=0x7f030004;
-        public static final int previewphoto=0x7f030005;
-        public static final int sharepage=0x7f030006;
+        public static final int activity_share_pic=0x7f030004;
+        public static final int pantry=0x7f030005;
+        public static final int previewphoto=0x7f030006;
     }
     public static final class menu {
         public static final int activity_main=0x7f060000;
         public static final int activity_new_picture=0x7f060001;
         public static final int activity_pantry=0x7f060002;
         public static final int activity_recipe_menu=0x7f060003;
+        public static final int activity_share_pic=0x7f060004;
     }
     public static final class string {
         public static final int app_name=0x7f040000;
@@ -62,6 +63,7 @@ public final class R {
         public static final int title_activity_new_picture=0x7f040005;
         public static final int title_activity_pantry=0x7f040003;
         public static final int title_activity_recipe_menu=0x7f040006;
+        public static final int title_activity_share_pic=0x7f040007;
     }
     public static final class style {
         /** 

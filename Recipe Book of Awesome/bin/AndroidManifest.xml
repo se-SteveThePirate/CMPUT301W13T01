@@ -15,7 +15,6 @@
         <activity
             android:name=".PantryActivity"
             android:label="@string/title_activity_pantry" >
-
         </activity>
         <activity
             android:name=".MainActivity"
@@ -29,12 +28,19 @@
         <activity
             android:name=".NewPicture"
             android:label="@string/title_activity_new_picture" >
-
         </activity>
         <activity
             android:name=".RecipeMenu"
             android:label="@string/title_activity_recipe_menu" >
+        </activity>
+        <activity
+            android:name=".SharePic"
+            android:label="@string/title_activity_share_pic" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
