@@ -11,7 +11,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="146dp"
-        android:text="Button" />
+        android:text="New Image"
+        android:onClick="takeAPic" />
 
     <Button
         android:id="@+id/button3"
@@ -19,7 +20,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/button2"
         android:layout_alignParentLeft="true"
-        android:text="Button" />
+        android:text="Load"
+        android:onClick="load" />
 
     <Button
         android:id="@+id/button2"
@@ -28,7 +30,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="50dp"
-        android:text="Button" />
+        android:text="Pantry" 
+        android:onClick="openPantry"/>
 
     <Button
         android:id="@+id/button4"
@@ -36,7 +39,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:text="Button" />
+        android:text="Quit" 
+        android:onClick="exitApp"/>
 
     <TextView
         android:id="@+id/textView1"

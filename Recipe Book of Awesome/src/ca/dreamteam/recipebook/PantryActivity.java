@@ -6,7 +6,6 @@ import java.util.List;
 import Helpers.MySQLiteHelper;
 import Models.Ingredient;
 import android.app.Activity;
-import android.R.*;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -16,9 +15,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
-import ca.dreamteam.recipebook.R;
 
-public class PantryActivity extends Activity{
+public class PantryActivity extends Activity {
 
   // Database fields
   private SQLiteDatabase database;
@@ -26,7 +24,7 @@ public class PantryActivity extends Activity{
   private String[] allColumns = { MySQLiteHelper.COLUMN_ID,
       MySQLiteHelper.COLUMN_COMMENT };
   private float amount;
-
+  
   public void IngredientsDataSource(Context context) {
     dbHelper = new MySQLiteHelper(context);
   }
@@ -74,14 +72,16 @@ public class PantryActivity extends Activity{
         values);
     Cursor cursor = database.query(MySQLiteHelper.TABLE_COMMENTS,
         allColumns, null, null, null, null, null);
+
     cursor.moveToFirst();
-    //Ingredient newIngredient = cursorToIngredient(cursor);
-    //cursor.close();
-    Ingredient newIngredient = new Ingredient();
-    newIngredient.setAmount(amount);
-    newIngredient.setName(ingredient);
+    Ingredient newIngredient = cursorToIngredient(cursor);
+    cursor.close();
+    //Ingredient newIngredient = new Ingredient();
+    //newIngredient.setAmount(amount);
+    //newIngredient.setName(ingredient);
     return newIngredient;
   }
+  
 
   public void deleteIngredient(Ingredient ingredient) {
     String name = ingredient.getName();
