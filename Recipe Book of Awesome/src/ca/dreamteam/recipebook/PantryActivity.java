@@ -60,10 +60,10 @@ public class PantryActivity extends Activity {
 	  	String ingredient = ingredientET.getText().toString();
 	  	amount = Float.parseFloat(amountET.getText().toString());
 	  	createIngredient(ingredient);
-	  
   }
   
   //I really don't know what this cursor thing is supposed to do. Anyone have any guidance?? -Steve
+  //Cursors act as an iterator through result sets in SQL. ie. Cursor.moveToFirst moves to the first row of the result set. cursor.Read() would move to the next, etc. -David
   public Ingredient createIngredient(String ingredient) {
     ContentValues values = new ContentValues();
     values.put(MySQLiteHelper.COLUMN_ID, ingredient);
@@ -78,7 +78,7 @@ public class PantryActivity extends Activity {
     cursor.close();
     //Ingredient newIngredient = new Ingredient();
     //newIngredient.setAmount(amount);
-    //newIngredient.setName(ingredient);
+    //newIngredient.setName(ingredient);.
     return newIngredient;
   }
   

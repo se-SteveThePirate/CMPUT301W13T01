@@ -26,10 +26,10 @@ public class NewPicture extends Activity {
     	startActivity(intent);
     }
     
-    public void sharePic(View view) {
+    /*public void sharePic(View view) {
     	Intent intent = new Intent(this, SharePic.class);
     	startActivity(intent);
-    }
+    }*/
     
     public void quit(View view) {
     	Intent intent = new Intent(Intent.ACTION_MAIN);
