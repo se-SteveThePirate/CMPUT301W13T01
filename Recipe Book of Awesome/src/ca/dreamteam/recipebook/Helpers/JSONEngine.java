@@ -25,7 +25,7 @@ public class JSONEngine {
 	//This code is shamelessly taken from the ElastiSearch Client demo, as covered in the lab, and is available here:
 	// https://github.com/rayzhangcl/ESDemo/blob/master/ESDemo/src/ca/ualberta/cs/CMPUT301/chenlei/ESClient.java
 	private HttpClient httpClient = new DefaultHttpClient();
-	private Gson gson = new Gson();
+	//private Gson gson = new Gson();
 	
 	public String getEntityContent(HttpResponse response) throws IllegalStateException, IOException{
 		BufferedReader bReader = new BufferedReader(

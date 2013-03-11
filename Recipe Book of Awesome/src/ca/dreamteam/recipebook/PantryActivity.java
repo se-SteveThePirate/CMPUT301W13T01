@@ -3,8 +3,8 @@ package ca.dreamteam.recipebook;
 import java.util.ArrayList;
 import java.util.List;
 
-import Helpers.MySQLiteHelper;
-import Models.Ingredient;
+import ca.dreamteam.recipebook.Helpers.*;
+import ca.dreamteam.recipebook.Models.*;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;

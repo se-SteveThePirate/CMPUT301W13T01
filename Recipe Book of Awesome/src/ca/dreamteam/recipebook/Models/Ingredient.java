@@ -2,7 +2,7 @@ package ca.dreamteam.recipebook.Models;
 
 public class Ingredient {
 	public String name;
-	public Integer amount;
+	public Float amount;
 	
 	public void setName(String name) {
 		this.name = name;
@@ -12,11 +12,11 @@ public class Ingredient {
 		return this.name;
 	}
 	
-	public int getAmount() {
+	public float getAmount() {
 		return this.amount;
 	}
 	
-	public void setAmount(int amount) {
+	public void setAmount(float amount) {
 		this.amount = amount;
 	}
 }
