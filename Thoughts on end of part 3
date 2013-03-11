@@ -1,0 +1,13 @@
+Ok guys, I'm going to spam this message through every communication medium we have because I don't know what you're all going to look at first, and I don't know when I'll be dragging my ass out of bed tomorrow and this is kinda important.
+
+Conner: I've been here all weekend and I haven't slept much. I think I got the database more or less working, but I have no idea what to do with displays and such. Also, program flow (i.e. navigating between activities) still needs to be implemented, even if it's just at a basic level. Also, the TA posted something about your DatabaseManager class. That was sorta your baby and I didn't know what was going on there so I didn't touch it.
+
+Maciej: What the hell is a listview and what am I supposed to do with it? I've looked through a few examples and they all look insane, so if you have any suggestions on that, it would sure be nice. Skeleton code for all the various required classes and methods would be fantastic, if possible. Same goes for things like buttons and activity flow things. I guess I kinda thought that was part of doing a UI. Also, why do we have a pantry.xml and a activity_pantry.xml? What is each for? Or is that an accidental duplicate? Also...colors? Pretty pictures? Anything like that? Thoughts?
+
+David: I hope I'm not usurping too many of your leader powers with this email. Keep doing your thing. Just to confirm, do you have JUnit test cases and such done as the spec requests?
+
+All: The part 3 spec for deliverables requests that we have "about half of the requirements" implemented. So far it looks like we're going to have a pantry that can store ingredients. That's it. So I really feel like we need to streamline our communication or come up with a different workload distribution or something to make sure stuff actually gets done.
+
+My brain is completely fried, so maybe I'll just implement some button functionality or something and then go home. See you guys at some point tomorrow.
+
+Steve
