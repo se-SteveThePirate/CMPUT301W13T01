@@ -12,6 +12,6 @@
 			<accessrule kind="nonaccessible" pattern="com/android/internal/**"/>
 		</accessrules>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/dsk11/ugrad/djames1/CMPUT/301/CMPUT301W13T01/Recipe Book of Awesome/libs/junit-4.11.jar"/>
+	<classpathentry kind="lib" path="libs/junit-4.11.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
