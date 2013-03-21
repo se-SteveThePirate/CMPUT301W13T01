@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerHorizontal="true"
+    >
+
+    <TextView
+        android:id="@+id/recipeActivity_emptyListViewText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:paddingBottom="135dp"
+        android:text="You havnt downloaded any recipes yet!" />
+    
+    <ListView
+        android:id="@+id/recipeList"
+        android:layout_width="match_parent"
+        android:layout_height="290dp" >
+    </ListView>
+
+    <Button
+        android:id="@+id/recipeListActivity_addNewRecipeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/recipeListActivity_downloadButton"
+        android:text="Add New Recipe"
+        />
+    
+    <Button
+        android:id="@+id/recipeListActivity_downloadButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Download More Recipes"
+        android:onClick="goSearchMenu" />
+
+</RelativeLayout>
