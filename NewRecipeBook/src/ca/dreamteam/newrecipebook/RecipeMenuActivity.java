@@ -1,4 +1,4 @@
-package ca.dreamteam.newrecipebook;
+//package ca.dreamteam.newrecipebook;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -12,7 +12,7 @@ import android.widget.TextView;
 public class RecipeMenuActivity extends Activity {
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) { 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_menu);
         
