@@ -1,4 +1,4 @@
-//package ca.dreamteam.newrecipebook;
+package ca.dreamteam.newrecipebook;
 
 import android.os.Bundle;
 import android.app.Activity;
