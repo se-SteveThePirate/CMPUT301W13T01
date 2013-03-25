@@ -32,9 +32,9 @@ public class MainActivity extends Activity {
     	startActivity(intent);
     }
     
-    /*
+    
     public void openPantry(View view) {
     	Intent intent = new Intent(this, PantryActivity.class);
     	startActivity(intent);
-    }*/
+    }
 }

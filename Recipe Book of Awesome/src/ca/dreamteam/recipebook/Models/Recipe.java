@@ -11,6 +11,11 @@ public class Recipe {
 	public ArrayList<Bitmap> photos;
 	public ArrayList<Ingredient> ingredients;
 	public String instructions;
+	public ArrayList<String> tags;
+	public Boolean globalEdit;
+	public ArrayList<String> comments;
+	public Boolean favorited;
+	
 	
 	public void uploadPhoto(Bitmap newPhoto)
 	{
