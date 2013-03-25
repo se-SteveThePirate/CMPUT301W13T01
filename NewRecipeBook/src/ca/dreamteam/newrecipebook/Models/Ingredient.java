@@ -3,22 +3,26 @@ package ca.dreamteam.newrecipebook.Models;
 
 public class Ingredient
 {
-    private String id;
-    private String name;
+    private long id;
+    private String ingredient;
     
-    public void setName(String name){
-        this.name = name;
+    public void setIngredient(String ingredient){
+        this.ingredient = ingredient;
     }
     
-    public String getName(){
-        return name;
+    public String getIngredient(){
+        return ingredient;
     }
     
-    public void setId(String id){
+    public void setId(long id){
         this.id = id;
     }
     
-    public String getId(){
+    public long getId(){
         return id;
+    }
+    @Override
+    public String toString(){
+        return ingredient;
     }
 }
