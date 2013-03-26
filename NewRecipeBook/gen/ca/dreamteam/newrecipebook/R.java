@@ -22,14 +22,15 @@ public final class R {
         public static final int editText1=0x7f070005;
         public static final int editText2=0x7f070007;
         public static final int editText3=0x7f07000c;
-        public static final int imageView1=0x7f07001c;
+        public static final int imageView1=0x7f07001d;
         public static final int keywordSearchButton=0x7f07001b;
         public static final int listView1=0x7f070010;
         public static final int mainActivity_MyPantry=0x7f070000;
         public static final int mainActivity_MySavedRecipes=0x7f070001;
         public static final int mainActivity_SearchRecipes=0x7f070002;
         public static final int mainActivity_TitleTextView=0x7f070003;
-        public static final int menu_settings=0x7f07001d;
+        public static final int menu_settings=0x7f07001e;
+        public static final int pantryList=0x7f07001c;
         public static final int pantrySearchButton=0x7f07001a;
         public static final int recipeActivity_emptyListViewText=0x7f070011;
         public static final int recipeAuthor=0x7f070016;
@@ -53,7 +54,8 @@ public final class R {
         public static final int activity_recipe_menu=0x7f030003;
         public static final int activity_recipe_view=0x7f030004;
         public static final int activity_search_menu=0x7f030005;
-        public static final int previewphoto=0x7f030006;
+        public static final int activity_testcall=0x7f030006;
+        public static final int previewphoto=0x7f030007;
     }
     public static final class menu {
         public static final int activity_main=0x7f060000;
@@ -61,6 +63,7 @@ public final class R {
         public static final int activity_pantry=0x7f060002;
         public static final int activity_recipe_menu=0x7f060003;
         public static final int activity_recipe_view=0x7f060004;
+        public static final int activity_testcall=0x7f060005;
     }
     public static final class string {
         public static final int app_name=0x7f040000;
@@ -71,6 +74,7 @@ public final class R {
         public static final int title_activity_recipe_menu=0x7f040004;
         public static final int title_activity_recipe_view=0x7f040007;
         public static final int title_activity_search_menu=0x7f040005;
+        public static final int title_activity_testcall=0x7f040008;
     }
     public static final class style {
         /** 

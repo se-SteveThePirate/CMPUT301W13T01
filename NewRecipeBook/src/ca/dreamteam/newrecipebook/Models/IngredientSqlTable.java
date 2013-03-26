@@ -20,6 +20,7 @@ public class IngredientSqlTable extends SQLiteOpenHelper
             + TABLE_INGREDIENTS + "(" + COLUMN_ID
             + " integer primary key autoincrement, " + COLUMN_INGREDIENT
             + " text not null);";
+      
 
     public IngredientSqlTable(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

@@ -22,6 +22,7 @@ public class IngredientSQLite
     
     public IngredientSQLite(Context context) {
         dbHelper = new IngredientSqlTable(context);
+        
       }
     
     public void open() throws SQLException {
