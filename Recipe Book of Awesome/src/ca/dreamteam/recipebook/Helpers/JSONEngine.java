@@ -20,7 +20,7 @@ import ca.dreamteam.recipebook.Models.Recipe;
 import com.google.gson.Gson;
 
 public class JSONEngine {
-	public static ArrayList<Recipe> recipeCache;
+	public ArrayList<Recipe> recipeCache;
 	
 	//This code is shamelessly taken from the ElastiSearch Client demo, as covered in the lab, and is available here:
 	// https://github.com/rayzhangcl/ESDemo/blob/master/ESDemo/src/ca/ualberta/cs/CMPUT301/chenlei/ESClient.java
