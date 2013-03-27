@@ -23,15 +23,6 @@ public class RecipeViewActivity extends Activity {
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_recipe_view);
-		
-		TextView recipeTitle = (TextView)findViewById(R.id.recipeName);
-		recipeTitle.setText(RecipeMenuActivity.lvSelection.name);
-		
-		TextView recipeAuthor = (TextView)findViewById(R.id.recipeAuthor);
-		recipeAuthor.setText(RecipeMenuActivity.lvSelection.author);
-		
-		//Create an iterator for ingredients. Figure out what to do with pictures.
-		TextView ingredients = (TextView)findViewById(R.id.recipeView_ingredientsLabel);
 
 		
     	//TODO For Maciej: Make sure to set EVERYTHING to uneditable when viewing. We could pass a bool around or something.

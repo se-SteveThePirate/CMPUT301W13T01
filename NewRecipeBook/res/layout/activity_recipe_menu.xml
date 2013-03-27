@@ -18,6 +18,15 @@
         android:layout_width="match_parent"
         android:layout_height="290dp" >
     </ListView>
+
+    <Button
+        android:id="@+id/recipeListActivity_addNewRecipeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/recipeListActivity_downloadButton"
+        android:text="Add New Recipe"
+        android:onClick="showDummyRecipeView"
+        />
     
     <Button
         android:id="@+id/recipeListActivity_downloadButton"
@@ -26,13 +35,5 @@
         android:layout_alignParentBottom="true"
         android:text="Download More Recipes"
         android:onClick="goSearchMenu" />
-    
-    <Button
-        android:id="@+id/recipeListActivity_addNewRecipeButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/recipeListActivity_downloadButton"
-        android:onClick="showDummyRecipeView"
-        android:text="Add New Recipe" />
 
 </RelativeLayout>

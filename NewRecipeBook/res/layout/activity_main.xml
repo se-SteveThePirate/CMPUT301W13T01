@@ -1,0 +1,44 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <Button
+        android:id="@+id/mainActivity_MyPantry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/mainActivity_MySavedRecipes"
+        android:layout_alignParentLeft="true"
+        android:text="My Pantry"
+        android:onClick="openPantryView" />
+
+    <Button
+        android:id="@+id/mainActivity_MySavedRecipes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/mainActivity_SearchRecipes"
+        android:text="My Saved Recipes"
+        android:onClick="openRecipeView" />
+    
+    
+    <TextView
+        android:id="@+id/mainActivity_TitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:paddingTop="18dp"
+        android:layout_centerHorizontal="true"
+        android:text="My Recipe Book"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/mainActivity_SearchRecipes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:onClick="openSearchView"
+        android:text="Search for Recipes" />
+
+</RelativeLayout>
