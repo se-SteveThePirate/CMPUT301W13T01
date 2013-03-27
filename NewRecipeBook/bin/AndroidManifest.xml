@@ -38,13 +38,8 @@
             android:label="@string/title_activity_recipe_view" >
         </activity>
         <activity
-            android:name="ca.dreamteam.newrecipebook.PantryMenuActivity"
+            android:name="ca.dreamteam.newrecipebook.PantryActivity"
             android:label="@string/title_activity_pantry" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

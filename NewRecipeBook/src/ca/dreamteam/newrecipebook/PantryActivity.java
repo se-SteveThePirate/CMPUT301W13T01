@@ -23,9 +23,6 @@ public class PantryActivity extends ListActivity {
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pantry);
-        
         datasource = new IngredientSQLite(this);
         datasource.open();
         
@@ -36,6 +33,9 @@ public class PantryActivity extends ListActivity {
         ArrayAdapter<Ingredient> adapter = new ArrayAdapter<Ingredient>(this,
             android.R.layout.simple_list_item_1, values);
         setListAdapter(adapter);
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_pantry);
     }
 
     @Override

@@ -7,7 +7,7 @@
     tools:context=".PantryMenuActivity" >
 
     <ListView
-        android:id="@+id/listView1"
+        android:id="@android:id/list"
         android:layout_width="match_parent"
         android:layout_height="267dp" >
 
@@ -19,7 +19,6 @@
         android:layout_height="wrap_content"
         android:layout_weight="1.18"
         android:ems="10" >
-
        
     </EditText>
 
