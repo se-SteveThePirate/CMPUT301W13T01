@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.*;
@@ -19,7 +20,7 @@ import android.widget.ArrayAdapter;
 
 public class PantryActivity extends ListActivity {
     private IngredientSQLite datasource;
-    private IngredientManipulator actor;
+    private ArrayAdapter<Ingredient> adapter;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,7 @@ public class PantryActivity extends ListActivity {
         
         // Use the SimpleCursorAdapter to show the
         // elements in a ListView
-        ArrayAdapter<Ingredient> adapter = new ArrayAdapter<Ingredient>(this,
+        adapter = new ArrayAdapter<Ingredient>(this,
             android.R.layout.simple_list_item_1, values);
         setListAdapter(adapter);
 
@@ -45,7 +46,15 @@ public class PantryActivity extends ListActivity {
     }
     
     public void addClicked(View view){
-      actor.addNewIngredient();
+        EditText editText = (EditText) findViewById(R.id.editText1);
+        String[] ingredients = editText.getText().toString().split(System.getProperty("line.separator"));
+        
+        for (String ingredient: ingredients)
+        {
+        	Ingredient i = datasource.createIngredient(ingredient);
+           	adapter.add(i);
+        }
+        adapter.notifyDataSetChanged();
     }
     
     @Override

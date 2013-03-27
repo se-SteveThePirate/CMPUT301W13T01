@@ -2,16 +2,13 @@ package ca.dreamteam.newrecipebook.Helpers;
 
 import java.util.ArrayList;
 import java.util.List;
-import ca.dreamteam.newrecipebook.Models.Ingredient;
-import ca.dreamteam.newrecipebook.Models.IngredientSqlTable;
-
-
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import ca.dreamteam.newrecipebook.Models.Ingredient;
 
 public class IngredientSQLite
 {
