@@ -12,5 +12,7 @@
 		</accessrules>
 	</classpathentry>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/java-6-openjdk-amd64"/>
+	<classpathentry exported="true" kind="lib" path="/home/dsk07/ugrad/seckert/git/CMPUT301W13T01/Recipe Book of Awesome/libs/gson-2.2.2.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
