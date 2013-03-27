@@ -34,7 +34,7 @@ public class MainActivity extends Activity {
     
     
     public void openPantryView(View view) {
-    	Intent intent = new Intent(this, Testcall.class);
+    	Intent intent = new Intent(this, PantryMenuActivity.class);
     	startActivity(intent);
     }
 }
