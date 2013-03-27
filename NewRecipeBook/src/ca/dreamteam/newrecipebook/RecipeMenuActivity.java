@@ -5,6 +5,7 @@ import ca.dreamteam.newrecipebook.R;
 import ca.dreamteam.newrecipebook.Helpers.JSONEngine;
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
@@ -13,20 +14,28 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class RecipeMenuActivity extends Activity {
+public class RecipeMenuActivity extends ListActivity {
 	
 	private ListView recipeList;
+	public static Recipe lvSelection;
 
     @Override
     public void onCreate(Bundle savedInstanceState) { 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_menu);
-        
+                
         recipeList = (ListView) findViewById(R.id.recipeList);
         ArrayAdapter<Recipe> recipeAdapter = new ArrayAdapter<Recipe>
          (this,android.R.layout.simple_list_item_1,JSONEngine.recipeCache);
-        recipeList.setAdapter(recipeAdapter);
-        
+        recipeList.setAdapter(recipeAdapter);      
+    }
+    
+    protected void onListItemClick(ListView recipeList, View v, int position, long id) {
+    	
+    	lvSelection = (Recipe)getListView().getItemAtPosition(position);
+    	Intent intent = new Intent(this, RecipeViewActivity.class);
+    	startActivity(intent);
+    	
     }
 
     @Override
