@@ -1,7 +1,6 @@
 package ca.dreamteam.newrecipebook;
 import java.util.List;
 
-import ca.dreamteam.newrecipebook.Helpers.IngredientManipulator;
 import ca.dreamteam.newrecipebook.Helpers.IngredientSQLite;
 import ca.dreamteam.newrecipebook.Models.Ingredient;
 

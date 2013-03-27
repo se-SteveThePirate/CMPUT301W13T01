@@ -9,8 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class RecipeMenu extends Activity {
-	
-	private ListView recipeList;
+
+private ListView recipeList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -18,7 +18,7 @@ public class RecipeMenu extends Activity {
         setContentView(R.layout.activity_recipe_menu);
         recipeList = (ListView) findViewById(R.id.listView1);
         ArrayAdapter<Recipe> recipeAdapter = new ArrayAdapter<Recipe>
-        	(this,android.R.layout.simple_list_item_1,JSONEngine.recipeCache);
+         (this,android.R.layout.simple_list_item_1,JSONEngine.recipeCache);
         recipeList.setAdapter(recipeAdapter);
         
     }
