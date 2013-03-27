@@ -11,6 +11,7 @@ public class Recipe {
 	public ArrayList<Bitmap> photos;
 	public ArrayList<Ingredient> ingredients;
 	public String instructions;
+	public boolean starred;
 	
 	public void uploadPhoto(Bitmap newPhoto)
 	{
@@ -22,3 +23,6 @@ public class Recipe {
 		//TODO
 	}
 }
+
+
+
