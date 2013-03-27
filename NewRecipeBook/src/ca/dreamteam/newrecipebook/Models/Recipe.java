@@ -9,7 +9,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 
 public class Recipe implements Serializable {
-    public Integer id;
+    public long id;
     public String name;
     public String author;
     public ArrayList<Bitmap> photos;
@@ -19,15 +19,32 @@ public class Recipe implements Serializable {
     public Boolean globalEdit;
     public ArrayList<String> comments;
     public Boolean favorited;
-	
-	public void uploadPhoto(Bitmap newPhoto)
-	{
-		//TODO
-	}
-	
-	@Override
-	public String toString()
-	{
-		return "<b>This needs to be formatted :)</b>";
-	}
+
+    public void uploadPhoto(Bitmap newPhoto)
+    {
+        //TODO
+    }
+    
+    public void setName(String name){
+        this.name = name;
+    }
+    
+    public String getName(){
+        return name;
+    }
+    
+    
+    public void setId(long id){
+        this.id = id;
+    }
+
+    public long getId(){
+        return id;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "<b>This needs to be formatted :)</b>";
+    }
 }
