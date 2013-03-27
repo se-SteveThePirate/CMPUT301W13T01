@@ -1,17 +1,19 @@
 package ca.dreamteam.newrecipebook.Models;
 
+import java.io.Serializable;
 
-public class Ingredient
+public class Ingredient implements Serializable
 {
-    private long id;
-    private String ingredient;
+	private static final long serialVersionUID = -5978060205944130010L;
+	private long id;
+    private String name;
     
     public void setIngredient(String ingredient){
-        this.ingredient = ingredient;
+        this.name = ingredient;
     }
     
-    public String getIngredient(){
-        return ingredient;
+    public String getName(){
+        return name;
     }
     
     public void setId(long id){
@@ -23,6 +25,11 @@ public class Ingredient
     }
     @Override
     public String toString(){
-        return ingredient;
+        return name;
+    }
+    
+    public Ingredient(String Name)
+    {
+    	this.name = Name;
     }
 }

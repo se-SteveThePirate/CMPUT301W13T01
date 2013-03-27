@@ -48,6 +48,10 @@
             android:name="ca.dreamteam.newrecipebook.PantryActivity"
             android:label="@string/title_activity_pantry" >
         </activity>
+        <activity
+            android:name="ca.dreamteam.newrecipebook.ViewIngredientActivity"
+            android:label="@string/title_activity_ingredient_view" >
+        </activity>
     </application>
 
 </manifest>

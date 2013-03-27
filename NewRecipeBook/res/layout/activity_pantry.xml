@@ -9,36 +9,15 @@
     <ListView
         android:id="@android:id/list"
         android:layout_width="match_parent"
-        android:layout_height="267dp" >
-
+        android:layout_height="267dp"
+        android:layout_weight="0.90" >
     </ListView>
-
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1.18"
-        android:ems="10" >
-       
-    </EditText>
 
     <Button
         android:id="@+id/button3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add"
-        android:onClick="addClicked" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Remove" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Quit" />
+        android:onClick="addClicked"
+        android:text="Add" />
 
 </LinearLayout>

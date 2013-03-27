@@ -31,14 +31,16 @@ public class IngredientSQLite
       }
     
     private Ingredient cursorToIngredient(Cursor cursor) {
-        Ingredient ingredient = new Ingredient();
+        Ingredient ingredient = new Ingredient(cursor.getString(1));
         ingredient.setId(cursor.getLong(0));
-        ingredient.setIngredient(cursor.getString(1));
         return ingredient;
       }
     
     public Ingredient createIngredient(String ingredient){
-        ContentValues values = new ContentValues();
+    	if(database == null){
+    		this.open();
+    	}
+    	ContentValues values = new ContentValues();
         values.put(IngredientSqlTable.COLUMN_INGREDIENT, ingredient);
         long insertId = database.insert(IngredientSqlTable.TABLE_INGREDIENTS, null, values);
         Cursor cursor = database.query(IngredientSqlTable.TABLE_INGREDIENTS,

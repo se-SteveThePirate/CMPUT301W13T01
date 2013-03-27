@@ -1,21 +1,15 @@
 package ca.dreamteam.newrecipebook;
 import java.util.List;
 
+import android.app.ListActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import ca.dreamteam.newrecipebook.Helpers.IngredientSQLite;
 import ca.dreamteam.newrecipebook.Models.Ingredient;
-
-import android.os.Bundle;
-import android.app.Activity;
-import android.app.ListActivity;
-import android.view.Menu;
-import android.content.Intent;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.*;
-import android.widget.ArrayAdapter;
 
 public class PantryActivity extends ListActivity {
     private IngredientSQLite datasource;
@@ -45,20 +39,14 @@ public class PantryActivity extends ListActivity {
     }
     
     public void addClicked(View view){
-        EditText editText = (EditText) findViewById(R.id.editText1);
-        String[] ingredients = editText.getText().toString().split(System.getProperty("line.separator"));
-        
-        for (String ingredient: ingredients)
-        {
-        	Ingredient i = datasource.createIngredient(ingredient);
-           	adapter.add(i);
-        }
-        adapter.notifyDataSetChanged();
+        Intent i = new Intent(this, ViewIngredientActivity.class);
+    	startActivity(i);
     }
     
     @Override
     protected void onResume() {
       datasource.open();
+      adapter.notifyDataSetChanged();
       super.onResume();
     }
 

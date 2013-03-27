@@ -13,8 +13,6 @@ import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
-
-    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
 	@Override
     public void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
