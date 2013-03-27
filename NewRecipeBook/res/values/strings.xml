@@ -9,5 +9,6 @@
     <string name="title_activity_search_menu">Search Menu</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_recipe_view">View Recipe</string>
+    <string name="title_activity_testcall">Testcall</string>
 
 </resources>

@@ -1,4 +1,4 @@
-package ca.dreamteam.recipebook;
+/*package ca.dreamteam.recipebook;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -47,3 +47,4 @@ public class MainActivity extends Activity {
     
     
 }
+*/

@@ -1,6 +1,6 @@
 package ca.dreamteam.recipebook.Helpers;
 
-
+/*
 import java.util.List;
 import java.util.Random;
 
@@ -74,3 +74,4 @@ public class DatabaseManager extends ListActivity {
   }
 
 } 
+*/

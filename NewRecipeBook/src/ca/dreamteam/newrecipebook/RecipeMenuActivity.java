@@ -1,5 +1,6 @@
 package ca.dreamteam.newrecipebook;
 
+import ca.dreamteam.newrecipebook.Models.Recipe;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -45,4 +46,15 @@ public class RecipeMenuActivity extends Activity {
     	startActivity(intent);
     }
     
+    //Todo: Have a listItemClick event use this method to show the real recipes.
+    public void showDummyRecipeView(View view)
+    {
+    	Intent intent = new Intent(this, RecipeViewActivity.class);
+    	//Bundle b = intent.getExtras();
+    	//This will be something like Application.RecipeCache[0], or something.
+    	//b.putSerializable("recipe", new Recipe());
+    	intent.putExtra("recipe", new Recipe());
+    	
+    	startActivity(intent );
+    }
 }
