@@ -49,11 +49,11 @@ public class RecipeMenuActivity extends Activity {
     //Todo: Have a listItemClick event use this method to show the real recipes.
     public void showDummyRecipeView(View view)
     {
-    	Intent intent = new Intent(this, RecipeViewActivity.class);
+    	Intent intent = new Intent(this, CreateRecipeActivity.class);
     	//Bundle b = intent.getExtras();
     	//This will be something like Application.RecipeCache[0], or something.
     	//b.putSerializable("recipe", new Recipe());
-    	intent.putExtra("recipe", new Recipe());
+    	//intent.putExtra("recipe", new Recipe());
     	
     	startActivity(intent );
     }
