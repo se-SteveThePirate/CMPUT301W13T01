@@ -21,16 +21,19 @@
             android:label="@string/title_activity_main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter>
-            	<action android:name="android.intent.action.VIEW" />
-  				<category android:name="android.intent.category.DEFAULT" />
-  				<data android:scheme="file" />
-  				<data android:mimeType="*/*" />
-  				<data android:pathPattern=".*\\.dtr" />   
-  				<data android:host="*" />
-  			</intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="file" />
+                <data android:mimeType="*/*" />
+                <data android:pathPattern=".*\\.dtr" />
+                <data android:host="*" />
+            </intent-filter>
         </activity>
         <activity
             android:name="ca.dreamteam.newrecipebook.RecipeMenuActivity"
@@ -51,6 +54,13 @@
         <activity
             android:name="ca.dreamteam.newrecipebook.ViewIngredientActivity"
             android:label="@string/title_activity_ingredient_view" >
+        </activity>
+        <activity
+            android:name=".CreateRecipeActivity"
+            android:label="@string/title_activity_create_recipe" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ca.dreamteam.newrecipebook.RecipeViewActivity" />
         </activity>
     </application>
 
