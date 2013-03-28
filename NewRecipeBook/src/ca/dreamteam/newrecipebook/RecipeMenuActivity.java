@@ -55,6 +55,6 @@ public class RecipeMenuActivity extends Activity {
     	//b.putSerializable("recipe", new Recipe());
     	//intent.putExtra("recipe", new Recipe());
     	
-    	startActivity(intent );
+    	startActivity(intent);
     }
 }

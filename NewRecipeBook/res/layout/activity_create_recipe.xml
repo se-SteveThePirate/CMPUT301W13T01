@@ -76,7 +76,7 @@
 	      	    android:layout_height="200dp"
 	      	    android:layout_below="@+id/addIngredient"
 	            android:paddingTop="15dp"	
-				android:paddingLeft="10dp" 
+				android:paddingLeft="10dp" >
 
 	  	      	<EditText
 	  	      	    android:id="@+id/recipeInstructions"
@@ -90,7 +90,7 @@
 		        android:id="@+id/newRecipeSubmit"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-		        android:layout_below="@+id/recipeInstructions"
+		        android:paddingBottom="15dp"
 		        android:text="Submit Recipe!"
 		        android:onClick="submitRecipe"
 		        />
