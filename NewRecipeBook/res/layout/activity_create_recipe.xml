@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentTop="true"
+    tools:context=".CreateRecipeActivity" >
+    		
+	        <EditText
+	            android:id="@+id/recipeName"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:paddingTop="15dp"
+	            android:paddingLeft="10dp"
+	            android:hint="Recipe Name"
+	            tools:ignore="HardcodedText" />
+	      	
+	      	<EditText
+	      	    android:id="@+id/recipeAuthor"
+	      	    android:layout_width="wrap_content"
+	      	    android:layout_height="wrap_content"
+	      	    android:layout_below="@+id/recipeName"
+	            android:paddingTop="15dp"	
+	            android:paddingLeft="10dp"      	    
+	      	    android:hint="Recipe Author"
+	      	    android:textAppearance="?android:attr/textAppearanceSmall"
+	      	    tools:ignore="HardcodedText" />
+	      	
+	      	<TextView
+	      	    android:id="@+id/ingredientInputInstructions"
+	      	    android:layout_width="wrap_content"
+	      	    android:layout_height="wrap_content"
+	      	    android:layout_below="@+id/recipeAuthor"
+	            android:paddingTop="15dp"	 
+	            android:paddingLeft="10dp"  
+	      	    android:text="Input Ingredients one at a time!"
+	      	    tools:ignore="HardcodedText"  />
+
+	      	<EditText
+	      	    android:id="@+id/inputIngredients"
+	      	    android:layout_width="wrap_content"
+	      	    android:layout_height="wrap_content"
+	      	    android:layout_below="@+id/ingredientInputInstructions"
+	            android:paddingTop="15dp"	
+				android:paddingLeft="10dp"  
+	      	    android:hint="Ingredients"
+	      	    tools:ignore="HardcodedText" />
+	      	
+      	    <Button
+		        android:id="@+id/addIngredient"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_below="@+id/inputIngredients"
+		        android:text="Add Ingredient"
+		        android:onClick="addIngredient"
+		        />
+
+      	    <ScrollView
+      	        android:layout_width="125dp"
+      	        android:layout_height="75dp"
+      	        android:layout_alignBottom="@+id/addIngredient"
+      	        android:layout_marginLeft="16dp"
+      	        android:layout_toRightOf="@+id/addIngredient" >
+
+      	        <TextView
+      	            android:id="@+id/includedIngredients"
+      	            android:layout_width="125dp"
+      	            android:layout_height="75dp"
+      	            android:layout_marginLeft="@id/addIngredient" />
+      	    </ScrollView>
+      	    
+      	    <ScrollView
+   	      	    android:layout_width="match_parent"
+	      	    android:layout_height="200dp"
+	      	    android:layout_below="@+id/addIngredient"
+	            android:paddingTop="15dp"	
+				android:paddingLeft="10dp" 
+
+	  	      	<EditText
+	  	      	    android:id="@+id/recipeInstructions"
+	  	      	    android:layout_height="200dp"
+	  	      	    android:layout_width="match_parent"
+	  	      	    android:hint="Instructions"
+	  	      	    tools:ignore="HardcodedText" />
+  	      	</ScrollView>
+  	      	
+      	    <Button
+		        android:id="@+id/newRecipeSubmit"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_below="@+id/recipeInstructions"
+		        android:text="Submit Recipe!"
+		        android:onClick="submitRecipe"
+		        />
+	      	
+    	</RelativeLayout>
