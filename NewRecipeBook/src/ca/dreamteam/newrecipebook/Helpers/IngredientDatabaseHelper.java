@@ -10,15 +10,15 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import ca.dreamteam.newrecipebook.Models.Ingredient;
 
-public class IngredientSQLite
+public class IngredientDatabaseHelper
 {
     private SQLiteDatabase database;
-    private IngredientSqlTable dbHelper;
-    private String[] allColumns = { IngredientSqlTable.COLUMN_ID,
-        IngredientSqlTable.COLUMN_INGREDIENT };
+    private IngredientSqlHelper dbHelper;
+    private String[] allColumns = { IngredientSqlHelper.COLUMN_ID,
+        IngredientSqlHelper.COLUMN_INGREDIENT };
     
-    public IngredientSQLite(Context context) {
-        dbHelper = new IngredientSqlTable(context);
+    public IngredientDatabaseHelper(Context context) {
+        dbHelper = new IngredientSqlHelper(context);
         
       }
     
@@ -41,10 +41,10 @@ public class IngredientSQLite
     		this.open();
     	}
     	ContentValues values = new ContentValues();
-        values.put(IngredientSqlTable.COLUMN_INGREDIENT, ingredient);
-        long insertId = database.insert(IngredientSqlTable.TABLE_INGREDIENTS, null, values);
-        Cursor cursor = database.query(IngredientSqlTable.TABLE_INGREDIENTS,
-                allColumns, IngredientSqlTable.COLUMN_ID + " = " + insertId, null,
+        values.put(IngredientSqlHelper.COLUMN_INGREDIENT, ingredient);
+        long insertId = database.insert(IngredientSqlHelper.TABLE_INGREDIENTS, null, values);
+        Cursor cursor = database.query(IngredientSqlHelper.TABLE_INGREDIENTS,
+                allColumns, IngredientSqlHelper.COLUMN_ID + " = " + insertId, null,
                 null, null, null);
         cursor.moveToFirst();
         Ingredient newIngredient = cursorToIngredient(cursor);
@@ -55,13 +55,12 @@ public class IngredientSQLite
     public void deleteIngredient(Ingredient ingredient) {
         long id = ingredient.getId();
         System.out.println("Ingredient deleted with id: " + id);
-        database.delete(IngredientSqlTable.TABLE_INGREDIENTS, IngredientSqlTable.COLUMN_ID
-            + " = " + id, null);
+        database.delete(IngredientSqlHelper.TABLE_INGREDIENTS, IngredientSqlHelper.COLUMN_ID + " = " + id, null);
       }
     
     public List<Ingredient> getAllIngredients(){
         List<Ingredient> ingredients = new ArrayList<Ingredient>();
-        Cursor cursor = database.query(IngredientSqlTable.TABLE_INGREDIENTS,
+        Cursor cursor = database.query(IngredientSqlHelper.TABLE_INGREDIENTS,
                 allColumns, null, null, null, null, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
@@ -72,6 +71,15 @@ public class IngredientSQLite
         // Make sure to close the cursor
         cursor.close();
         return ingredients;
+    }
+    
+    public void updateIngredient(Ingredient ingredient)
+    {
+    	long id = ingredient.getId();
+    	ContentValues cv = new ContentValues();
+    	cv.put(IngredientSqlHelper.COLUMN_INGREDIENT, ingredient.getName());
+    	database.update(IngredientSqlHelper.TABLE_INGREDIENTS, cv, 
+    			IngredientSqlHelper.COLUMN_ID + "=" + id, null);
     }
 }
 

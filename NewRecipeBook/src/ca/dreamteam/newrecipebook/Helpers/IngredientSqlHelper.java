@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class IngredientSqlTable extends SQLiteOpenHelper
+public class IngredientSqlHelper extends SQLiteOpenHelper
 {
     public static final String TABLE_INGREDIENTS = "ingredients";
     public static final String COLUMN_ID = "_id";
@@ -22,7 +22,7 @@ public class IngredientSqlTable extends SQLiteOpenHelper
             + " text not null);";
       
 
-    public IngredientSqlTable(Context context) {
+    public IngredientSqlHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
       }
 
@@ -34,7 +34,7 @@ public class IngredientSqlTable extends SQLiteOpenHelper
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-      Log.w(IngredientSqlTable.class.getName(),
+      Log.w(IngredientSqlHelper.class.getName(),
           "Upgrading database from version " + oldVersion + " to "
               + newVersion + ", which will destroy all old data");
       db.execSQL("DROP TABLE IF EXISTS " + TABLE_INGREDIENTS);
