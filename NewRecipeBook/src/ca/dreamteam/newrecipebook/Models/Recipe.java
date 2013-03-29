@@ -63,6 +63,11 @@ public class Recipe implements Serializable {
     @Override
     public String toString()
     {
+    	return "";
+    }
+    
+    public String toEmailString()
+    {
         return "<b>This needs to be formatted :)</b>";
     }
     
