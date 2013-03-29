@@ -64,11 +64,18 @@
 		        android:onClick="addIngredient"
 		        />
       	    
+      	    <ListView
+        		android:id="@+id/ingredientList"
+        		android:layout_below="@+id/addIngredient"  	      	    
+        		android:layout_width="match_parent"
+        		android:layout_height="75dp" >
+    			</ListView>
+      	    
   	      	<EditText
   	      	    android:id="@+id/recipeInstructions"
   	      	    android:layout_width="match_parent"
   	      	    android:layout_height="wrap_content"
-		        android:layout_below="@+id/addIngredient"  	      	    
+		        android:layout_below="@+id/ingredientList"  	      	    
   	      	    android:hint="Instructions"
   	      	    tools:ignore="HardcodedText" />
   	      	
