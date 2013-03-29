@@ -1,5 +1,7 @@
 package ca.dreamteam.newrecipebook;
 
+import java.util.ArrayList;
+
 import ca.dreamteam.newrecipebook.Models.Recipe;
 import android.os.Bundle;
 import android.annotation.TargetApi;
@@ -17,7 +19,8 @@ import android.widget.EditText;
 public class CreateRecipeActivity extends ListActivity {
 	
 	public Recipe newRecipe;
-    ArrayAdapter<String> adapter;
+    private ArrayList<String> tempIngredientList = new ArrayList<String>();
+    private ArrayAdapter<String> adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,8 +28,8 @@ public class CreateRecipeActivity extends ListActivity {
         setContentView(R.layout.activity_create_recipe);
         getActionBar().setDisplayHomeAsUpEnabled(true);
         
-        adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,
-                newRecipe.ingredients);
+        adapter=new ArrayAdapter<String>(this,R.id.ingredientList,
+                tempIngredientList);
         setListAdapter(adapter);
     }
 

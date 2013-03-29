@@ -75,7 +75,7 @@
 	      	    tools:ignore="HardcodedText"  />
       	    
       	    <ListView
-        		android:id="@+id/ingredientList"
+        		android:id="@android:id/list"
         		android:layout_below="@+id/inputtedIngredientsNote"  	      	    
         		android:layout_width="match_parent"
         		android:layout_height="75dp" >
