@@ -12,8 +12,24 @@
 	<classpathentry kind="lib" path="libs/httpmime-4.2.1.jar"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
+<<<<<<< HEAD
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+=======
+	<classpathentry exported="true" kind="lib" path="/home/dsk07/ugrad/seckert/git/NewRecipeBook/libs/commons-codec-1.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="/home/dsk07/ugrad/seckert/git/NewRecipeBook/libs/commons-logging-1.1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/home/dsk07/ugrad/seckert/git/NewRecipeBook/libs/fluent-hc-4.2.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/home/dsk07/ugrad/seckert/git/NewRecipeBook/libs/gson-2.2.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="/home/dsk07/ugrad/seckert/git/NewRecipeBook/libs/gson-2.2.2-javadoc.jar"/>
+	<classpathentry exported="true" kind="lib" path="/home/dsk07/ugrad/seckert/git/NewRecipeBook/libs/httpclient-4.2.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/home/dsk07/ugrad/seckert/git/NewRecipeBook/libs/httpclient-cache-4.2.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/home/dsk07/ugrad/seckert/git/NewRecipeBook/libs/httpcore-4.2.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/home/dsk07/ugrad/seckert/git/NewRecipeBook/libs/httpmime-4.2.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/home/dsk07/ugrad/seckert/git/NewRecipeBook/libs/android-support-v4.jar"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+>>>>>>> 6f4136f2da272e6739cb5daddd9ca4ae1d3e9259
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
