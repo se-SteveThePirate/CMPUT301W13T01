@@ -13,7 +13,10 @@ import android.database.sqlite.SQLiteDatabase;
 public class RecipeSQLite{
     private SQLiteDatabase database;
     private RecipeSqlTable dbHelper;
-    private String[] allColumns = { RecipeSqlTable.COLUMN_ID, RecipeSqlTable.COLUMN_NAME, RecipeSqlTable.COLUMN_AUTHOR, RecipeSqlTable.COLUMN_INGREDIENTS, RecipeSqlTable.COLUMN_INSTRUCTIONS, RecipeSqlTable.COLUMN_TAGS, RecipeSqlTable.COLUMN_COMMENTS, RecipeSqlTable.COLUMN_FAVORITED };
+    private String[] allColumns = { RecipeSqlTable.COLUMN_ID, RecipeSqlTable.COLUMN_NAME,
+            RecipeSqlTable.COLUMN_AUTHOR, RecipeSqlTable.COLUMN_INGREDIENTS,
+            RecipeSqlTable.COLUMN_INSTRUCTIONS, RecipeSqlTable.COLUMN_TAGS,
+            RecipeSqlTable.COLUMN_COMMENTS, RecipeSqlTable.COLUMN_FAVORITED };
 
     public RecipeSQLite(Context context) {
         dbHelper = new RecipeSqlTable(context);
@@ -36,8 +39,13 @@ public class RecipeSQLite{
 
     public Recipe createRecipe(String recipe){
         ContentValues values = new ContentValues();
-        values.put(RecipeSqlTable.COLUMN_NAME, recipe);
-
+        values.put(RecipeSqlTable.COLUMN_NAME, name);
+        values.put(RecipeSqlTable.COLUMN_AUTHOR, author);
+        values.put(RecipeSqlTable.COLUMN_INSTRUCTIONS, instructions);
+//        valuse.put(RecipeSqlTable.COLUMN_INGREDIENTS, ingredients);
+//        values.put(RecipeSqlTable.COLUMN_TAGS, tags);
+        
+        
         //under the assumption that i have to insert all of the columns here
         //make sure you check the spelling
 

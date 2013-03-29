@@ -24,12 +24,13 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
     }
-      
+      //this method opens up/creates a recipe menu intent
     public void openRecipeView(View view) {
     	Intent intent = new Intent(this, RecipeMenuActivity.class);
     	startActivity(intent);
     }
     
+    //This method opens up/creates your pantry to store your ingredients
     public void openPantryView(View view) {
     	Intent intent = new Intent(this, PantryActivity.class);
     	startActivity(intent);

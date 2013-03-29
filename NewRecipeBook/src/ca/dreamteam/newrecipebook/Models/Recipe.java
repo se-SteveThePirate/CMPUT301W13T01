@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 
 public class Recipe implements Serializable {
+    
+    
     public long id;
     public String name;
     public String author;
@@ -29,12 +31,24 @@ public class Recipe implements Serializable {
         this.name = name;
     }
     
+    public String getName(){
+        return name;
+    }
+    
     public void setAuthor(String author){
         this.author = author;
     }
+     
+    public String getAuthor(){
+        return author;
+    }
     
-    public String getName(){
-        return name;
+    public ArrayList<Ingredient> getIngredients(){
+        return ingredients;
+    }
+    
+    public void setIngredients (ArrayList<Ingredient> ingredients){
+        this.ingredients = ingredients;
     }
     
     

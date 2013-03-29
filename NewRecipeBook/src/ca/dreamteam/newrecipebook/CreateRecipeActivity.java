@@ -24,7 +24,7 @@ public class CreateRecipeActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_create_recipe, menu);
+        getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
     }
 

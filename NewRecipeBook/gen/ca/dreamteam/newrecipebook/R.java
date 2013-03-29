@@ -70,13 +70,12 @@ public final class R {
         public static final int previewphoto=0x7f030008;
     }
     public static final class menu {
-        public static final int activity_create_recipe=0x7f060000;
-        public static final int activity_main=0x7f060001;
-        public static final int activity_new_picture=0x7f060002;
-        public static final int activity_pantry=0x7f060003;
-        public static final int activity_recipe_menu=0x7f060004;
-        public static final int activity_recipe_view=0x7f060005;
-        public static final int activity_testcall=0x7f060006;
+        public static final int activity_main=0x7f060000;
+        public static final int activity_new_picture=0x7f060001;
+        public static final int activity_pantry=0x7f060002;
+        public static final int activity_recipe_menu=0x7f060003;
+        public static final int activity_recipe_view=0x7f060004;
+        public static final int activity_testcall=0x7f060005;
     }
     public static final class string {
         public static final int app_name=0x7f040000;

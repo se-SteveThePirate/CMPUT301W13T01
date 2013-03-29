@@ -21,12 +21,14 @@ public class PantryActivity extends ListActivity {
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        datasource = new IngredientDatabaseHelper(this);
-        datasource.open();
+        datasource = new IngredientDatabaseHelper(this); //links up with the database made in another class
+        datasource.open();//opens said database
         
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantry);
         
+        //This allows you to click on an item in the list that is displayed
+        //and fetchs its position in the database
         getListView().setOnItemClickListener(new OnItemClickListener() {
         	@Override
         	public void onItemClick(AdapterView<?> a, View view, int position, long id )
@@ -46,6 +48,8 @@ public class PantryActivity extends ListActivity {
         return true;
     }
     
+    //this method is activated when you click the add button
+    //it adds the new ingredient that was typed out in the editText field
     public void addClicked(View view){
         Intent i = new Intent(this, ViewIngredientActivity.class);
     	startActivity(i);
