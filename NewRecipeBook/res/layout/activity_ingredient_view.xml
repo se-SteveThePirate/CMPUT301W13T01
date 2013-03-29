@@ -15,31 +15,10 @@
         android:singleLine="true" >
     </EditText>
 
-    <EditText
-        android:id="@+id/ingredientAdd_quantityEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/ingredientAdd_quantityLabel"
-        android:layout_alignBottom="@+id/ingredientAdd_quantityLabel"
-        android:layout_alignParentRight="true"
-        android:ems="10"
-        android:hint="500 mL or 2"
-        android:singleLine="true" />
-
-    <TextView
-        android:id="@+id/ingredientAdd_quantityLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ingredientAdd_nameLabel"
-        android:layout_toLeftOf="@+id/ingredientAdd_nameEdit"
-        android:text="Quantity: "
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
     <TextView
         android:id="@+id/ingredientAdd_nameLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/ingredientAdd_quantityLabel"
         android:layout_alignParentTop="true"
         android:layout_marginTop="18dp"
         android:text="Name:"
@@ -52,8 +31,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="48dp"
-        android:text="Modify"
-        android:onClick="saveIngredient" />
+        android:onClick="saveIngredient"
+        android:text="Modify" />
 
     <Button
         android:id="@+id/ingredientDelete_multiPurposeButton"
@@ -61,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Delete"
-        android:onClick="deleteIngredient" />
-    
+        android:onClick="deleteIngredient"
+        android:text="Delete" />
+
 </RelativeLayout>

@@ -75,28 +75,35 @@
 	      	    tools:ignore="HardcodedText"  />
       	    
       	    <ListView
-        		android:id="@android:id/list"
-        		android:layout_below="@+id/inputtedIngredientsNote"  	      	    
-        		android:layout_width="match_parent"
-        		android:layout_height="75dp" >
+      	        android:id="@android:id/list"
+      	        android:layout_width="match_parent"
+      	        android:layout_height="75dp"
+      	        android:layout_below="@+id/inputtedIngredientsNote" >
+
     			</ListView>
-      	    
-  	      	<EditText
-  	      	    android:id="@+id/recipeInstructions"
-  	      	    android:layout_width="match_parent"
-  	      	    android:layout_height="wrap_content"
-		        android:layout_below="@+id/ingredientList"  	      	    
-  	      	    android:hint="Instructions"
-  	      	    tools:ignore="HardcodedText" />
-  	      	
+
       	    <Button
-		        android:id="@+id/newRecipeSubmit"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:layout_below="@+id/recipeInstructions"		        
-		        android:text="Submit Recipe!"
-		        android:onClick="submitRecipe"
-		        />
+      	        android:id="@+id/newRecipeSubmit"
+      	        android:layout_width="wrap_content"
+      	        android:layout_height="wrap_content"
+      	        android:layout_alignParentLeft="true"
+      	        android:layout_below="@android:id/list"
+      	        android:layout_marginTop="56dp"
+      	        android:onClick="submitRecipe"
+      	        android:text="Submit Recipe!" />
+
+      	    <EditText
+      	        android:id="@+id/recipeInstructions"
+      	        android:layout_width="match_parent"
+      	        android:layout_height="wrap_content"
+      	        android:layout_alignParentLeft="true"
+      	        android:layout_below="@android:id/list"
+      	        android:ems="10"
+      	        android:hint="Instructions"
+      	        tools:ignore="HardcodedText" >
+
+      	        <requestFocus />
+      	    </EditText>
 	      	
 		    </RelativeLayout>
     

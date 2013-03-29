@@ -7,6 +7,7 @@ public class Ingredient implements Serializable
 	private static final long serialVersionUID = -5978060205944130010L;
 	private long id;
     private String name;
+   
     
     public void setIngredient(String ingredient){
         this.name = ingredient;

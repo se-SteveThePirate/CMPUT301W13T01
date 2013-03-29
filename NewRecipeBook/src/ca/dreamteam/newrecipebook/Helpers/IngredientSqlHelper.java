@@ -10,6 +10,7 @@ public class IngredientSqlHelper extends SQLiteOpenHelper
     public static final String TABLE_INGREDIENTS = "ingredients";
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_INGREDIENT = "ingredient";
+    public static final String COLUMN_QUANTITY = "quantity";
     
     private static final String DATABASE_NAME = "ingredients.db";
     private static final int DATABASE_VERSION = 1;
