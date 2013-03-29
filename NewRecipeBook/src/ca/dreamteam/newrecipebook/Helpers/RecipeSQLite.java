@@ -37,11 +37,11 @@ public class RecipeSQLite{
         return recipe;
     }
 
-    public Recipe createRecipe(String recipe){
+    public Recipe createRecipe(Recipe recipe){
         ContentValues values = new ContentValues();
-        values.put(RecipeSqlTable.COLUMN_NAME, name);
-        values.put(RecipeSqlTable.COLUMN_AUTHOR, author);
-        values.put(RecipeSqlTable.COLUMN_INSTRUCTIONS, instructions);
+        values.put(RecipeSqlTable.COLUMN_NAME, recipe.name);
+        values.put(RecipeSqlTable.COLUMN_AUTHOR, recipe.author);
+        values.put(RecipeSqlTable.COLUMN_INSTRUCTIONS, recipe.instructions);
 //        valuse.put(RecipeSqlTable.COLUMN_INGREDIENTS, ingredients);
 //        values.put(RecipeSqlTable.COLUMN_TAGS, tags);
         
