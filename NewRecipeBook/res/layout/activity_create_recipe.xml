@@ -64,9 +64,19 @@
 		        android:onClick="addIngredient"
 		        />
       	    
+   	      	<TextView
+	      	    android:id="@+id/inputtedIngredientsNote"
+	      	    android:layout_width="wrap_content"
+	      	    android:layout_height="wrap_content"
+	      	    android:layout_below="@+id/addIngredient"
+	            android:paddingTop="15dp"	 
+	            android:paddingLeft="10dp"  
+	      	    android:text="Inputted ingredients:"
+	      	    tools:ignore="HardcodedText"  />
+      	    
       	    <ListView
         		android:id="@+id/ingredientList"
-        		android:layout_below="@+id/addIngredient"  	      	    
+        		android:layout_below="@+id/inputtedIngredientsNote"  	      	    
         		android:layout_width="match_parent"
         		android:layout_height="75dp" >
     			</ListView>
