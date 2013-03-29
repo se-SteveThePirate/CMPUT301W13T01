@@ -15,7 +15,7 @@ public class Recipe implements Serializable {
     public String name;
     public String author;
     public ArrayList<Bitmap> photos;
-    public ArrayList<Ingredient> ingredients;
+    public ArrayList<String> ingredients;
     public String instructions;
     public ArrayList<String> tags;
     public Boolean globalEdit;
@@ -43,11 +43,11 @@ public class Recipe implements Serializable {
         return author;
     }
     
-    public ArrayList<Ingredient> getIngredients(){
+    public ArrayList<String> getIngredients(){
         return ingredients;
     }
     
-    public void setIngredients (ArrayList<Ingredient> ingredients){
+    public void setIngredients (ArrayList<String> ingredients){
         this.ingredients = ingredients;
     }
     
@@ -71,7 +71,7 @@ public class Recipe implements Serializable {
         return "<b>This needs to be formatted :)</b>";
     }
     
-    public void addIngredient(Ingredient ingredient) {
+    public void addIngredient(String ingredient) {
     	ingredients.add(ingredient); 	
     }
     

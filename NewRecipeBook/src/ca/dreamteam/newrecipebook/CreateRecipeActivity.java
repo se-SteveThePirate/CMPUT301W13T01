@@ -4,6 +4,7 @@ import ca.dreamteam.newrecipebook.Models.Recipe;
 import android.os.Bundle;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,7 +14,7 @@ import android.widget.EditText;
 @TargetApi(11)
 public class CreateRecipeActivity extends Activity {
 	
-	private Recipe newRecipe;
+	public Recipe newRecipe;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -24,7 +25,7 @@ public class CreateRecipeActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_main, menu);
+        getMenuInflater().inflate(R.menu.activity_create_recipe, menu);
         return true;
     }
 
@@ -44,15 +45,8 @@ public class CreateRecipeActivity extends Activity {
     	EditText ingredientNameET = (EditText)findViewById(R.id.inputIngredients);
     	String ingredientName = ingredientNameET.getText().toString();
     	ingredientNameET.setText("");
-
-    	/*
-    	 * Query ingredient database to see if an ingredient with that name already exists.
-    	 * If it does, add instance of existing ingredient to newRecipe's Ingredient array.
-    	 * If not, create new ingredient in the ingredient database, then add it to newRecipe's
-    	 * Ingredient array.
-    	 */
     	
-    	 
+    	newRecipe.ingredients.add(ingredientName);   	 
     	
     }
     
@@ -69,6 +63,9 @@ public class CreateRecipeActivity extends Activity {
     	newRecipe.setName(recipeName);
     	newRecipe.setAuthor(authorName);
     	newRecipe.addInstructions(recipeInstructions);
+    	
+    	Intent submitIntent = new Intent();
+    	startActivity(submitIntent);
     	
     	
     }
