@@ -4,23 +4,30 @@ import ca.dreamteam.newrecipebook.Models.Recipe;
 import android.os.Bundle;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 
 @TargetApi(11)
-public class CreateRecipeActivity extends Activity {
+public class CreateRecipeActivity extends ListActivity {
 	
 	public Recipe newRecipe;
+    ArrayAdapter<String> adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_recipe);
         getActionBar().setDisplayHomeAsUpEnabled(true);
+        
+        adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,
+                newRecipe.ingredients);
+        setListAdapter(adapter);
     }
 
     @Override
@@ -46,8 +53,9 @@ public class CreateRecipeActivity extends Activity {
     	String ingredientName = ingredientNameET.getText().toString();
     	ingredientNameET.setText("");
     	
-    	newRecipe.ingredients.add(ingredientName);   	 
+    	newRecipe.ingredients.add(ingredientName); 
     	
+    	adapter.notifyDataSetChanged();
     }
     
     public void newRecipeSubmit(View view) {
