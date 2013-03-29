@@ -19,8 +19,8 @@ import android.widget.EditText;
 public class CreateRecipeActivity extends ListActivity {
 	
 	public Recipe newRecipe;
-    private ArrayList<String> tempIngredientList = new ArrayList<String>();
-    private ArrayAdapter<String> adapter;
+    ArrayList<String> tempIngredientList = new ArrayList<String>();
+    ArrayAdapter<String> adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class CreateRecipeActivity extends ListActivity {
         setContentView(R.layout.activity_create_recipe);
         getActionBar().setDisplayHomeAsUpEnabled(true);
         
-        adapter=new ArrayAdapter<String>(this,R.id.ingredientList,
+        adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,
                 tempIngredientList);
         setListAdapter(adapter);
     }
@@ -56,8 +56,7 @@ public class CreateRecipeActivity extends ListActivity {
     	String ingredientName = ingredientNameET.getText().toString();
     	ingredientNameET.setText("");
     	
-    	newRecipe.ingredients.add(ingredientName); 
-    	
+    	tempIngredientList.add(ingredientName);    	
     	adapter.notifyDataSetChanged();
     }
     
