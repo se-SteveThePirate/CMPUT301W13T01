@@ -16,6 +16,7 @@ public final class R {
     }
     public static final class id {
         public static final int addIngredient=0x7f070004;
+        public static final int addedIngredientsScrollview=0x7f070005;
         public static final int button1=0x7f07000d;
         public static final int button2=0x7f07001b;
         public static final int button3=0x7f07001c;
@@ -24,7 +25,6 @@ public final class R {
         public static final int editText2=0x7f070015;
         public static final int editText3=0x7f070019;
         public static final int imageView1=0x7f070027;
-        public static final int includedIngredients=0x7f070005;
         public static final int ingredientAdd_multiPurposeButton=0x7f07000c;
         public static final int ingredientAdd_nameEdit=0x7f070008;
         public static final int ingredientAdd_nameLabel=0x7f070009;
@@ -43,7 +43,7 @@ public final class R {
         public static final int recipeActivity_emptyListViewText=0x7f07001d;
         public static final int recipeAuthor=0x7f070001;
         public static final int recipeGallery=0x7f070021;
-        public static final int recipeInstructions=0x7f070006;
+        public static final int recipeInstructionsScrollview=0x7f070006;
         public static final int recipeList=0x7f07001e;
         public static final int recipeListActivity_addNewRecipeButton=0x7f07001f;
         public static final int recipeListActivity_downloadButton=0x7f070020;

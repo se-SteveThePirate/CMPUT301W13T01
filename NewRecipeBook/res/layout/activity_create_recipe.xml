@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -58,39 +57,28 @@
 		        />
 
       	    <ScrollView
+      	        android:id="@+id/addedIngredientsScrollview"
       	        android:layout_width="125dp"
       	        android:layout_height="75dp"
-      	        android:layout_alignBottom="@+id/addIngredient"
-      	        android:layout_marginLeft="16dp"
-      	        android:layout_toRightOf="@+id/addIngredient" >
+      	        android:paddingLeft="16dp" > 
 
-      	        <TextView
-      	            android:id="@+id/includedIngredients"
-      	            android:layout_width="125dp"
-      	            android:layout_height="75dp"
-      	            android:layout_marginLeft="@id/addIngredient" />
       	    </ScrollView>
       	    
       	    <ScrollView
-   	      	    android:layout_width="match_parent"
-	      	    android:layout_height="200dp"
-	      	    android:layout_below="@+id/addIngredient"
-	            android:paddingTop="15dp"	
-				android:paddingLeft="10dp" >
+      	        android:id="@+id/recipeInstructionsScrollview"      	        
+      	        android:layout_width="match_parent"
+      	        android:layout_height="210dp"
+      	        android:paddingLeft="10dp"
+      	        android:paddingTop="15dp" >
 
-	  	      	<EditText
-	  	      	    android:id="@+id/recipeInstructions"
-	  	      	    android:layout_height="200dp"
-	  	      	    android:layout_width="match_parent"
-	  	      	    android:hint="Instructions"
-	  	      	    tools:ignore="HardcodedText" />
+
   	      	</ScrollView>
   	      	
       	    <Button
 		        android:id="@+id/newRecipeSubmit"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-		        android:paddingBottom="15dp"
+		        android:layout_below="@+id/recipeInstructionsScrollview"		        
 		        android:text="Submit Recipe!"
 		        android:onClick="submitRecipe"
 		        />

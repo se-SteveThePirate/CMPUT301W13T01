@@ -50,7 +50,14 @@ public class ESClient {
 		HttpEntity entity = response.getEntity();
 		//BufferedReader bReader = new BufferedReader(new InputStreamReader(entity.getContent()));
 		try {
-			EntityUtils.consume(entity);
+			/********
+			 * 
+			 * 
+			 * THE BELOW LINE WAS CAUSING AN ERROR SO IT JUST GOT COMMENTED OUT.
+			 * 
+			 * 
+			 */
+			//EntityUtils.consume(entity);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
