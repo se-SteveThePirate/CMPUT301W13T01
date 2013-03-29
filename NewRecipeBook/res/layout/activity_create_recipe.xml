@@ -1,11 +1,19 @@
-<RelativeLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_alignParentLeft="true"
     android:layout_alignParentTop="true"
     tools:context=".CreateRecipeActivity" >
+    
+    <ScrollView android:id="@+id/ScrollView01"
+         android:layout_width="fill_parent"
+		 android:layout_height="500dp">
+		 
+         <RelativeLayout android:id="@+id/LinearLayout02"
+			android:layout_width="wrap_content"
+			android:layout_height="500dp"
+			android:orientation="vertical">
     		
 	        <EditText
 	            android:id="@+id/recipeName"
@@ -55,32 +63,26 @@
 		        android:text="Add Ingredient"
 		        android:onClick="addIngredient"
 		        />
-
-      	    <ScrollView
-      	        android:id="@+id/addedIngredientsScrollview"
-      	        android:layout_width="125dp"
-      	        android:layout_height="75dp"
-      	        android:paddingLeft="16dp" > 
-
-      	    </ScrollView>
       	    
-      	    <ScrollView
-      	        android:id="@+id/recipeInstructionsScrollview"      	        
-      	        android:layout_width="match_parent"
-      	        android:layout_height="210dp"
-      	        android:paddingLeft="10dp"
-      	        android:paddingTop="15dp" >
-
-
-  	      	</ScrollView>
+  	      	<EditText
+  	      	    android:id="@+id/recipeInstructions"
+  	      	    android:layout_width="match_parent"
+  	      	    android:layout_height="wrap_content"
+		        android:layout_below="@+id/addIngredient"  	      	    
+  	      	    android:hint="Instructions"
+  	      	    tools:ignore="HardcodedText" />
   	      	
       	    <Button
 		        android:id="@+id/newRecipeSubmit"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-		        android:layout_below="@+id/recipeInstructionsScrollview"		        
+		        android:layout_below="@+id/recipeInstructions"		        
 		        android:text="Submit Recipe!"
 		        android:onClick="submitRecipe"
 		        />
 	      	
-    	</RelativeLayout>
+		    </RelativeLayout>
+    
+   		</ScrollView>
+
+</RelativeLayout>

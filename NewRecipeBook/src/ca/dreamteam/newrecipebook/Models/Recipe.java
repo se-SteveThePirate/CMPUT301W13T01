@@ -29,6 +29,10 @@ public class Recipe implements Serializable {
         this.name = name;
     }
     
+    public void setAuthor(String author){
+        this.author = author;
+    }
+    
     public String getName(){
         return name;
     }
@@ -46,5 +50,13 @@ public class Recipe implements Serializable {
     public String toString()
     {
         return "<b>This needs to be formatted :)</b>";
+    }
+    
+    public void addIngredient(Ingredient ingredient) {
+    	ingredients.add(ingredient); 	
+    }
+    
+    public void addInstructions(String instructions) {
+    	this.instructions = instructions;
     }
 }

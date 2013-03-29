@@ -1,14 +1,19 @@
 package ca.dreamteam.newrecipebook;
 
+import ca.dreamteam.newrecipebook.Models.Recipe;
 import android.os.Bundle;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 
 @TargetApi(11)
 public class CreateRecipeActivity extends Activity {
+	
+	private Recipe newRecipe;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,5 +38,45 @@ public class CreateRecipeActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
+    
+    public void addIngredient(View view) {
+    	//read input from Ingredient field and make it into a string.
+    	EditText ingredientNameET = (EditText)findViewById(R.id.inputIngredients);
+    	String ingredientName = ingredientNameET.getText().toString();
+    	ingredientNameET.setText("");
+
+    	/*
+    	 * Query ingredient database to see if an ingredient with that name already exists.
+    	 * If it does, add instance of existing ingredient to newRecipe's Ingredient array.
+    	 * If not, create new ingredient in the ingredient database, then add it to newRecipe's
+    	 * Ingredient array.
+    	 */
+    	
+    	 
+    	
+    }
+    
+    public void newRecipeSubmit(View view) {
+    	
+    	EditText recipeNameET = (EditText)findViewById(R.id.recipeName);
+    	EditText authorNameET = (EditText)findViewById(R.id.recipeAuthor);
+    	EditText recipeInstructionsET = (EditText)findViewById(R.id.recipeInstructions);
+
+    	String recipeName = recipeNameET.getText().toString();
+    	String authorName = authorNameET.getText().toString();
+    	String recipeInstructions = recipeInstructionsET.getText().toString();
+
+    	newRecipe.setName(recipeName);
+    	newRecipe.setAuthor(authorName);
+    	newRecipe.addInstructions(recipeInstructions);
+    	
+    	
+    }
+    
+    
+    
+    
+    
+    
 
 }
