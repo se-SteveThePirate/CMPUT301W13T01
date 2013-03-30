@@ -6,6 +6,7 @@
 
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -57,7 +58,7 @@
         </activity>
         <activity
             android:name="ca.dreamteam.newrecipebook.AddIngredientForRecipeActivity"
-            android:label="Add Ingredient">
+            android:label="Add Ingredient" >
         </activity>
         <activity
             android:name=".CreateRecipeActivity"
@@ -67,5 +68,8 @@
                 android:value="ca.dreamteam.newrecipebook.RecipeViewActivity" />
         </activity>
     </application>
+
+    <uses-permission>
+    </uses-permission>
 
 </manifest>
