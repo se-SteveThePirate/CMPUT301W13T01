@@ -16,7 +16,8 @@ public class RecipeSqlTable extends SQLiteOpenHelper
     private static final int DATABASE_VERSION = 1;
 
     private static final String DATABASE_CREATE = "create table " + TABLE_RECIPES
-            + "(" + COLUMN_ID + " integer primary key autoincrement, " + COLUMN_NAME + " text not null);";
+            + "(" + COLUMN_ID + " integer primary key autoincrement, " + COLUMN_NAME
+            + " text not null);";
 
     public RecipeSqlTable(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

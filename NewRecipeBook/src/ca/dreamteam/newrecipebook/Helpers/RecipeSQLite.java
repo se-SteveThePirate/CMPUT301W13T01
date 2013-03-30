@@ -2,18 +2,19 @@ package ca.dreamteam.newrecipebook.Helpers;
 
 import java.util.ArrayList;
 import java.util.List;
-import ca.dreamteam.newrecipebook.Models.Recipe;
-import ca.dreamteam.newrecipebook.Helpers.RecipeSqlTable;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import ca.dreamteam.newrecipebook.Models.Recipe;
 
 public class RecipeSQLite{
     private SQLiteDatabase database;
     private RecipeSqlTable dbHelper;
-    private String[] allColumns = { RecipeSqlTable.COLUMN_ID, RecipeSqlTable.COLUMN_NAME};
+    private String[] allColumns = { RecipeSqlTable.COLUMN_ID,
+            RecipeSqlTable.COLUMN_NAME};
 
     public RecipeSQLite(Context context) {
         dbHelper = new RecipeSqlTable(context);
@@ -37,8 +38,6 @@ public class RecipeSQLite{
     public Recipe createRecipe(Recipe recipe){
         ContentValues values = new ContentValues();
         values.put(RecipeSqlTable.COLUMN_NAME, recipe.name);
-        
-
         long insertId = database.insert(RecipeSqlTable.TABLE_RECIPES, null, values);
         Cursor cursor = database.query(RecipeSqlTable.TABLE_RECIPES,
                 allColumns, RecipeSqlTable.COLUMN_ID + " = " + insertId, null,

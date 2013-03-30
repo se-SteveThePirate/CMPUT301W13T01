@@ -69,7 +69,6 @@
         </activity>
     </application>
 
-    <uses-permission>
-    </uses-permission>
-
+   
+   
 </manifest>
