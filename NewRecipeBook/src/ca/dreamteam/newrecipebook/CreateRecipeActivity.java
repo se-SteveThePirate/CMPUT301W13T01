@@ -3,22 +3,24 @@ package ca.dreamteam.newrecipebook;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import ca.dreamteam.newrecipebook.Helpers.RecipeSQLite;
-import ca.dreamteam.newrecipebook.Helpers.ElasticSearch.ESClient;
-import ca.dreamteam.newrecipebook.Models.Recipe;
-import android.os.Bundle;
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.TextView;
+import ca.dreamteam.newrecipebook.Helpers.RecipeSQLite;
+import ca.dreamteam.newrecipebook.Helpers.ElasticSearch.ESClient;
+import ca.dreamteam.newrecipebook.Models.Recipe;
 
-@TargetApi(11)
+@TargetApi(14)
 public class CreateRecipeActivity extends ListActivity {
 	
 	private RecipeSQLite recipeCache = new RecipeSQLite(this);
@@ -33,9 +35,18 @@ public class CreateRecipeActivity extends ListActivity {
         setContentView(R.layout.activity_create_recipe);
         getActionBar().setDisplayHomeAsUpEnabled(true);
         
-        adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,
+        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,
                 tempIngredientList);
         setListAdapter(adapter);
+        
+        //Set Author's name.
+        Cursor c = getContentResolver().query(ContactsContract.Profile.CONTENT_URI, null, null, null, null);
+        c.moveToFirst();
+        String nameString = c.getString(c.getColumnIndex(ContactsContract.Profile.DISPLAY_NAME));
+        
+        TextView tvTextView = (TextView)findViewById(R.id.recipeAuthor);
+        tvTextView.setText(nameString);
+        
     }
 
     @Override

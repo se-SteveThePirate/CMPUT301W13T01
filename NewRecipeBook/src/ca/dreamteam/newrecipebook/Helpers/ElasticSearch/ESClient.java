@@ -40,7 +40,10 @@ public class ESClient {
 	private Gson gson = new Gson();
 
 	public void insertRecipe(Recipe recipe) throws IOException, IllegalStateException{
-		HttpPost httpPost = new HttpPost("http://cmput301.softwareprocess.es:8080/testing/"+recipe.getId());
+		//Set the ES ID to the next available ID number. (Avoid conflicts :) )
+		recipe.id = getNextAvailableId();
+		
+		HttpPost httpPost = new HttpPost("http://cmput301.softwareprocess.es:8080/cmput301w13t01/recipebook/"+recipe.getId());
 		StringEntity stringEntity = null;
 		try {
 			stringEntity = new StringEntity(gson.toJson(recipe));
@@ -64,7 +67,6 @@ public class ESClient {
 		}
 
 		HttpEntity entity = response.getEntity();
-		//BufferedReader bReader = new BufferedReader(new InputStreamReader(entity.getContent()));
 		try {
 			EntityUtils.consume(entity);
 		} catch (Exception e) {
