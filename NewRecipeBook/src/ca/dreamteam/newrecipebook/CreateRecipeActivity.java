@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -22,13 +23,12 @@ import ca.dreamteam.newrecipebook.Models.Ingredient;
 import ca.dreamteam.newrecipebook.Models.Recipe;
 
 @TargetApi(14)
-public class CreateRecipeActivity extends ListActivity {
+public class CreateRecipeActivity extends Activity {
 
 	private RecipeSQLite recipeCache = new RecipeSQLite(this);
 
-	private Recipe newRecipe = new Recipe();
+	private Recipe newRecipe;
 	private ArrayList<String> tempIngredientList = new ArrayList<String>();
-	private ArrayAdapter<String> adapter;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -36,10 +36,7 @@ public class CreateRecipeActivity extends ListActivity {
 		setContentView(R.layout.activity_create_recipe);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
-		//Ingredients list view.
-		adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,
-				tempIngredientList);
-		setListAdapter(adapter);
+
 
 		try {
 			//Set Author's name.
@@ -49,7 +46,7 @@ public class CreateRecipeActivity extends ListActivity {
 
 			TextView tvTextView = (TextView)findViewById(R.id.recipeAuthor);
 			tvTextView.setText(nameString);
-			c.close();
+
 		} catch (Exception e) {
 			//Meh.
 		}
@@ -86,15 +83,14 @@ public class CreateRecipeActivity extends ListActivity {
 		{
 			if (resultCode == RESULT_OK)
 			{
-				Ingredient i = (Ingredient)data.getSerializableExtra("newingredient");
-				this.tempIngredientList.add(i.getName());
-				this.adapter.notifyDataSetChanged();
+				//Ingredient i = (Ingredient)data.getSerializableExtra("newingredient");
+				this.tempIngredientList = (ArrayList<String>)data.getStringArrayListExtra("newIngredients");
 			}
 		}
 		super.onActivityResult(requestCode, resultCode, data);
 	}
 
-	public void submitRecipe(View view) {
+	public void newRecipeSubmit(View view) {
 
 		EditText recipeNameET = (EditText)findViewById(R.id.recipeName);
 		EditText authorNameET = (EditText)findViewById(R.id.recipeAuthor);
@@ -104,15 +100,13 @@ public class CreateRecipeActivity extends ListActivity {
 		String authorName = authorNameET.getText().toString();
 		String recipeInstructions = recipeInstructionsET.getText().toString();
 
-		
-		
 		newRecipe.setName(recipeName);
 		newRecipe.setAuthor(authorName);
 		newRecipe.addInstructions(recipeInstructions);
 
-		/*recipeCache.open();
+		recipeCache.open();
 		recipeCache.createRecipe(newRecipe);
-		recipeCache.close();*/
+		recipeCache.close();
 
 		//DO NOT TOUCH THIS. David's got this.
 		new Thread(new Runnable() {

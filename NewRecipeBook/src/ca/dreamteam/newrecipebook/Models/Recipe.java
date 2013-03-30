@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import android.graphics.Bitmap;
 
 public class Recipe implements Serializable {
+    
 	private static final long serialVersionUID = -3419759999296394802L;
 	public long id;
 	public String name;
@@ -14,10 +15,11 @@ public class Recipe implements Serializable {
 	public ArrayList<String> ingredients;
 	public String instructions;
 	public ArrayList<String> tags;
-	public Boolean globalEdit;
 	public ArrayList<String> comments;
 	public Boolean favorited;
+	public int favorite;
 
+	
 	public void uploadPhoto(Bitmap newPhoto)
 	{
 		//TODO
