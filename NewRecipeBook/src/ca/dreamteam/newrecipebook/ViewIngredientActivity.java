@@ -39,7 +39,18 @@ public class ViewIngredientActivity extends Activity {
 					}
 				}
 			});
-		}
+			
+			buttonView = (Button)findViewById(R.id.ingredientDelete_multiPurposeButton);
+			buttonView.setText("Cancel");
+			buttonView.setOnClickListener(new View.OnClickListener(){
+			    
+			    @Override
+			    public void onClick(View v) {
+			        finish();
+			    }
+			});
+        }
+		
         else {
         	this.ingredient = (Ingredient)getIntent().getSerializableExtra("ingredient");
 			((EditText)findViewById(R.id.ingredientAdd_nameEdit)).setText(this.ingredient.getName());
