@@ -64,7 +64,9 @@ public class Recipe implements Serializable {
 
 	public String toEmailString()
 	{
-		return "<b>This needs to be formatted :)</b>";
+		return "<p>" + this.name + "</p>" + "<p>Author: " + this.author
+		        + "</p>" + "<p>Ingredients: " + this.ingredients + "</p>"
+		        + "<p>Instructions: " + this.instructions + "</p>";
 	}
 
 	public void addIngredient(String ingredient) {
