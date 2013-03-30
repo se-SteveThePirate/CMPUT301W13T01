@@ -47,6 +47,10 @@ public class Recipe implements Serializable {
 		this.ingredients = ingredients;
 	}
 
+	public void addIngredient(Ingredient ingredient)
+	{
+		this.ingredients.add(ingredient.getName());
+	}
 
 	public void setId(long id){
 		this.id = id;
@@ -59,7 +63,8 @@ public class Recipe implements Serializable {
 	@Override
 	public String toString()
 	{
-		return "";
+		return "Recipe [id=" + id + ", author=" + author + ", name=" + name + ", ingredients="
+				+ ingredients + ", instructions=" + instructions + "]";
 	}
 
 	public String toEmailString()

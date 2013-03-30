@@ -34,32 +34,12 @@
 	      	    android:hint="Recipe Author"
 	      	    android:textAppearance="?android:attr/textAppearanceSmall"
 	      	    tools:ignore="HardcodedText" />
-	      	
-	      	<TextView
-	      	    android:id="@+id/ingredientInputInstructions"
-	      	    android:layout_width="wrap_content"
-	      	    android:layout_height="wrap_content"
-	      	    android:layout_below="@+id/recipeAuthor"
-	            android:paddingTop="15dp"	 
-	            android:paddingLeft="10dp"  
-	      	    android:text="Input Ingredients one at a time!"
-	      	    tools:ignore="HardcodedText"  />
-
-	      	<EditText
-	      	    android:id="@+id/inputIngredients"
-	      	    android:layout_width="wrap_content"
-	      	    android:layout_height="wrap_content"
-	      	    android:layout_below="@+id/ingredientInputInstructions"
-	            android:paddingTop="15dp"	
-				android:paddingLeft="10dp"  
-	      	    android:hint="Ingredients"
-	      	    tools:ignore="HardcodedText" />
-	      	
+      	
       	    <Button
 		        android:id="@+id/addIngredient"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-		        android:layout_below="@+id/inputIngredients"
+		        android:layout_below="@+id/recipeAuthor"
 		        android:text="Add Ingredient"
 		        android:onClick="addIngredient"
 		        />
@@ -71,16 +51,9 @@
 	      	    android:layout_below="@+id/addIngredient"
 	            android:paddingTop="15dp"	 
 	            android:paddingLeft="10dp"  
-	      	    android:text="Inputted ingredients:"
+	      	    android:text="Inputted ingredients:" 
 	      	    tools:ignore="HardcodedText"  />
-      	    
-      	    <ListView
-      	        android:id="@android:id/list"
-      	        android:layout_width="match_parent"
-      	        android:layout_height="75dp"
-      	        android:layout_below="@+id/inputtedIngredientsNote" >
 
-    			</ListView>
 
       	    <Button
       	        android:id="@+id/newRecipeSubmit"

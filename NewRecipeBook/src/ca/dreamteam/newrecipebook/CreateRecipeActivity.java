@@ -1,26 +1,33 @@
 package ca.dreamteam.newrecipebook;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
-import ca.dreamteam.newrecipebook.Models.Recipe;
-import android.os.Bundle;
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.TextView;
+import ca.dreamteam.newrecipebook.Helpers.RecipeSQLite;
+import ca.dreamteam.newrecipebook.Helpers.ElasticSearch.ESClient;
+import ca.dreamteam.newrecipebook.Models.Recipe;
 
-@TargetApi(11)
+@TargetApi(14)
 public class CreateRecipeActivity extends ListActivity {
 	
-	public Recipe newRecipe;
-    ArrayList<String> tempIngredientList = new ArrayList<String>();
-    ArrayAdapter<String> adapter;
+	private RecipeSQLite recipeCache = new RecipeSQLite(this);
+	
+	private Recipe newRecipe;
+    private ArrayList<String> tempIngredientList = new ArrayList<String>();
+    private ArrayAdapter<String> adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,9 +35,18 @@ public class CreateRecipeActivity extends ListActivity {
         setContentView(R.layout.activity_create_recipe);
         getActionBar().setDisplayHomeAsUpEnabled(true);
         
-        adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,
+        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,
                 tempIngredientList);
         setListAdapter(adapter);
+        
+        //Set Author's name.
+        Cursor c = getContentResolver().query(ContactsContract.Profile.CONTENT_URI, null, null, null, null);
+        c.moveToFirst();
+        String nameString = c.getString(c.getColumnIndex(ContactsContract.Profile.DISPLAY_NAME));
+        
+        TextView tvTextView = (TextView)findViewById(R.id.recipeAuthor);
+        tvTextView.setText(nameString);
+        
     }
 
     @Override
@@ -52,12 +68,10 @@ public class CreateRecipeActivity extends ListActivity {
     
     public void addIngredient(View view) {
     	//read input from Ingredient field and make it into a string.
-    	EditText ingredientNameET = (EditText)findViewById(R.id.inputIngredients);
-    	String ingredientName = ingredientNameET.getText().toString();
-    	ingredientNameET.setText("");
+
     	
-    	tempIngredientList.add(ingredientName);    	
-    	adapter.notifyDataSetChanged();
+    	//tempIngredientList.add(ingredientName);    	
+    	//adapter.notifyDataSetChanged();
     }
     
     public void newRecipeSubmit(View view) {
@@ -73,6 +87,27 @@ public class CreateRecipeActivity extends ListActivity {
     	newRecipe.setName(recipeName);
     	newRecipe.setAuthor(authorName);
     	newRecipe.addInstructions(recipeInstructions);
+    	
+    	recipeCache.open();
+    	recipeCache.createRecipe(newRecipe);
+    	recipeCache.close();
+    	
+    	//DO NOT TOUCH THIS. David's got this.
+    	new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				try {
+					ESClient.getInstance().insertRecipe(newRecipe);
+				} catch (IllegalStateException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}).start();
     	
     	Intent submitIntent = new Intent();
     	startActivity(submitIntent);
