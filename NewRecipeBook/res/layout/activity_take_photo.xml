@@ -21,14 +21,16 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="Cancel" />
+        android:text="Cancel"
+        android:onClick="onCancelActivity" />
 
     <Button
-        android:id="@+id/Accept"
+        android:id="@+id/AcceptPhoto"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/Cancel"
         android:layout_alignParentRight="true"
-        android:text="Accept" />
+        android:text="Accept"
+        android:onClick="onActivityResult" />
 
 </RelativeLayout>

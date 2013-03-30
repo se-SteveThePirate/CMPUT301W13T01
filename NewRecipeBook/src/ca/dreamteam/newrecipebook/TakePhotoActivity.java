@@ -4,6 +4,7 @@ import java.io.File;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -12,7 +13,6 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 
 public class TakePhotoActivity extends Activity {
@@ -59,21 +59,14 @@ public class TakePhotoActivity extends Activity {
     }
     
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
-            TextView tv = (TextView) findViewById(R.id.Accept);
-            /*
-            if (resultCode == RESULT_OK) {
-                tv.setText("Photo OK!");
+                            
                 ImageButton button = (ImageButton) findViewById(R.id.TakeAPhoto);
                 button.setImageDrawable(Drawable.createFromPath(imageFileUri.getPath()));
-            } else if (resultCode == RESULT_CANCELED) {
-                tv.setText("Photo canceled");
-            } else {
-                tv.setText("Not sure what happened!" + resultCode);
-            }
-            */
-            //i will figure out how to manage this later
-        }
+      
+    }
+    
+    protected void onCancelActivity(){
+        finish();
     }
     
 }
