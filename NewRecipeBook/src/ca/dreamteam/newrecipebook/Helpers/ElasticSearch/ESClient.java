@@ -80,6 +80,8 @@ public class ESClient {
 				.replace(":", "").replace("}", ""));
 	}
 
+	
+	//The following function was borrowed from our friends in team 9, who probably took it from the ESClient d
 	public String getEntityContent(HttpResponse response) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(
 				(response.getEntity().getContent())));
