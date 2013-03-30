@@ -1,7 +1,10 @@
 package ca.dreamteam.newrecipebook;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
+import ca.dreamteam.newrecipebook.Helpers.RecipeSQLite;
+import ca.dreamteam.newrecipebook.Helpers.ElasticSearch.ESClient;
 import ca.dreamteam.newrecipebook.Models.Recipe;
 import android.os.Bundle;
 import android.annotation.TargetApi;
@@ -18,9 +21,11 @@ import android.widget.EditText;
 @TargetApi(11)
 public class CreateRecipeActivity extends ListActivity {
 	
-	public Recipe newRecipe;
-    ArrayList<String> tempIngredientList = new ArrayList<String>();
-    ArrayAdapter<String> adapter;
+	private RecipeSQLite recipeCache = new RecipeSQLite(this);
+	
+	private Recipe newRecipe;
+    private ArrayList<String> tempIngredientList = new ArrayList<String>();
+    private ArrayAdapter<String> adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -71,6 +76,27 @@ public class CreateRecipeActivity extends ListActivity {
     	newRecipe.setName(recipeName);
     	newRecipe.setAuthor(authorName);
     	newRecipe.addInstructions(recipeInstructions);
+    	
+    	recipeCache.open();
+    	recipeCache.createRecipe(newRecipe);
+    	recipeCache.close();
+    	
+    	//DO NOT TOUCH THIS. David's got this.
+    	new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				try {
+					ESClient.getInstance().insertRecipe(newRecipe);
+				} catch (IllegalStateException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}).start();
     	
     	Intent submitIntent = new Intent();
     	startActivity(submitIntent);
