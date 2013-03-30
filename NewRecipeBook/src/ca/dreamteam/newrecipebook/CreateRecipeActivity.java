@@ -52,12 +52,10 @@ public class CreateRecipeActivity extends ListActivity {
     
     public void addIngredient(View view) {
     	//read input from Ingredient field and make it into a string.
-    	EditText ingredientNameET = (EditText)findViewById(R.id.inputIngredients);
-    	String ingredientName = ingredientNameET.getText().toString();
-    	ingredientNameET.setText("");
+
     	
-    	tempIngredientList.add(ingredientName);    	
-    	adapter.notifyDataSetChanged();
+    	//tempIngredientList.add(ingredientName);    	
+    	//adapter.notifyDataSetChanged();
     }
     
     public void newRecipeSubmit(View view) {
