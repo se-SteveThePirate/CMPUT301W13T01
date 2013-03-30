@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import ca.dreamteam.newrecipebook.Helpers.RecipeSQLite;
 import ca.dreamteam.newrecipebook.Helpers.ElasticSearch.ESClient;
+import ca.dreamteam.newrecipebook.Models.Ingredient;
 import ca.dreamteam.newrecipebook.Models.Recipe;
 
 @TargetApi(14)
@@ -35,6 +36,7 @@ public class CreateRecipeActivity extends ListActivity {
         setContentView(R.layout.activity_create_recipe);
         getActionBar().setDisplayHomeAsUpEnabled(true);
         
+        //Ingredients list view.
         adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,
                 tempIngredientList);
         setListAdapter(adapter);
@@ -67,11 +69,25 @@ public class CreateRecipeActivity extends ListActivity {
     }
     
     public void addIngredient(View view) {
-    	//read input from Ingredient field and make it into a string.
-
-    	
+    	Intent intent = new Intent(this, AddIngredientForRecipeActivity.class);
+    	startActivityForResult(intent, 1);
     	//tempIngredientList.add(ingredientName);    	
     	//adapter.notifyDataSetChanged();
+    }
+    
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+    	if (requestCode == 1) //Ensure THIS activity requested the result.
+    	{
+    		if (resultCode == RESULT_OK)
+    		{
+    			Ingredient i = (Ingredient)data.getSerializableExtra("newingredient");
+    			this.tempIngredientList.add(i.getName());
+    			this.adapter.notifyDataSetChanged();
+    		}
+    	}
+    	super.onActivityResult(requestCode, resultCode, data);
     }
     
     public void newRecipeSubmit(View view) {

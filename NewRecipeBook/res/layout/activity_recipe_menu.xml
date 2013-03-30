@@ -14,7 +14,7 @@
         android:text="You havnt downloaded any recipes yet!" />
     
     <ListView
-        android:id="@+id/recipeList"
+        android:id="@android:id/list"
         android:layout_width="match_parent"
         android:layout_height="290dp" >
     </ListView>
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/recipeListActivity_downloadButton"
         android:text="Add New Recipe"
-        android:onClick="showDummyRecipeView"
+        android:onClick="goAddRecipe"
         />
     
     <Button

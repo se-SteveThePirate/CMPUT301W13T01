@@ -1,85 +1,81 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ScrollView01"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentTop="true"
-    tools:context=".CreateRecipeActivity" >
-    
-    <ScrollView android:id="@+id/ScrollView01"
-         android:layout_width="fill_parent"
-		 android:layout_height="500dp">
-		 
-         <RelativeLayout android:id="@+id/LinearLayout02"
-			android:layout_width="wrap_content"
-			android:layout_height="500dp"
-			android:orientation="vertical">
-    		
-	        <EditText
-	            android:id="@+id/recipeName"
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:paddingTop="15dp"
-	            android:paddingLeft="10dp"
-	            android:hint="Recipe Name"
-	            tools:ignore="HardcodedText" />
-	      	
-	      	<EditText
-	      	    android:id="@+id/recipeAuthor"
-	      	    android:layout_width="wrap_content"
-	      	    android:layout_height="wrap_content"
-	      	    android:layout_below="@+id/recipeName"
-	            android:paddingTop="15dp"	
-	            android:paddingLeft="10dp"      	    
-	      	    android:hint="Recipe Author"
-	      	    android:textAppearance="?android:attr/textAppearanceSmall"
-	      	    tools:ignore="HardcodedText" />
-      	
-      	    <Button
-		        android:id="@+id/addIngredient"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:layout_below="@+id/recipeAuthor"
-		        android:text="Add Ingredient"
-		        android:onClick="addIngredient"
-		        />
-      	    
-   	      	<TextView
-	      	    android:id="@+id/inputtedIngredientsNote"
-	      	    android:layout_width="wrap_content"
-	      	    android:layout_height="wrap_content"
-	      	    android:layout_below="@+id/addIngredient"
-	            android:paddingTop="15dp"	 
-	            android:paddingLeft="10dp"  
-	      	    android:text="Inputted ingredients:" 
-	      	    tools:ignore="HardcodedText"  />
+    android:layout_height="500dp" >
 
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        tools:context=".CreateRecipeActivity" >
 
-      	    <Button
-      	        android:id="@+id/newRecipeSubmit"
-      	        android:layout_width="wrap_content"
-      	        android:layout_height="wrap_content"
-      	        android:layout_alignParentLeft="true"
-      	        android:layout_below="@android:id/list"
-      	        android:layout_marginTop="56dp"
-      	        android:onClick="submitRecipe"
-      	        android:text="Submit Recipe!" />
+        <EditText
+            android:id="@+id/recipeName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Recipe Name"
+            android:paddingLeft="10dp"
+            android:paddingTop="15dp"
+            tools:ignore="HardcodedText" />
 
-      	    <EditText
-      	        android:id="@+id/recipeInstructions"
-      	        android:layout_width="match_parent"
-      	        android:layout_height="wrap_content"
-      	        android:layout_alignParentLeft="true"
-      	        android:layout_below="@android:id/list"
-      	        android:ems="10"
-      	        android:hint="Instructions"
-      	        tools:ignore="HardcodedText" >
+        <EditText
+            android:id="@+id/recipeAuthor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/recipeName"
+            android:hint="Recipe Author"
+            android:paddingLeft="10dp"
+            android:paddingTop="15dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            tools:ignore="HardcodedText" />
 
-      	        <requestFocus />
-      	    </EditText>
-	      	
-		    </RelativeLayout>
-    
-   		</ScrollView>
+        <Button
+            android:id="@+id/addIngredient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/recipeAuthor"
+            android:onClick="addIngredient"
+            android:text="Add Ingredient" />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/inputtedIngredientsNote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/addIngredient"
+            android:paddingLeft="10dp"
+            android:paddingTop="15dp"
+            android:text="Inputted ingredients:"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/newRecipeSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@android:id/list"
+            android:layout_marginTop="56dp"
+            android:onClick="submitRecipe"
+            android:text="Submit Recipe!" />
+
+        <EditText
+            android:id="@+id/recipeInstructions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@android:id/list"
+            android:ems="10"
+            android:hint="Instructions"
+            tools:ignore="HardcodedText" >
+        </EditText>
+
+        <ListView
+            android:id="@android:id/list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/inputtedIngredientsNote"
+            android:layout_alignParentRight="true" >
+        </ListView>
+        
+    </RelativeLayout>
+
+</ScrollView>
