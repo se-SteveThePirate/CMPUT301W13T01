@@ -58,7 +58,6 @@
         <activity
             android:name="ca.dreamteam.newrecipebook.AddIngredientForRecipeActivity"
             android:label="Add Ingredient">
-            
         </activity>
         <activity
             android:name=".CreateRecipeActivity"
