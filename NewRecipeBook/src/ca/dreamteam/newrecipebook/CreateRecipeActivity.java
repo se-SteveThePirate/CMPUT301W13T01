@@ -131,8 +131,7 @@ public class CreateRecipeActivity extends ListActivity {
 			}
 		}).start();
 
-		Intent submitIntent = new Intent();
-		startActivity(submitIntent);
+		finish();
 
 
 	}
