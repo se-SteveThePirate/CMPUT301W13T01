@@ -8,6 +8,9 @@ import java.io.ObjectOutputStream;
 
 import ca.dreamteam.newrecipebook.Models.Recipe;
 
+//majority of this code has been modified from tutorials point website
+//http://www.tutorialspoint.com/java/java_serialization.htm
+
 public class RecipeSerialization
 {
 
