@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import ca.dreamteam.newrecipebook.Helpers.IngredientDatabaseHelper;
 import ca.dreamteam.newrecipebook.Models.Ingredient;
 
 public class AddIngredientForRecipeActivity extends Activity{

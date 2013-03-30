@@ -26,7 +26,7 @@ public class CreateRecipeActivity extends ListActivity {
 
 	private RecipeSQLite recipeCache = new RecipeSQLite(this);
 
-	private Recipe newRecipe;
+	private Recipe newRecipe = new Recipe();
 	private ArrayList<String> tempIngredientList = new ArrayList<String>();
 	private ArrayAdapter<String> adapter;
 
@@ -49,7 +49,7 @@ public class CreateRecipeActivity extends ListActivity {
 
 			TextView tvTextView = (TextView)findViewById(R.id.recipeAuthor);
 			tvTextView.setText(nameString);
-
+			c.close();
 		} catch (Exception e) {
 			//Meh.
 		}
@@ -94,7 +94,7 @@ public class CreateRecipeActivity extends ListActivity {
 		super.onActivityResult(requestCode, resultCode, data);
 	}
 
-	public void newRecipeSubmit(View view) {
+	public void submitRecipe(View view) {
 
 		EditText recipeNameET = (EditText)findViewById(R.id.recipeName);
 		EditText authorNameET = (EditText)findViewById(R.id.recipeAuthor);
@@ -104,13 +104,15 @@ public class CreateRecipeActivity extends ListActivity {
 		String authorName = authorNameET.getText().toString();
 		String recipeInstructions = recipeInstructionsET.getText().toString();
 
+		
+		
 		newRecipe.setName(recipeName);
 		newRecipe.setAuthor(authorName);
 		newRecipe.addInstructions(recipeInstructions);
 
-		recipeCache.open();
+		/*recipeCache.open();
 		recipeCache.createRecipe(newRecipe);
-		recipeCache.close();
+		recipeCache.close();*/
 
 		//DO NOT TOUCH THIS. David's got this.
 		new Thread(new Runnable() {
