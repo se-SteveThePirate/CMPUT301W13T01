@@ -22,6 +22,19 @@ import com.google.gson.Gson;
 //This code was modified from it's original form as hosted on : https://github.com/rayzhangcl/ESDemo
 public class ESClient {
 
+	private static ESClient singletonInstance = null;
+	
+	protected ESClient(){
+		//Stops all instantiation
+	}
+	
+	public static ESClient getInstance(){
+		if (singletonInstance == null)
+			singletonInstance = new ESClient();
+		
+		return singletonInstance;
+	}
+	
 	private HttpClient httpClient = new DefaultHttpClient();
 
 	private Gson gson = new Gson();
