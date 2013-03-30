@@ -23,94 +23,98 @@ import ca.dreamteam.newrecipebook.Models.Recipe;
 
 @TargetApi(14)
 public class CreateRecipeActivity extends ListActivity {
-	
+
 	private RecipeSQLite recipeCache = new RecipeSQLite(this);
-	
+
 	private Recipe newRecipe;
-    private ArrayList<String> tempIngredientList = new ArrayList<String>();
-    private ArrayAdapter<String> adapter;
+	private ArrayList<String> tempIngredientList = new ArrayList<String>();
+	private ArrayAdapter<String> adapter;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_recipe);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-        
-        //Ingredients list view.
-        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,
-                tempIngredientList);
-        setListAdapter(adapter);
-        
-        //Set Author's name.
-        Cursor c = getContentResolver().query(ContactsContract.Profile.CONTENT_URI, null, null, null, null);
-        c.moveToFirst();
-        String nameString = c.getString(c.getColumnIndex(ContactsContract.Profile.DISPLAY_NAME));
-        
-        TextView tvTextView = (TextView)findViewById(R.id.recipeAuthor);
-        tvTextView.setText(nameString);
-        
-    }
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_create_recipe);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_create_recipe, menu);
-        return true;
-    }
+		//Ingredients list view.
+		adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,
+				tempIngredientList);
+		setListAdapter(adapter);
 
-    
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-    
-    public void addIngredient(View view) {
-    	Intent intent = new Intent(this, AddIngredientForRecipeActivity.class);
-    	startActivityForResult(intent, 1);
-    	//tempIngredientList.add(ingredientName);    	
-    	//adapter.notifyDataSetChanged();
-    }
-    
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
-    	if (requestCode == 1) //Ensure THIS activity requested the result.
-    	{
-    		if (resultCode == RESULT_OK)
-    		{
-    			Ingredient i = (Ingredient)data.getSerializableExtra("newingredient");
-    			this.tempIngredientList.add(i.getName());
-    			this.adapter.notifyDataSetChanged();
-    		}
-    	}
-    	super.onActivityResult(requestCode, resultCode, data);
-    }
-    
-    public void newRecipeSubmit(View view) {
-    	
-    	EditText recipeNameET = (EditText)findViewById(R.id.recipeName);
-    	EditText authorNameET = (EditText)findViewById(R.id.recipeAuthor);
-    	EditText recipeInstructionsET = (EditText)findViewById(R.id.recipeInstructions);
+		try {
+			//Set Author's name.
+			Cursor c = getContentResolver().query(ContactsContract.Profile.CONTENT_URI, null, null, null, null);
+			c.moveToFirst();
+			String nameString = c.getString(c.getColumnIndex(ContactsContract.Profile.DISPLAY_NAME));
 
-    	String recipeName = recipeNameET.getText().toString();
-    	String authorName = authorNameET.getText().toString();
-    	String recipeInstructions = recipeInstructionsET.getText().toString();
+			TextView tvTextView = (TextView)findViewById(R.id.recipeAuthor);
+			tvTextView.setText(nameString);
 
-    	newRecipe.setName(recipeName);
-    	newRecipe.setAuthor(authorName);
-    	newRecipe.addInstructions(recipeInstructions);
-    	
-    	recipeCache.open();
-    	recipeCache.createRecipe(newRecipe);
-    	recipeCache.close();
-    	
-    	//DO NOT TOUCH THIS. David's got this.
-    	new Thread(new Runnable() {
-			
+		} catch (Exception e) {
+			//Meh.
+		}
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.activity_create_recipe, menu);
+		return true;
+	}
+
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			NavUtils.navigateUpFromSameTask(this);
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+	public void addIngredient(View view) {
+		Intent intent = new Intent(this, AddIngredientForRecipeActivity.class);
+		startActivityForResult(intent, 1);
+		//tempIngredientList.add(ingredientName);    	
+		//adapter.notifyDataSetChanged();
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data)
+	{
+		if (requestCode == 1) //Ensure THIS activity requested the result.
+		{
+			if (resultCode == RESULT_OK)
+			{
+				Ingredient i = (Ingredient)data.getSerializableExtra("newingredient");
+				this.tempIngredientList.add(i.getName());
+				this.adapter.notifyDataSetChanged();
+			}
+		}
+		super.onActivityResult(requestCode, resultCode, data);
+	}
+
+	public void newRecipeSubmit(View view) {
+
+		EditText recipeNameET = (EditText)findViewById(R.id.recipeName);
+		EditText authorNameET = (EditText)findViewById(R.id.recipeAuthor);
+		EditText recipeInstructionsET = (EditText)findViewById(R.id.recipeInstructions);
+
+		String recipeName = recipeNameET.getText().toString();
+		String authorName = authorNameET.getText().toString();
+		String recipeInstructions = recipeInstructionsET.getText().toString();
+
+		newRecipe.setName(recipeName);
+		newRecipe.setAuthor(authorName);
+		newRecipe.addInstructions(recipeInstructions);
+
+		recipeCache.open();
+		recipeCache.createRecipe(newRecipe);
+		recipeCache.close();
+
+		//DO NOT TOUCH THIS. David's got this.
+		new Thread(new Runnable() {
+
 			@Override
 			public void run() {
 				try {
@@ -124,17 +128,17 @@ public class CreateRecipeActivity extends ListActivity {
 				}
 			}
 		}).start();
-    	
-    	Intent submitIntent = new Intent();
-    	startActivity(submitIntent);
-    	
-    	
-    }
-    
-    
-    
-    
-    
-    
+
+		Intent submitIntent = new Intent();
+		startActivity(submitIntent);
+
+
+	}
+
+
+
+
+
+
 
 }
