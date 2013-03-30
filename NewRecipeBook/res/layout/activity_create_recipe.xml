@@ -35,46 +35,27 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/recipeAuthor"
             android:onClick="addIngredient"
-            android:text="Add Ingredient" />
-
-        <TextView
-            android:id="@+id/inputtedIngredientsNote"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/addIngredient"
-            android:paddingLeft="10dp"
-            android:paddingTop="15dp"
-            android:text="Inputted ingredients:"
-            tools:ignore="HardcodedText" />
-
-        <Button
-            android:id="@+id/newRecipeSubmit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@android:id/list"
-            android:layout_marginTop="56dp"
-            android:onClick="submitRecipe"
-            android:text="Submit Recipe!" />
+            android:text="Add Ingredients" />
 
         <EditText
             android:id="@+id/recipeInstructions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_below="@android:id/list"
+            android:layout_below="@id/addIngredient"
             android:ems="10"
             android:hint="Instructions"
             tools:ignore="HardcodedText" >
         </EditText>
-
-        <ListView
-            android:id="@android:id/list"
-            android:layout_width="match_parent"
+        
+        <Button
+            android:id="@+id/newRecipeSubmit"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/inputtedIngredientsNote"
-            android:layout_alignParentRight="true" >
-        </ListView>
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/recipeInstructions"
+            android:onClick="submitRecipe"
+            android:text="Submit Recipe!" />
         
     </RelativeLayout>
 

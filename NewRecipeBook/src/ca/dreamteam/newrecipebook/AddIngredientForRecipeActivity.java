@@ -1,21 +1,25 @@
 package ca.dreamteam.newrecipebook;
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import ca.dreamteam.newrecipebook.Helpers.IngredientDatabaseHelper;
 import ca.dreamteam.newrecipebook.Models.Ingredient;
 
 public class AddIngredientForRecipeActivity extends Activity{
 	private Ingredient ingredient = null;
+	private ArrayList<String> ingredientList = new ArrayList<String>();
 	
 	@Override	
 	public void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingredient_view);
  
-        ingredient = (Ingredient)getIntent().getSerializableExtra("ingredient");
+        //ingredient = (Ingredient)getIntent().getSerializableExtra("ingredient");
         
         if (ingredient == null)
         {
@@ -25,25 +29,31 @@ public class AddIngredientForRecipeActivity extends Activity{
 				
 				@Override
 				public void onClick(View v) {
-					EditText iName = (EditText) findViewById(R.id.ingredientAdd_nameEdit);
+					EditText iNameET = (EditText) findViewById(R.id.ingredientAdd_nameEdit);
+					String ingredientName = iNameET.getText().toString();
 					
-					if(!iName.getText().toString().equals(""))
+					if(!ingredientName.equals(""))
 					{
-						Intent intent = new Intent();
+						ingredientList.add(ingredientName);
+						iNameET.setText("");
+						/*Intent intent = new Intent();
 						intent.putExtra("newingredient", new Ingredient(iName.getText().toString()));
 						setResult(RESULT_OK, intent);
-						finish();
+						finish();*/
 					}
 				}
 			});
 			
 			buttonView = (Button)findViewById(R.id.ingredientDelete_multiPurposeButton);
-			buttonView.setText("Cancel");
+			buttonView.setText("Done Adding");
 			buttonView.setOnClickListener(new View.OnClickListener(){
 			    
 			    @Override
 			    public void onClick(View v) {
-			        finish();
+			    	Intent intent = new Intent();
+					intent.putStringArrayListExtra("newIngredients", ingredientList);
+					setResult(RESULT_OK, intent);
+					finish();
 			    }
 			});
         }

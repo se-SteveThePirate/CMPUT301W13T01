@@ -12,12 +12,6 @@
         android:layout_centerInParent="true"
         android:paddingBottom="135dp"
         android:text="You havnt downloaded any recipes yet!" />
-    
-    <ListView
-        android:id="@android:id/list"
-        android:layout_width="match_parent"
-        android:layout_height="290dp" >
-    </ListView>
 
     <Button
         android:id="@+id/recipeListActivity_addNewRecipeButton"

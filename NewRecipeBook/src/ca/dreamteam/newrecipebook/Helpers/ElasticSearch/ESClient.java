@@ -85,14 +85,15 @@ public class ESClient {
 		{
 			HttpResponse response = httpClient.execute(getRequest);
 			json = getEntityContent(response);
+			return Integer.parseInt(json.split("Number")[1].replace("\"", "")
+					.replace(":", "").replace("}", ""));
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
 
-		return Integer.parseInt(json.split("Number")[1].replace("\"", "")
-				.replace(":", "").replace("}", ""));
+		return 0;
 	}
 
 	

@@ -23,6 +23,14 @@
         android:layout_marginTop="18dp"
         android:text="Name:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp" >
+    </ListView>
 
     <Button
         android:id="@+id/ingredientAdd_multiPurposeButton"
