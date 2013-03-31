@@ -1,23 +1,30 @@
 package ca.dreamteam.newrecipebook;
 import java.util.ArrayList;
+import java.util.List;
 
 import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import ca.dreamteam.newrecipebook.Helpers.IngredientDatabaseHelper;
 import ca.dreamteam.newrecipebook.Models.Ingredient;
 
-public class AddIngredientForRecipeActivity extends Activity{
+public class AddIngredientForRecipeActivity extends ListActivity{
 	private Ingredient ingredient = null;
 	private ArrayList<String> ingredientList = new ArrayList<String>();
+	private ArrayAdapter<String> adapter;
 	
 	@Override	
 	public void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingredient_view);
+        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,
+                ingredientList);
+        setListAdapter(adapter);
  
         //ingredient = (Ingredient)getIntent().getSerializableExtra("ingredient");
         
@@ -36,6 +43,7 @@ public class AddIngredientForRecipeActivity extends Activity{
 					{
 						ingredientList.add(ingredientName);
 						iNameET.setText("");
+						adapter.notifyDataSetChanged();
 						/*Intent intent = new Intent();
 						intent.putExtra("newingredient", new Ingredient(iName.getText().toString()));
 						setResult(RESULT_OK, intent);

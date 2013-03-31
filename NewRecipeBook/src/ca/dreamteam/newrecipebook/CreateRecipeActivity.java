@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -14,12 +13,10 @@ import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
 import ca.dreamteam.newrecipebook.Helpers.RecipeSQLite;
 import ca.dreamteam.newrecipebook.Helpers.ElasticSearch.ESClient;
-import ca.dreamteam.newrecipebook.Models.Ingredient;
 import ca.dreamteam.newrecipebook.Models.Recipe;
 
 @TargetApi(14)
