@@ -5,6 +5,12 @@
     android:layout_centerHorizontal="true"
     >
 
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="match_parent"
+        android:layout_height="290dp" >
+    </ListView>
+    
     <TextView
         android:id="@+id/recipeActivity_emptyListViewText"
         android:layout_width="wrap_content"
