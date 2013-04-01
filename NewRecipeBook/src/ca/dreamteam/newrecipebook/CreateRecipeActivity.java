@@ -29,7 +29,7 @@ import ca.dreamteam.newrecipebook.Models.Recipe;
  * then uploads them to the database
  * 
  * @version RecipeBook Project 4
- * @author Connor Bilec, David James, Steve Eckert and Maciej Ogrocki
+ * @author Conner Bilec, David James, Steve Eckert and Maciej Ogrocki
  * @date Monday 01 April 2013
  */
 
