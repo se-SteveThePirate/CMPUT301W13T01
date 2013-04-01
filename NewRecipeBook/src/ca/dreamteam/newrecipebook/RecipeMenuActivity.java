@@ -25,10 +25,10 @@ import ca.dreamteam.newrecipebook.Models.Recipe;
 
 
 public class RecipeMenuActivity extends ListActivity {
-	/**
-	 * @var datasource used to connect to the database.
-	 * @var adapter the array list of the recipes  
-	 */
+    /**
+     * @var datasource used to connect to the database.
+     * @var adapter the array list of the recipes  
+     */
     private RecipeSQLite datasource;
     private ArrayAdapter<Recipe> adapter;
     @Override
@@ -89,61 +89,59 @@ public class RecipeMenuActivity extends ListActivity {
         setListAdapter(adapter);
 
     }
-/**
- * closes the database when page is left
- */
+    /**
+     * closes the database when page is left
+     */
     public void onPause() {
         datasource.close();
         super.onPause();
     }
-/**
- * starts the menu
- * 
- * @param menu
- * @return true
- */
+    /**
+     * starts the menu
+     * 
+     * @param menu
+     * @return true
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_recipe_menu, menu);
         return true;
     }
-/**
- * Starts the search menu activity
- * 
- * @param view
- */
+    /**
+     * Starts the search menu activity
+     * 
+     * @param view
+     */
     public void goSearchMenu(View view)
     {
         Intent intent = new Intent(this, SearchMenuActivity.class);
         startActivity(intent);
     }
 
- /**
-  * starts the createRecipeActivity class
-  * 
-  * @param view
-  */
+    /**
+     * starts the createRecipeActivity class
+     * 
+     * @param view
+     */
     public void goAddRecipe(View view)
     {
         Intent intent = new Intent(this, CreateRecipeActivity.class);
         startActivity(intent);
     }
 
-/**
- * Deletes the data of something in the list by clicking on it
- *     
- * @param l
- * @param v
- * @param position
- * @param id
- */
-	protected void onListItemClick(ListView l, View v, int position, long id) {
-		Recipe recipeToDelete = (Recipe)getListView().getItemAtPosition(position);
-		datasource.deleteRecipe(recipeToDelete);
-		adapter.notifyDataSetChanged();
-	}
-<<<<<<< HEAD
+    /**
+     * Deletes the data of something in the list by clicking on it
+     *     
+     * @param l
+     * @param v
+     * @param position
+     * @param id
+     */
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        Recipe recipeToDelete = (Recipe)getListView().getItemAtPosition(position);
+        datasource.deleteRecipe(recipeToDelete);
+        adapter.notifyDataSetChanged();
+    }
 
-=======
->>>>>>> 15aa7e72c8a57d8ecff45fa54d402a2d8a3738ef
 }
+

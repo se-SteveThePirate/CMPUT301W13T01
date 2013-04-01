@@ -61,7 +61,7 @@ public class CreateRecipeActivity extends Activity {
         setContentView(R.layout.activity_create_recipe);
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
-        newRecipe = (Recipe)getIntent().getSerializableExtra("recipe");
+        newRecipe = (Recipe)getIntent().getSerializableExtra("newRecipe");
         
         if (newRecipe == null)
         {
@@ -90,7 +90,7 @@ public class CreateRecipeActivity extends Activity {
         });
             }
         else {
-            this.newRecipe = (Recipe)getIntent().getSerializableExtra("recipe");
+            this.newRecipe = (Recipe)getIntent().getSerializableExtra("newRecipe");
             ((EditText)findViewById(R.id.recipeName)).setText(this.newRecipe.getName());
         }
 
