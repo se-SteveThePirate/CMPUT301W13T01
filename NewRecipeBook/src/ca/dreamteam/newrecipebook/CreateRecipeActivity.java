@@ -161,10 +161,11 @@ public class CreateRecipeActivity extends Activity {
 
         //DO NOT TOUCH THIS. David's got this.
 
-        new Thread(new Runnable() {
+    //    new Thread(new Runnable() {
             /**
              * Runs the database
              */
+            /*
             @Override
             public void run() {
                 try {
@@ -178,8 +179,8 @@ public class CreateRecipeActivity extends Activity {
                 }
             }
         }).start();
-
-        finish();
+*/
+      //  finish();
 
 
         finish();
