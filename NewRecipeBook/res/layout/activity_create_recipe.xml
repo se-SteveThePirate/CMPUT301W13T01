@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_below="@id/recipeInstructions"
-            android:onClick="submitRecipe"
+            android:onClick="newRecipeSubmit"
             android:text="Submit Recipe!" />
         
     </RelativeLayout>

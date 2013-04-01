@@ -14,10 +14,14 @@ import ca.dreamteam.newrecipebook.Models.Recipe;
 public class RecipeSerialization
 {
 
-    public void makeFile(){
+    public void makeFile(String name, String author, String instructions){
+
+        //takes in the recipe information that was passed to it
         Recipe r = new Recipe();
-        r.name = "";
-        r.author = "";
+        r.name = name;
+        r.author = author;
+        r.instructions = instructions;
+
 
         try{
             FileOutputStream fileOut =
