@@ -142,4 +142,8 @@ public class RecipeMenuActivity extends ListActivity {
 		datasource.deleteRecipe(recipeToDelete);
 		adapter.notifyDataSetChanged();
 	}
+<<<<<<< HEAD
+
+=======
+>>>>>>> 15aa7e72c8a57d8ecff45fa54d402a2d8a3738ef
 }
