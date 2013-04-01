@@ -28,6 +28,15 @@
             android:paddingTop="15dp"
             android:textAppearance="?android:attr/textAppearanceSmall"
             tools:ignore="HardcodedText" />
+        
+        <TextView
+	        android:id="@+id/pictureMessage"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:paddingLeft="10dp"
+	        android:paddingTop="10dp"
+            android:layout_below="@+id/recipeAuthor"
+	        android:text="Recipe pictures" />
 
         <Button
             android:id="@+id/addIngredient"
