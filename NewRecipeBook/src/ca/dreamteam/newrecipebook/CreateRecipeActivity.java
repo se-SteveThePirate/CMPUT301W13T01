@@ -33,265 +33,170 @@ import ca.dreamteam.newrecipebook.Models.Recipe;
 
 @TargetApi(14)
 public class CreateRecipeActivity extends Activity {
-<<<<<<< HEAD
+		private RecipeSQLite recipeCache = new RecipeSQLite(this);
+		private RecipeSerialization recipeSerial = new RecipeSerialization();
 
-    private RecipeSQLite recipeCache = new RecipeSQLite(this);
-    private RecipeSerialization recipeSerial = new RecipeSerialization();
+		private Recipe newRecipe = null;
+		private ArrayList<String> tempIngredientList = new ArrayList<String>();
 
-    private Recipe newRecipe = null;
-    private ArrayList<String> tempIngredientList = new ArrayList<String>();
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_recipe);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+		@Override
+		public void onCreate(Bundle savedInstanceState) {
+			super.onCreate(savedInstanceState);
+			setContentView(R.layout.activity_create_recipe);
+			getActionBar().setDisplayHomeAsUpEnabled(true);
 
 
 
-        try {
-            //Set Author's name.
-            Cursor c = getContentResolver().query(ContactsContract.Profile.CONTENT_URI, null, null, null, null);
-            c.moveToFirst();
-            String nameString = c.getString(c.getColumnIndex(ContactsContract.Profile.DISPLAY_NAME));
+			try {
+				//Set Author's name.
+				Cursor c = getContentResolver().query(ContactsContract.Profile.CONTENT_URI, null, null, null, null);
+				c.moveToFirst();
+				String nameString = c.getString(c.getColumnIndex(ContactsContract.Profile.DISPLAY_NAME));
 
-            TextView tvTextView = (TextView)findViewById(R.id.recipeAuthor);
-            tvTextView.setText(nameString);
+				TextView tvTextView = (TextView)findViewById(R.id.recipeAuthor);
+				tvTextView.setText(nameString);
 
-        } catch (Exception e) {
-            //Meh.
-        }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_create_recipe, menu);
-        return true;
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    public void addIngredient(View view) {
-        Intent intent = new Intent(this, AddIngredientForRecipeActivity.class);
-        startActivityForResult(intent, 1);
-        //tempIngredientList.add(ingredientName);    	
-        //adapter.notifyDataSetChanged();
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
-        if (requestCode == 1) //Ensure THIS activity requested the result.
-        {
-            if (resultCode == RESULT_OK)
-            {
-                //Ingredient i = (Ingredient)data.getSerializableExtra("newingredient");
-                this.tempIngredientList = (ArrayList<String>)data.getStringArrayListExtra("newIngredients");
-            }
-        }
-        super.onActivityResult(requestCode, resultCode, data);
-    }
-
-
-    public void newRecipeSubmit(View view) {
-
-        
-       
-        EditText recipeNameET = (EditText)findViewById(R.id.recipeName);
-        EditText authorNameET = (EditText)findViewById(R.id.recipeAuthor);
-        EditText recipeInstructionsET = (EditText)findViewById(R.id.recipeInstructions);
-
-        RecipeSQLite datasource = new RecipeSQLite(getApplicationContext());
-        datasource.createRecipe(recipeNameET.getText().toString());
-
-        String recipeName = recipeNameET.getText().toString();
-        String authorName = authorNameET.getText().toString();
-        String recipeInstructions = recipeInstructionsET.getText().toString();
-        
-        recipeSerial.makeFile(recipeName, authorName, recipeInstructions);
-/*
-        newRecipe.setName(recipeName);
-        newRecipe.setAuthor(authorName);
-        newRecipe.addInstructions(recipeInstructions);
-
-        recipeCache.createRecipe(newRecipe);
-        recipeSerial.makeFile(newRecipe);
-        
-        */
-
-        /*
-        recipeCache.open();
-
-        recipeCache.close();
-         */
-
-
-        /*	//DO NOT TOUCH THIS. David's got this.
-=======
-/**
- * @var recipeCache: Connection info to the database
- * @var newRecipe: temporary object to be added to the database
- * @var tempIngredientlist: a list of ingredients that is currently being used. 
- */
-	private RecipeSQLite recipeCache = new RecipeSQLite(this);
-	private Recipe newRecipe = new Recipe();
-
-/**
- * On Creation attempts to connect to the database if it fail's nothing happens. 
- * 
- * @param savedInstanceState
- */
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_create_recipe);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
-
-		newRecipe.ingredients = new ArrayList<String>();
-
-		try {
-			//Set Author's name.
-			Cursor c = getContentResolver().query(ContactsContract.Profile.CONTENT_URI, null, null, null, null);
-			c.moveToFirst();
-			String nameString = c.getString(c.getColumnIndex(ContactsContract.Profile.DISPLAY_NAME));
-
-			TextView tvTextView = (TextView)findViewById(R.id.recipeAuthor);
-			tvTextView.setText(nameString);
-
-		} catch (Exception e) {
-			//Meh.
+			} catch (Exception e) {
+				//Meh.
+			}
 		}
-	}
-/**
- * When created adds menu
- * 
- * @param menu
- * @return true
- */
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.activity_create_recipe, menu);
-		return true;
-	}
-
-/**
- * When items are selected get's the id and return 
- * 
- * @param item
- * @return true
- */
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case android.R.id.home:
-			NavUtils.navigateUpFromSameTask(this);
+		/**
+		 * When created adds menu
+		 * 
+		 * @param menu
+		 * @return true
+		 */
+		@Override
+		public boolean onCreateOptionsMenu(Menu menu) {
+			getMenuInflater().inflate(R.menu.activity_create_recipe, menu);
 			return true;
 		}
-		return super.onOptionsItemSelected(item);
-	}
-/**
- * Adds a ingredient 
- * 
- * @param view
- */
-	public void addIngredient(View view) {
-		Intent intent = new Intent(this, AddIngredientForRecipeActivity.class);
-		//if (!newRecipe.ingredients.isEmpty())
-		intent.putStringArrayListExtra("alreadyAddedIngredients", newRecipe.ingredients);
-		startActivityForResult(intent, 1);
-	}
-/**
- * If requestCode is 1  and resultCode is RESULT_OK then tempIngerientList is filled with
- * all the ingredients 
- * 
- * @param requestCode true = 1 else false
- * @param resultCode true =  RESULT_OK else false
- * @param data Where the information for the ingredient's are held
- */
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data)
-	{
-		if (requestCode == 1) //Ensure THIS activity requested the result.
-		{
-			if (resultCode == RESULT_OK)
-			{
-				//Ingredient i = (Ingredient)data.getSerializableExtra("newingredient");
-				newRecipe.ingredients = (ArrayList<String>)data.getStringArrayListExtra("newIngredients");
+
+		/**
+		 * When items are selected get's the id and return 
+		 * 
+		 * @param item
+		 * @return true
+		 */
+		@Override
+		public boolean onOptionsItemSelected(MenuItem item) {
+			switch (item.getItemId()) {
+			case android.R.id.home:
+				NavUtils.navigateUpFromSameTask(this);
+				return true;
 			}
+			return super.onOptionsItemSelected(item);
 		}
-		super.onActivityResult(requestCode, resultCode, data);
-	}
-/**
- * saves the information on the screen to variables then
- * submits the data into the database and closes the date base
- * 
- * @param view
- */
-	public void newRecipeSubmit(View view) {
-
-		EditText recipeNameET = (EditText)findViewById(R.id.recipeName);
-		EditText authorNameET = (EditText)findViewById(R.id.recipeAuthor);
-		EditText recipeInstructionsET = (EditText)findViewById(R.id.recipeInstructions);
-
-		String recipeName = recipeNameET.getText().toString();
-		String authorName = authorNameET.getText().toString();
-		String recipeInstructions = recipeInstructionsET.getText().toString();
-
-		newRecipe.setName(recipeName);
-		newRecipe.setAuthor(authorName);
-		newRecipe.addInstructions(recipeInstructions);
-
-		recipeCache.open();
-		recipeCache.createRecipe(newRecipe);
-		recipeCache.close();
-
-		//DO NOT TOUCH THIS. David's got this.
->>>>>>> bca22efa66b37d87fb52dc0c30e713affb3757d9
-		new Thread(new Runnable() {
-/**
- * Runs the database
- */
-			@Override
-			public void run() {
-				try {
-					ESClient.getInstance().insertRecipe(newRecipe);
-				} catch (IllegalStateException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+		/**
+		 * Adds a ingredient 
+		 * 
+		 * @param view
+		 */
+		public void addIngredient(View view) {
+			Intent intent = new Intent(this, AddIngredientForRecipeActivity.class);
+			//if (!newRecipe.ingredients.isEmpty())
+			intent.putStringArrayListExtra("alreadyAddedIngredients", newRecipe.ingredients);
+			startActivityForResult(intent, 1);
+		}
+		/**
+		 * If requestCode is 1  and resultCode is RESULT_OK then tempIngerientList is filled with
+		 * all the ingredients 
+		 * 
+		 * @param requestCode true = 1 else false
+		 * @param resultCode true =  RESULT_OK else false
+		 * @param data Where the information for the ingredient's are held
+		 */
+		@Override
+		protected void onActivityResult(int requestCode, int resultCode, Intent data)
+		{
+			if (requestCode == 1) //Ensure THIS activity requested the result.
+			{
+				if (resultCode == RESULT_OK)
+				{
+					//Ingredient i = (Ingredient)data.getSerializableExtra("newingredient");
+					newRecipe.ingredients = (ArrayList<String>)data.getStringArrayListExtra("newIngredients");
 				}
 			}
-		}).start();
-
-		finish();
-
-         */
-        finish();
-    }
-
-    public void onResume(){
-        recipeCache.open();
-        super.onResume();
-    }
-
-    public void onPause(){
-        recipeCache.close();
-        super.onPause();
-    }
+			super.onActivityResult(requestCode, resultCode, data);
+		}
+		/**
+		 * saves the information on the screen to variables then
+		 * submits the data into the database and closes the date base
+		 * 
+		 * @param view
+		 */
+		public void newRecipeSubmit(View view) {
 
 
 
 
+			EditText recipeNameET = (EditText)findViewById(R.id.recipeName);
+			EditText authorNameET = (EditText)findViewById(R.id.recipeAuthor);
+			EditText recipeInstructionsET = (EditText)findViewById(R.id.recipeInstructions);
 
-}
+			RecipeSQLite datasource = new RecipeSQLite(getApplicationContext());
+			datasource.createRecipe(recipeNameET.getText().toString());
+
+			String recipeName = recipeNameET.getText().toString();
+			String authorName = authorNameET.getText().toString();
+			String recipeInstructions = recipeInstructionsET.getText().toString();
+
+			recipeSerial.makeFile(recipeName, authorName, recipeInstructions);
+			/*
+	        newRecipe.setName(recipeName);
+	        newRecipe.setAuthor(authorName);
+	        newRecipe.addInstructions(recipeInstructions);
+
+	        recipeCache.createRecipe(newRecipe);
+	        recipeSerial.makeFile(newRecipe);
+
+			 */
+
+			/*
+	        recipeCache.open();
+
+	        recipeCache.close();
+			 */
+
+
+			//DO NOT TOUCH THIS. David's got this.
+
+			new Thread(new Runnable() {
+				/**
+				 * Runs the database
+				 */
+				@Override
+				public void run() {
+					try {
+						ESClient.getInstance().insertRecipe(newRecipe);
+					} catch (IllegalStateException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}).start();
+
+			finish();
+
+
+			finish();
+		}
+
+		public void onResume(){
+			recipeCache.open();
+			super.onResume();
+		}
+
+		public void onPause(){
+			recipeCache.close();
+			super.onPause();
+		}
+
+
+
+
+
+	}
