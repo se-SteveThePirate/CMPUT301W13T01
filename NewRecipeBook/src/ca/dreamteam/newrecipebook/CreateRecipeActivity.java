@@ -13,11 +13,14 @@ import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import ca.dreamteam.newrecipebook.Helpers.IngredientDatabaseHelper;
 import ca.dreamteam.newrecipebook.Helpers.RecipeSQLite;
 import ca.dreamteam.newrecipebook.Helpers.RecipeSerialization;
 import ca.dreamteam.newrecipebook.Helpers.ElasticSearch.ESClient;
+import ca.dreamteam.newrecipebook.Models.Ingredient;
 import ca.dreamteam.newrecipebook.Models.Recipe;
 
 /**
@@ -45,8 +48,40 @@ public class CreateRecipeActivity extends Activity {
         setContentView(R.layout.activity_create_recipe);
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
+        newRecipe = (Recipe)getIntent().getSerializableExtra("recipe");
+        
+        if (newRecipe == null)
+        {
+            Button buttonView = (Button)findViewById(R.id.newRecipeSubmit);
+            buttonView.setText("Submit Recipe");    
+            buttonView.setOnClickListener(new View.OnClickListener() {
+                
+                @Override
+                public void onClick(View v) {
 
+                    EditText recipeNameET = (EditText)findViewById(R.id.recipeName);
+                    EditText authorNameET = (EditText)findViewById(R.id.recipeAuthor);
+                    EditText recipeInstructionsET = (EditText)findViewById(R.id.recipeInstructions);
 
+                    RecipeSQLite datasource = new RecipeSQLite(getApplicationContext());
+                    datasource.createRecipe(recipeNameET.getText().toString());
+
+                    String recipeName = recipeNameET.getText().toString();
+                    String authorName = authorNameET.getText().toString();
+                    String recipeInstructions = recipeInstructionsET.getText().toString();
+
+                    recipeSerial.makeFile(recipeName, authorName, recipeInstructions);
+                    
+                    finish();
+                }
+        });
+            }
+        else {
+            this.newRecipe = (Recipe)getIntent().getSerializableExtra("recipe");
+            ((EditText)findViewById(R.id.recipeName)).setText(this.newRecipe.getName());
+        }
+
+            
         try {
             //Set Author's name.
             Cursor c = getContentResolver().query(ContactsContract.Profile.CONTENT_URI, null, null, null, null);
@@ -126,9 +161,6 @@ public class CreateRecipeActivity extends Activity {
      * @param view
      */
     public void newRecipeSubmit(View view) {
-
-
-
 
         EditText recipeNameET = (EditText)findViewById(R.id.recipeName);
         EditText authorNameET = (EditText)findViewById(R.id.recipeAuthor);
