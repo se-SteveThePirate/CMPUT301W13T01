@@ -1,56 +1,93 @@
 package ca.dreamteam.newrecipebook;
 
-import ca.dreamteam.newrecipebook.Models.Recipe;
-import android.os.Bundle;
-import android.app.Activity;
+import java.util.List;
+
 import android.app.ListActivity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
+import ca.dreamteam.newrecipebook.Helpers.RecipeSQLite;
+import ca.dreamteam.newrecipebook.Models.Recipe;
 
 public class RecipeMenuActivity extends ListActivity {
-
+    private RecipeSQLite datasource;
+    private ArrayAdapter<Recipe> adapter;
     @Override
     public void onCreate(Bundle savedInstanceState) { 
+        datasource = new RecipeSQLite(this); //links up with the database in another class
+        datasource.open();//opens said database
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_menu);
-        
-        ListView lvListView = getListView();
+
+        //This allows you to click on an item in the list that is displayed
+        //and fetchs its position in the database
+        getListView().setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> a, View view, int position, long id )
+            {
+                Recipe r = (Recipe)adapter.getItem(position);
+
+                Intent viewIntent = new Intent(getApplicationContext(), CreateRecipeActivity.class);
+                viewIntent.putExtra("Recipe", r);
+                startActivity(viewIntent);
+            }
+        });
+
+        /*  ListView lvListView = getListView();
         TextView emptyTextView = (TextView)findViewById(R.id.recipeActivity_emptyListViewText);
         lvListView.setEmptyView(emptyTextView);
+         */
     }
 
     @Override
     public void onResume()
     {
-        TextView emptyTextView = (TextView)findViewById(R.id.recipeActivity_emptyListViewText);
+        /*   TextView emptyTextView = (TextView)findViewById(R.id.recipeActivity_emptyListViewText);
         if (emptyTextView.isShown())
         {
         	Button button = (Button)findViewById(R.id.recipeListActivity_downloadButton);
         	button.setText("Download Recipes");
         }
+         */
         super.onResume();
+        datasource.open();
+        //adapter
+        List<Recipe> values = datasource.getAllRecipes();
+
+        // Use the SimpleCursorAdapter to show the
+        // elements in a ListView
+        adapter = new ArrayAdapter<Recipe>(this,
+                android.R.layout.simple_list_item_1, values);
+        setListAdapter(adapter);
+
     }
-    
+
+    public void onPause() {
+        datasource.close();
+        super.onPause();
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_recipe_menu, menu);
         return true;
     }
-    
+
     public void goSearchMenu(View view)
     {
-    	Intent intent = new Intent(this, SearchMenuActivity.class);
-    	startActivity(intent);
+        Intent intent = new Intent(this, SearchMenuActivity.class);
+        startActivity(intent);
     }
-    
-    //Todo: Have a listItemClick event use this method to show the real recipes.
+
+ 
     public void goAddRecipe(View view)
     {
-    	Intent intent = new Intent(this, CreateRecipeActivity.class);
-    	startActivity(intent);
+        Intent intent = new Intent(this, CreateRecipeActivity.class);
+        startActivity(intent);
     }
 }

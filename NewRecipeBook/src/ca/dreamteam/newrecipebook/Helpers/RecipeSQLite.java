@@ -35,9 +35,12 @@ public class RecipeSQLite{
         return recipe;
     }
 
-    public Recipe createRecipe(Recipe recipe){
+    public Recipe createRecipe(String recipe){
+        if(database == null){
+            this.open();
+        }
         ContentValues values = new ContentValues();
-        values.put(RecipeSqlTable.COLUMN_NAME, recipe.name);
+        values.put(RecipeSqlTable.COLUMN_NAME, recipe);
         long insertId = database.insert(RecipeSqlTable.TABLE_RECIPES, null, values);
         Cursor cursor = database.query(RecipeSqlTable.TABLE_RECIPES,
                 allColumns, RecipeSqlTable.COLUMN_ID + " = " + insertId, null,

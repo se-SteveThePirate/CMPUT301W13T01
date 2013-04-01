@@ -10,7 +10,7 @@ public class RecipeSqlTable extends SQLiteOpenHelper
     public static final String TABLE_RECIPES = "recipes";
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_NAME = "name";
-    
+
 
     private static final String DATABASE_NAME = "recipes.db";
     private static final int DATABASE_VERSION = 1;
@@ -30,7 +30,9 @@ public class RecipeSqlTable extends SQLiteOpenHelper
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Log.w(RecipeSqlTable.class.getName(), "Upgrading database from version " + oldVersion + " to " + newVersion + ", which will destroy all old data");
+        Log.w(RecipeSqlTable.class.getName(),
+                "Upgrading database from version " + oldVersion + " to "
+                        + newVersion + ", which will destroy all old data");
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_RECIPES);
         onCreate(db);
     }
