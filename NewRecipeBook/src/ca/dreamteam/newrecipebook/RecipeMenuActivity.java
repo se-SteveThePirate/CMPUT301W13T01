@@ -14,10 +14,30 @@ import android.widget.ArrayAdapter;
 import ca.dreamteam.newrecipebook.Helpers.RecipeSQLite;
 import ca.dreamteam.newrecipebook.Models.Recipe;
 
+/**
+ * Opens the database and allows the used to fetch the position of the item in the list from the 
+ * database. Uses the the simplecursoradapter to show elements in a listview
+ * 
+ * @version RecipeBook Project 4
+ * @author Connor Bilec, David James, Steve Eckert and Maciej Ogrocki
+ * @date Monday 01 April 2013
+ */
+
+
 public class RecipeMenuActivity extends ListActivity {
+	/**
+	 * @var datasource used to connect to the database.
+	 * @var adapter the array list of the recipes  
+	 */
     private RecipeSQLite datasource;
     private ArrayAdapter<Recipe> adapter;
     @Override
+    /**
+     * Links the database to the program and opens the data base. Allows the used to click on 
+     * a item in the list and fetches the position in the database
+     * 
+     * @param savedInstanceState
+     */
     public void onCreate(Bundle savedInstanceState) { 
         datasource = new RecipeSQLite(this); //links up with the database in another class
         datasource.open();//opens said database
@@ -44,7 +64,9 @@ public class RecipeMenuActivity extends ListActivity {
         lvListView.setEmptyView(emptyTextView);
          */
     }
-
+    /**
+     * Opens the database when the page is returned too
+     */
     @Override
     public void onResume()
     {
@@ -67,29 +89,60 @@ public class RecipeMenuActivity extends ListActivity {
         setListAdapter(adapter);
 
     }
-
+/**
+ * closes the database when page is left
+ */
     public void onPause() {
         datasource.close();
         super.onPause();
     }
-
+/**
+ * starts the menu
+ * 
+ * @param menu
+ * @return true
+ */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_recipe_menu, menu);
         return true;
     }
-
+/**
+ * Starts the search menu activity
+ * 
+ * @param view
+ */
     public void goSearchMenu(View view)
     {
         Intent intent = new Intent(this, SearchMenuActivity.class);
         startActivity(intent);
     }
 
- 
+ /**
+  * starts the createRecipeActivity class
+  * 
+  * @param view
+  */
     public void goAddRecipe(View view)
     {
         Intent intent = new Intent(this, CreateRecipeActivity.class);
         startActivity(intent);
     }
+<<<<<<< HEAD
     	
+=======
+/**
+ * Deletes the data of something in the list by clicking on it
+ *     
+ * @param l
+ * @param v
+ * @param position
+ * @param id
+ */
+	protected void onListItemClick(ListView l, View v, int position, long id) {
+		Recipe recipeToDelete = (Recipe)getListView().getItemAtPosition(position);
+		datasource.deleteRecipe(recipeToDelete);
+		adapter.notifyDataSetChanged();
+	}
+>>>>>>> 192d0ac2f6df39dd747b85999d6213a43f1ffea2
 }
