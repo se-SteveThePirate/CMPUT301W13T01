@@ -19,14 +19,34 @@ import ca.dreamteam.newrecipebook.Helpers.RecipeSQLite;
 import ca.dreamteam.newrecipebook.Helpers.ElasticSearch.ESClient;
 import ca.dreamteam.newrecipebook.Models.Recipe;
 
+/**
+ * Attempts to connect to the database nothing happens if failed then
+ * Creates a file from the information currently in the text blocks and
+ * then uploads them to the database
+ * 
+ * @version RecipeBook Project 4
+ * @author Connor Bilec, David James, Steve Eckert and Maciej Ogrocki
+ * @date Monday 01 April 2013
+ */
+
+
 @TargetApi(14)
 public class CreateRecipeActivity extends Activity {
-
+/**
+ * @var recipeCache: Connection info to the database
+ * @var newRecipe: temporary object to be added to the database
+ * @var tempIngredientlist: a list of ingredients that is currently being used. 
+ */
 	private RecipeSQLite recipeCache = new RecipeSQLite(this);
 
 	private Recipe newRecipe;
 	private ArrayList<String> tempIngredientList = new ArrayList<String>();
 
+/**
+ * On Creation attempts to connect to the database if it fail's nothing happens. 
+ * 
+ * @param savedInstanceState
+ */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -48,14 +68,24 @@ public class CreateRecipeActivity extends Activity {
 			//Meh.
 		}
 	}
-
+/**
+ * When created adds menu
+ * 
+ * @param menu
+ * @return true
+ */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.activity_create_recipe, menu);
 		return true;
 	}
 
-
+/**
+ * When items are selected get's the id and return 
+ * 
+ * @param item
+ * @return true
+ */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
@@ -65,14 +95,25 @@ public class CreateRecipeActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-
+/**
+ * Adds a ingredient 
+ * 
+ * @param view
+ */
 	public void addIngredient(View view) {
 		Intent intent = new Intent(this, AddIngredientForRecipeActivity.class);
 		startActivityForResult(intent, 1);
 		//tempIngredientList.add(ingredientName);    	
 		//adapter.notifyDataSetChanged();
 	}
-
+/**
+ * If requestCode is 1  and resultCode is RESULT_OK then tempIngerientList is filled with
+ * all the ingredients 
+ * 
+ * @param requestCode true = 1 else false
+ * @param resultCode true =  RESULT_OK else false
+ * @param data Where the information for the ingredient's are held
+ */
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data)
 	{
@@ -86,7 +127,12 @@ public class CreateRecipeActivity extends Activity {
 		}
 		super.onActivityResult(requestCode, resultCode, data);
 	}
-
+/**
+ * saves the information on the screen to variables then
+ * submits the data into the database and closes the date base
+ * 
+ * @param view
+ */
 	public void newRecipeSubmit(View view) {
 
 		EditText recipeNameET = (EditText)findViewById(R.id.recipeName);
@@ -107,7 +153,9 @@ public class CreateRecipeActivity extends Activity {
 
 		//DO NOT TOUCH THIS. David's got this.
 		new Thread(new Runnable() {
-
+/**
+ * Runs the database
+ */
 			@Override
 			public void run() {
 				try {
