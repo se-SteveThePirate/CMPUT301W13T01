@@ -14,6 +14,8 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import ca.dreamteam.newrecipebook.Models.Recipe;
 
@@ -42,8 +44,9 @@ public class ESClient {
 	public void insertRecipe(Recipe recipe) throws IOException, IllegalStateException{
 		//Set the ES ID to the next available ID number. (Avoid conflicts :) )
 		recipe.id = getNextAvailableId();
+		setNextAvailableId(recipe.id + 1);
 		
-		HttpPost httpPost = new HttpPost("http://cmput301.softwareprocess.es:8080/cmput301w13t01/recipebook/"+recipe.getId());
+		HttpPost httpPost = new HttpPost("http://cmput301.softwareprocess.es:8080/cmput301w13t01/recipelist/"+recipe.getId());
 		StringEntity stringEntity = null;
 		try {
 			stringEntity = new StringEntity(gson.toJson(recipe));
@@ -68,7 +71,7 @@ public class ESClient {
 
 		HttpEntity entity = response.getEntity();
 		try {
-			EntityUtils.consume(entity);
+			//EntityUtils.consume(entity);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -78,26 +81,54 @@ public class ESClient {
 	{
 		//Code borrowed from our friends in team 9, as they posted here: 
 		//https://github.com/kylejamesross/CMPUT301W13T09/blob/master/CMPUT301Project/src/com/cmput301w13t09/cmput301project/UploadController.java
-		HttpGet getRequest = new HttpGet("http://cmput301.softwareprocess.es:8080/cmput301w13t01/recipelistlength/value");
+		HttpGet getRequest = new HttpGet("http://cmput301.softwareprocess.es:8080/cmput301w13t01/recipelist/nextID");
 		getRequest.addHeader("Content-type", "application/json");
 		String json = "";
 		try
 		{
 			HttpResponse response = httpClient.execute(getRequest);
 			json = getEntityContent(response);
-			return Integer.parseInt(json.split("Number")[1].replace("\"", "")
-					.replace(":", "").replace("}", ""));
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
 
-		return 0;
+		//String[] jsonSplit = json.split("nextID");
+		//String importantValue = jsonSplit[2]; //":1 }}
+		
+		return Integer.parseInt(json.split("nextID")[2].replace("\"", "").replace(":", "").replace("}", "").replace(" ", ""));
 	}
 
+	public void setNextAvailableId(long id){
+		HttpPost httpPost = new HttpPost(
+				"http://cmput301.softwareprocess.es:8080/cmput301w13t01/recipelist/nextID");
+		httpPost.setHeader("Content-type", "application/json");
+		StringEntity stringentity = null;
+		try {
+			stringentity = new StringEntity(new JSONObject().put("nextID", id)
+					.toString());
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		httpPost.setEntity(stringentity);
+		HttpResponse response = null;
+		try {
+			response = httpClient.execute(httpPost);
+		} catch (ClientProtocolException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
-	//The following function was borrowed from our friends in team 9, who probably took it from the ESClient d
+	//The following function was borrowed from our friends in team 9, who probably took it from the ESClient demo.
 	public String getEntityContent(HttpResponse response) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(
 				(response.getEntity().getContent())));
