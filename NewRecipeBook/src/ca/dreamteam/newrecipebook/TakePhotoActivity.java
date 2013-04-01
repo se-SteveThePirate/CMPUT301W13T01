@@ -18,7 +18,7 @@ import android.widget.ImageButton;
  * Used to take photos of recipes that can be using the camera and saves the image to the phone.
  * 
  * @version RecipeBook Project 4
- * @author Connor Bilec, David James, Steve Eckert and Maciej Ogrocki
+ * @author Conner Bilec, David James, Steve Eckert and Maciej Ogrocki
  * @date Monday 01 April 2013
  */
 
