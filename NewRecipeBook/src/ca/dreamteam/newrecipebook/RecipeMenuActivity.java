@@ -128,7 +128,14 @@ public class RecipeMenuActivity extends ListActivity {
         Intent intent = new Intent(this, CreateRecipeActivity.class);
         startActivity(intent);
     }
-    
+/**
+ * Deletes the data of something in the list by clicking on it
+ *     
+ * @param l
+ * @param v
+ * @param position
+ * @param id
+ */
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		Recipe recipeToDelete = (Recipe)getListView().getItemAtPosition(position);
 		datasource.deleteRecipe(recipeToDelete);
