@@ -16,7 +16,7 @@ import android.widget.TextView;
  * Main activity opens the menu and opens the pantry view
  * 
  * @version RecipeBook Project 4
- * @author Connor Bilec, David James, Steve Eckert and Maciej Ogrocki
+ * @author Conner Bilec, David James, Steve Eckert and Maciej Ogrocki
  * @date Monday 01 April 2013
  */
 

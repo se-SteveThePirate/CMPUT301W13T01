@@ -17,7 +17,7 @@ import ca.dreamteam.newrecipebook.Models.Ingredient;
  * also allows the user pull up and add ingredient activity finally also pulls information from the database
  * 
  * @version RecipeBook Project 4
- * @author Connor Bilec, David James, Steve Eckert and Maciej Ogrocki
+ * @author Conner Bilec, David James, Steve Eckert and Maciej Ogrocki
  * @date Monday 01 April 2013
  */
 

@@ -8,6 +8,14 @@ import android.widget.EditText;
 import ca.dreamteam.newrecipebook.Helpers.IngredientDatabaseHelper;
 import ca.dreamteam.newrecipebook.Models.Ingredient;
 
+/**
+ * 
+ * 
+ * @version RecipeBook Project 4
+ * @author Conner Bilec, David James, Steve Eckert and Maciej Ogrocki
+ * @date Monday 01 April 2013
+ */
+
 public class ViewIngredientActivity extends Activity {
 	private IngredientDatabaseHelper db = new IngredientDatabaseHelper(this);
 	private Ingredient ingredient = null;
