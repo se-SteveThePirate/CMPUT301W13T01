@@ -14,13 +14,37 @@ import android.widget.ListView;
 import ca.dreamteam.newrecipebook.Helpers.IngredientDatabaseHelper;
 import ca.dreamteam.newrecipebook.Models.Ingredient;
 
+/**
+ * Allows the user to input a String value of a ingredient name and then 
+ * on click that String is then added to the ingredient list and the date
+ * is updated accordingly.
+ * 
+ * @version RecipeBook Project 4
+ * @author Connor Bilec, David James, Steve Eckert and Maciej Ogrocki
+ * @date Monday 01 April 2013
+ */
+
 public class AddIngredientForRecipeActivity extends ListActivity{
+	
+	/**
+	 * @var ingredient: Keeps track of the current ingredient being modified. 
+	 * @var ingredientList: Arraylist of Strings of the added ingredient.  
+	 * @var adapter: ArrayAdapter used to move the String ingredients into the database
+	 */
 	private Ingredient ingredient = null;
 	private ArrayList<String> ingredientList = new ArrayList<String>();
 	private ArrayAdapter<String> adapter;
 	private ListView listView; 
 	
 	@Override	
+	/**
+	 * As the page is created causes the add button to make the file add the current
+	 * ingredient file into the ingredientList if something has been entered into the
+	 * text box. If nothing was entered nothing will happen. Returns back to previous 
+	 * page if the "Done Adding" Button is pressed. 
+	 * 
+	 * @param savedInstanceState
+	 */
 	public void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingredient_view);
