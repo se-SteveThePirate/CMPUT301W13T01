@@ -23,9 +23,7 @@ import ca.dreamteam.newrecipebook.Models.Recipe;
 public class CreateRecipeActivity extends Activity {
 
 	private RecipeSQLite recipeCache = new RecipeSQLite(this);
-
-	private Recipe newRecipe;
-	private ArrayList<String> tempIngredientList = new ArrayList<String>();
+	private Recipe newRecipe = new Recipe();
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -33,7 +31,7 @@ public class CreateRecipeActivity extends Activity {
 		setContentView(R.layout.activity_create_recipe);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
-
+		newRecipe.ingredients = new ArrayList<String>();
 
 		try {
 			//Set Author's name.
@@ -68,9 +66,9 @@ public class CreateRecipeActivity extends Activity {
 
 	public void addIngredient(View view) {
 		Intent intent = new Intent(this, AddIngredientForRecipeActivity.class);
+		//if (!newRecipe.ingredients.isEmpty())
+		intent.putStringArrayListExtra("alreadyAddedIngredients", newRecipe.ingredients);
 		startActivityForResult(intent, 1);
-		//tempIngredientList.add(ingredientName);    	
-		//adapter.notifyDataSetChanged();
 	}
 
 	@Override
@@ -81,7 +79,7 @@ public class CreateRecipeActivity extends Activity {
 			if (resultCode == RESULT_OK)
 			{
 				//Ingredient i = (Ingredient)data.getSerializableExtra("newingredient");
-				this.tempIngredientList = (ArrayList<String>)data.getStringArrayListExtra("newIngredients");
+				newRecipe.ingredients = (ArrayList<String>)data.getStringArrayListExtra("newIngredients");
 			}
 		}
 		super.onActivityResult(requestCode, resultCode, data);

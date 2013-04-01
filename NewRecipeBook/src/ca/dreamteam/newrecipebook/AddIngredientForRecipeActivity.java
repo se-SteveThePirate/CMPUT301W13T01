@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import ca.dreamteam.newrecipebook.Helpers.IngredientDatabaseHelper;
 import ca.dreamteam.newrecipebook.Models.Ingredient;
 
@@ -17,14 +18,19 @@ public class AddIngredientForRecipeActivity extends ListActivity{
 	private Ingredient ingredient = null;
 	private ArrayList<String> ingredientList = new ArrayList<String>();
 	private ArrayAdapter<String> adapter;
+	private ListView listView; 
 	
 	@Override	
 	public void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingredient_view);
+        ArrayList<String> passedIngredients = getIntent().getExtras().getStringArrayList("alreadyAddedIngredients");
+        if (!passedIngredients.isEmpty())
+        	ingredientList = passedIngredients; 
+        listView = (ListView)findViewById(android.R.id.list);
         adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,
                 ingredientList);
-        setListAdapter(adapter);
+        listView.setAdapter(adapter);
  
         //ingredient = (Ingredient)getIntent().getSerializableExtra("ingredient");
         
@@ -71,4 +77,17 @@ public class AddIngredientForRecipeActivity extends ListActivity{
 			((EditText)findViewById(R.id.ingredientAdd_nameEdit)).setText(this.ingredient.getName());
 		}
     }
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data)
+	{
+		//Ingredient i = (Ingredient)data.getSerializableExtra("newingredient");
+		this.ingredientList = (ArrayList<String>)data.getStringArrayListExtra("includedIngredients");
+		super.onActivityResult(requestCode, resultCode, data);
+	}
+	
+	protected void onListItemClick(ListView l, View v, int position, long id) {
+		ingredientList.remove(position);
+		adapter.notifyDataSetChanged();
+	}
 }
