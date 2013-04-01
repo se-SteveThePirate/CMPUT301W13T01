@@ -38,9 +38,7 @@ public class CreateRecipeActivity extends Activity {
  * @var tempIngredientlist: a list of ingredients that is currently being used. 
  */
 	private RecipeSQLite recipeCache = new RecipeSQLite(this);
-
-	private Recipe newRecipe;
-	private ArrayList<String> tempIngredientList = new ArrayList<String>();
+	private Recipe newRecipe = new Recipe();
 
 /**
  * On Creation attempts to connect to the database if it fail's nothing happens. 
@@ -53,7 +51,7 @@ public class CreateRecipeActivity extends Activity {
 		setContentView(R.layout.activity_create_recipe);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
-
+		newRecipe.ingredients = new ArrayList<String>();
 
 		try {
 			//Set Author's name.
@@ -102,9 +100,9 @@ public class CreateRecipeActivity extends Activity {
  */
 	public void addIngredient(View view) {
 		Intent intent = new Intent(this, AddIngredientForRecipeActivity.class);
+		//if (!newRecipe.ingredients.isEmpty())
+		intent.putStringArrayListExtra("alreadyAddedIngredients", newRecipe.ingredients);
 		startActivityForResult(intent, 1);
-		//tempIngredientList.add(ingredientName);    	
-		//adapter.notifyDataSetChanged();
 	}
 /**
  * If requestCode is 1  and resultCode is RESULT_OK then tempIngerientList is filled with
@@ -122,7 +120,7 @@ public class CreateRecipeActivity extends Activity {
 			if (resultCode == RESULT_OK)
 			{
 				//Ingredient i = (Ingredient)data.getSerializableExtra("newingredient");
-				this.tempIngredientList = (ArrayList<String>)data.getStringArrayListExtra("newIngredients");
+				newRecipe.ingredients = (ArrayList<String>)data.getStringArrayListExtra("newIngredients");
 			}
 		}
 		super.onActivityResult(requestCode, resultCode, data);
