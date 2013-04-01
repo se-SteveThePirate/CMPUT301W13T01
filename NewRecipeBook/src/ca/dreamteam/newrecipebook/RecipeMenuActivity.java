@@ -128,9 +128,7 @@ public class RecipeMenuActivity extends ListActivity {
         Intent intent = new Intent(this, CreateRecipeActivity.class);
         startActivity(intent);
     }
-<<<<<<< HEAD
-    	
-=======
+
 /**
  * Deletes the data of something in the list by clicking on it
  *     
@@ -144,5 +142,5 @@ public class RecipeMenuActivity extends ListActivity {
 		datasource.deleteRecipe(recipeToDelete);
 		adapter.notifyDataSetChanged();
 	}
->>>>>>> 192d0ac2f6df39dd747b85999d6213a43f1ffea2
+
 }
