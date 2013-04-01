@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import ca.dreamteam.newrecipebook.Helpers.RecipeSQLite;
@@ -127,4 +128,10 @@ public class RecipeMenuActivity extends ListActivity {
         Intent intent = new Intent(this, CreateRecipeActivity.class);
         startActivity(intent);
     }
+    
+	protected void onListItemClick(ListView l, View v, int position, long id) {
+		Recipe recipeToDelete = (Recipe)getListView().getItemAtPosition(position);
+		datasource.deleteRecipe(recipeToDelete);
+		adapter.notifyDataSetChanged();
+	}
 }

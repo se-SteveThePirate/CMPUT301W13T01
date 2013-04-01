@@ -37,12 +37,21 @@
 	        android:paddingTop="10dp"
             android:layout_below="@+id/recipeAuthor"
 	        android:text="Recipe pictures" />
+        
+        <Gallery
+            android:id="@+id/pictureGallery"
+   	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:paddingLeft="10dp"
+	        android:paddingTop="10dp"
+            android:layout_below="@+id/pictureMessage" />
+	        
 
         <Button
             android:id="@+id/addIngredient"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/recipeAuthor"
+            android:layout_below="@+id/pictureGallery"
             android:onClick="addIngredient"
             android:text="Add Ingredients" />
 
