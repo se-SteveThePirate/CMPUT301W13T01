@@ -41,10 +41,16 @@ public class ESClient {
 
 	private Gson gson = new Gson();
 
-	public void insertRecipe(Recipe recipe) throws IOException, IllegalStateException{
+	public void updateRecipe(Recipe recipe) throws IllegalStateException, IOException{
+		insertRecipe(recipe, false);
+	}
+	
+	public void insertRecipe(Recipe recipe, Boolean requiresID) throws IOException, IllegalStateException{
 		//Set the ES ID to the next available ID number. (Avoid conflicts :) )
-		recipe.id = getNextAvailableId();
-		setNextAvailableId(recipe.id + 1);
+		if(requiresID){
+			recipe.id = getNextAvailableId();
+			setNextAvailableId(recipe.id + 1);
+		}
 		
 		HttpPost httpPost = new HttpPost("http://cmput301.softwareprocess.es:8080/cmput301w13t01/recipelist/"+recipe.getId());
 		StringEntity stringEntity = null;

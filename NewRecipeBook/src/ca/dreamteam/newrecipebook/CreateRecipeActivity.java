@@ -208,13 +208,13 @@ public class CreateRecipeActivity extends Activity {
 
     //    new Thread(new Runnable() {
             /**
-             * Runs the database
+             * Asynchronously push the recipe to the ES server.
              */
             /*
             @Override
             public void run() {
                 try {
-                    ESClient.getInstance().insertRecipe(newRecipe);
+                    ESClient.getInstance().insertRecipe(newRecipe, true);
                 } catch (IllegalStateException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
