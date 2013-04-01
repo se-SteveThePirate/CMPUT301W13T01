@@ -91,10 +91,5 @@ public class RecipeMenuActivity extends ListActivity {
         Intent intent = new Intent(this, CreateRecipeActivity.class);
         startActivity(intent);
     }
-    
-	protected void onListItemClick(ListView l, View v, int position, long id) {
-		Recipe recipeToDelete = (Recipe)getListView().getItemAtPosition(position);
-		datasource.deleteRecipe(recipeToDelete);
-		adapter.notifyDataSetChanged();
-	}
+    	
 }
