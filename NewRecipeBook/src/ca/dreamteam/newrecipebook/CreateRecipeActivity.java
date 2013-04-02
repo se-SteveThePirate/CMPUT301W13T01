@@ -210,18 +210,27 @@ public class CreateRecipeActivity extends Activity {
 
         finish();
     }
-
+/**
+ * When activity is returned to reopens the cache
+ */
    
     public void onResume(){
         recipeCache.open();
         super.onResume();
     }
 
+/**
+ * Closes the cache when the activity is left
+ */
     public void onPause(){
         recipeCache.close();
         super.onPause();
     }
-    
+/**
+ * Opens the taking photo class
+ * 
+ * @param view
+ */
     public void newPicture(View view) {
     	Intent intent = new Intent(this, TakePhotoActivity.class);
     	startActivityForResult(intent,2);
