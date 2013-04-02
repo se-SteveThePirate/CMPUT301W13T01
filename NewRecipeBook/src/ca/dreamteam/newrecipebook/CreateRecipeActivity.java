@@ -66,7 +66,7 @@ public class CreateRecipeActivity extends Activity {
         setContentView(R.layout.activity_create_recipe);
         getActionBar().setDisplayHomeAsUpEnabled(true);
         photoLayout = (LinearLayout)findViewById(R.id.photoViewLayout);
-
+        newRecipe.ingredients = new ArrayList<String>();
           
         try {
             //Set Author's name.
@@ -115,8 +115,8 @@ public class CreateRecipeActivity extends Activity {
      */
     public void addIngredient(View view) {
         Intent intent = new Intent(this, AddIngredientForRecipeActivity.class);
-        intent.putStringArrayListExtra("alreadyAddedIngredients", newRecipe.ingredients);
-        startActivityForResult(intent, 1);
+    	intent.putStringArrayListExtra("alreadyAddedIngredients", newRecipe.ingredients);
+    	startActivityForResult(intent, 1);
     }
     /**
      * If requestCode is 1  and resultCode is RESULT_OK then tempIngerientList is filled with

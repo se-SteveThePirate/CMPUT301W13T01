@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import ca.dreamteam.newrecipebook.Helpers.IngredientDatabaseHelper;
 import ca.dreamteam.newrecipebook.Models.Ingredient;
 
@@ -48,13 +49,16 @@ public class AddIngredientForRecipeActivity extends ListActivity{
 	public void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingredient_view);
-        ArrayList<String> passedIngredients = getIntent().getExtras().getStringArrayList("alreadyAddedIngredients");
-        if (!passedIngredients.isEmpty())
-        	ingredientList = passedIngredients; 
+        ArrayList<String> passedIngredients = new ArrayList<String>();
+        passedIngredients = getIntent().getExtras().getStringArrayList("alreadyAddedIngredients");
+    	if (!passedIngredients.isEmpty())
+    		ingredientList = passedIngredients;
         listView = (ListView)findViewById(android.R.id.list);
         adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,
                 ingredientList);
         listView.setAdapter(adapter);
+        TextView deletions = (TextView)findViewById(R.id.ingredientDeleteInstructions);
+        deletions.setVisibility(View.GONE);
  
         //ingredient = (Ingredient)getIntent().getSerializableExtra("ingredient");
         
