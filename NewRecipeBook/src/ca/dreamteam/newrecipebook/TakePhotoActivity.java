@@ -94,7 +94,11 @@ public class TakePhotoActivity extends Activity {
         ImageButton button = (ImageButton) findViewById(R.id.TakeAPhoto);
         button.setImageDrawable(Drawable.createFromPath(imageFileUri.getPath()));    
     }
-    
+    /**
+     * Resends the finsihed photo.
+     * 
+     * @param v
+     */
     public void returnPhoto(View v) {
     	Intent intent = new Intent(this, CreateRecipeActivity.class);
     	intent.setData(imageFileUri);

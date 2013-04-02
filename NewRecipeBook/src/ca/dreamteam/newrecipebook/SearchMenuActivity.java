@@ -26,12 +26,20 @@ public class SearchMenuActivity extends Activity {
     	super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_menu);  
     }
-	
+/**
+ * Calls the search option class
+ * 
+ * @param v
+ */
 	public void keywordSearch(View v) {
 		Intent intent = new Intent(this, SearchOptions.class);
 		startActivity(intent);
 	}
-	
+/**
+ * dose a search of the pantry
+ * 
+ * @param v
+ */
 	public void pantrySearch(View v) {
 		//TODO
 		
