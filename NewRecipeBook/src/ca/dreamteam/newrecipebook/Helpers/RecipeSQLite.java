@@ -10,6 +10,15 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import ca.dreamteam.newrecipebook.Models.Recipe;
 
+/**
+ * Opens and closes the SQL database and allows changes as well as create pull
+ * tables from the database. 
+ * 
+ * @version RecipeBook Project 4
+ * @author Conner Bilec, David James, Steve Eckert and Maciej Ogrocki
+ * @date Monday 01 April 2013
+ */
+
 public class RecipeSQLite{
     private SQLiteDatabase database;
     private RecipeSqlTable dbHelper;

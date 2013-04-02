@@ -5,6 +5,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+/**
+* Attempts to create the sql table and populate it. Will throw errors if it fails. 
+* 
+* @version RecipeBook Project 4
+* @author Conner Bilec, David James, Steve Eckert and Maciej Ogrocki
+* @date Monday 01 April 2013
+*/
 public class RecipeSqlTable extends SQLiteOpenHelper
 {
     public static final String TABLE_RECIPES = "recipes";

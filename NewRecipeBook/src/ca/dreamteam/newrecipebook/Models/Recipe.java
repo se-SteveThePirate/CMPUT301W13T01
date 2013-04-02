@@ -4,7 +4,15 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import android.graphics.Bitmap;
-
+/**
+ * This is the object of the recipe object. Most of the classes and functions should be clear from the name. This 
+ * should work as a file for the recipe's and be used to store data by the user about the recipes they have written
+ * and downloaded on the app. 
+ * 
+ * @version RecipeBook Project 4
+ * @author Conner Bilec, David James, Steve Eckert and Maciej Ogrocki
+ * @date Monday 01 April 2013
+ */
 public class Recipe implements Serializable {
     
 	private static final long serialVersionUID = -3419759999296394802L;
