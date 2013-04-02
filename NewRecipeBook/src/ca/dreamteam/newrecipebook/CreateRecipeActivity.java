@@ -7,6 +7,9 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v4.app.NavUtils;
@@ -47,6 +50,9 @@ public class CreateRecipeActivity extends Activity {
     private RecipeSerialization recipeSerial = new RecipeSerialization();
 
     private Recipe newRecipe = null;
+<<<<<<< HEAD
+
+=======
     private ArrayList<String> tempIngredientList = new ArrayList<String>();
 /**
  * On creation waits for a button press at which point it will add the information in the text 
@@ -55,6 +61,7 @@ public class CreateRecipeActivity extends Activity {
  * 
  * @param savedInstanceState
  */
+>>>>>>> 04a175c609ae781e1f64c7ca87bdbdbeea10c5b3
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,7 +118,6 @@ public class CreateRecipeActivity extends Activity {
      */
     public void addIngredient(View view) {
         Intent intent = new Intent(this, AddIngredientForRecipeActivity.class);
-        //if (!newRecipe.ingredients.isEmpty())
         intent.putStringArrayListExtra("alreadyAddedIngredients", newRecipe.ingredients);
         startActivityForResult(intent, 1);
     }
@@ -126,13 +132,18 @@ public class CreateRecipeActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
-        if (requestCode == 1) //Ensure THIS activity requested the result.
+        if (requestCode == 1) //Used for getting Ingredient things
         {
             if (resultCode == RESULT_OK)
             {
-                //Ingredient i = (Ingredient)data.getSerializableExtra("newingredient");
                 newRecipe.ingredients = (ArrayList<String>)data.getStringArrayListExtra("newIngredients");
             }
+        }
+        if (resultCode == 2) //Used for getting Picture things
+        {
+        	Bitmap newPhoto = BitmapFactory.decodeFile(data.getData().getPath());
+        	if (newPhoto != null)
+        		newRecipe.photos.add(newPhoto);
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
@@ -211,9 +222,10 @@ public class CreateRecipeActivity extends Activity {
         recipeCache.close();
         super.onPause();
     }
-
-
-
-
+    
+    public void newPicture(View view) {
+    	Intent intent = new Intent(this, TakePhotoActivity.class);
+    	startActivityForResult(intent,2);
+    }
 
 }
