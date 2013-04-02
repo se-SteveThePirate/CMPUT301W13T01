@@ -91,9 +91,15 @@ public class TakePhotoActivity extends Activity {
      */
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
                             
-                ImageButton button = (ImageButton) findViewById(R.id.TakeAPhoto);
-                button.setImageDrawable(Drawable.createFromPath(imageFileUri.getPath()));
-      
+        ImageButton button = (ImageButton) findViewById(R.id.TakeAPhoto);
+        button.setImageDrawable(Drawable.createFromPath(imageFileUri.getPath()));    
+    }
+    
+    public void returnPhoto(View v) {
+    	Intent intent = new Intent(this, CreateRecipeActivity.class);
+    	intent.setData(imageFileUri);
+    	finish();
+
     }
     /** 
      * turns off camera when cancel button is pressed.  
