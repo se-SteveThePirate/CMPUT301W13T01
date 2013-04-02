@@ -103,6 +103,12 @@ public class RecipeViewActivity extends Activity {
         super.onPause();
     }
 
+    /**
+     * See name
+     * 
+     * @param v
+     */
+    
     public void DeleteRecipe(View v){
         try
         {
