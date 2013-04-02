@@ -37,23 +37,40 @@
 	        android:paddingTop="10dp"
             android:layout_below="@+id/recipeAuthor"
 	        android:text="Recipe pictures" />
-        
-        <Gallery
-            android:id="@+id/pictureGallery"
-   	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:paddingLeft="10dp"
-	        android:paddingTop="10dp"
-            android:layout_below="@+id/pictureMessage" />
+
+        <HorizontalScrollView
+            android:id="@+id/photoScrollView"
+            android:layout_width="fill_parent"
+            android:layout_height="75dp"
+            android:layout_below="@+id/pictureMessage"            
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="16dp" >
+
+            <LinearLayout
+                android:id="@+id/photoViewLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal" >
+            </LinearLayout>
+        </HorizontalScrollView>
 	        
 
         <Button
             android:id="@+id/addIngredient"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/pictureGallery"
+            android:layout_below="@+id/photoScrollView"
             android:onClick="addIngredient"
             android:text="Add Ingredients" />
+        
+        <Button
+            android:id="@+id/addPicture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/addIngredient"
+            android:layout_above="@+id/recipeInstructions"
+            android:onClick="newPicture"
+            android:text="Take a picture!" />
 
         <EditText
             android:id="@+id/recipeInstructions"
@@ -74,8 +91,15 @@
             android:layout_below="@id/recipeInstructions"
             android:onClick="newRecipeSubmit"
             android:text="Submit Recipe!" />
-
         
+        <Button
+            android:id="@+id/discardRecipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/newRecipeSubmit"
+            android:layout_below="@id/recipeInstructions"
+            android:onClick="discardRecipe"
+            android:text="Discard recipe" />
         
     </RelativeLayout>
 

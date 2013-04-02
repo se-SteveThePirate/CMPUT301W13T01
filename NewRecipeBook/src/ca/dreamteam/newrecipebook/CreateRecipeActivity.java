@@ -7,6 +7,9 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v4.app.NavUtils;
@@ -15,6 +18,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import ca.dreamteam.newrecipebook.Helpers.IngredientDatabaseHelper;
 import ca.dreamteam.newrecipebook.Helpers.RecipeSQLite;
@@ -45,9 +50,9 @@ public class CreateRecipeActivity extends Activity {
  */
     private RecipeSQLite recipeCache = new RecipeSQLite(this);
     private RecipeSerialization recipeSerial = new RecipeSerialization();
-
-    private Recipe newRecipe = null;
+    private Recipe newRecipe = new Recipe();
     private ArrayList<String> tempIngredientList = new ArrayList<String>();
+    private LinearLayout photoLayout = (LinearLayout)findViewById(R.id.photoViewLayout);
 /**
  * On creation waits for a button press at which point it will add the information in the text 
  * Fields and adds them to the database. Also uses serialization and will do nothing if the 
@@ -111,7 +116,6 @@ public class CreateRecipeActivity extends Activity {
      */
     public void addIngredient(View view) {
         Intent intent = new Intent(this, AddIngredientForRecipeActivity.class);
-        //if (!newRecipe.ingredients.isEmpty())
         intent.putStringArrayListExtra("alreadyAddedIngredients", newRecipe.ingredients);
         startActivityForResult(intent, 1);
     }
@@ -126,13 +130,26 @@ public class CreateRecipeActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
-        if (requestCode == 1) //Ensure THIS activity requested the result.
+        if (requestCode == 1) //Used for getting Ingredient things
         {
             if (resultCode == RESULT_OK)
             {
-                //Ingredient i = (Ingredient)data.getSerializableExtra("newingredient");
                 newRecipe.ingredients = (ArrayList<String>)data.getStringArrayListExtra("newIngredients");
             }
+        }
+        if (resultCode == 2) //Used for getting Picture things
+        {
+        	Bitmap newPhoto = BitmapFactory.decodeFile(data.getData().getPath());
+        	if (newPhoto != null) {
+        		newRecipe.photos.add(newPhoto);
+        		ImageView newImageView = new ImageView(this);
+        		newImageView.setPadding(5, 0, 0, 0);
+        		newImageView.setImageBitmap(newPhoto);
+        		photoLayout.addView(newImageView);
+        		
+        		
+        		
+        	}
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
@@ -212,9 +229,10 @@ public class CreateRecipeActivity extends Activity {
         recipeCache.close();
         super.onPause();
     }
-
-
-
-
+    
+    public void newPicture(View view) {
+    	Intent intent = new Intent(this, TakePhotoActivity.class);
+    	startActivityForResult(intent,2);
+    }
 
 }
