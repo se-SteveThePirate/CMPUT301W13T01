@@ -9,6 +9,7 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -25,33 +26,68 @@ import com.google.gson.Gson;
 public class ESClient {
 
 	private static ESClient singletonInstance = null;
-	
+
 	protected ESClient(){
 		//Stops all instantiation
 	}
-	
+
 	public static ESClient getInstance(){
 		if (singletonInstance == null)
 			singletonInstance = new ESClient();
-		
+
 		return singletonInstance;
 	}
-	
+
 	private HttpClient httpClient = new DefaultHttpClient();
 
 	private Gson gson = new Gson();
 
+	/**
+	 * Adapted for our use from the ESDemo code.
+	 * @param recipe
+	 * @throws IOException 
+	 * @throws ClientProtocolException 
+	 */
+	public void deleteRecipe(Recipe recipe) throws ClientProtocolException, IOException
+	{
+		HttpDelete httpDelete = new HttpDelete("http://cmput301.softwareprocess.es:8080/cmput301w13t01/recipelist/" + recipe.getId());
+		httpDelete.addHeader("Accept","application/json");
+
+		HttpResponse response = httpClient.execute(httpDelete);
+
+		String status = response.getStatusLine().toString();
+		System.out.println(status);
+
+		HttpEntity entity = response.getEntity();
+		BufferedReader br = new BufferedReader(new InputStreamReader(entity.getContent()));
+		String output;
+		System.err.println("Output from Server -> ");
+		while ((output = br.readLine()) != null) {
+			System.err.println(output);
+		}
+		//EntityUtils.consume(entity);
+
+		httpDelete.releaseConnection();
+	}
+
+	/**
+	 * Updates a recipe already posted on ES.
+	 * 
+	 * @param recipe
+	 * @throws IllegalStateException
+	 * @throws IOException
+	 */
 	public void updateRecipe(Recipe recipe) throws IllegalStateException, IOException{
 		insertRecipe(recipe, false);
 	}
-	
+
 	public void insertRecipe(Recipe recipe, Boolean requiresID) throws IOException, IllegalStateException{
 		//Set the ES ID to the next available ID number. (Avoid conflicts :) )
 		if(requiresID){
 			recipe.id = getNextAvailableId();
 			setNextAvailableId(recipe.id + 1);
 		}
-		
+
 		HttpPost httpPost = new HttpPost("http://cmput301.softwareprocess.es:8080/cmput301w13t01/recipelist/"+recipe.getId());
 		StringEntity stringEntity = null;
 		try {
@@ -102,7 +138,7 @@ public class ESClient {
 
 		//String[] jsonSplit = json.split("nextID");
 		//String importantValue = jsonSplit[2]; //":1 }}
-		
+
 		return Integer.parseInt(json.split("nextID")[2].replace("\"", "").replace(":", "").replace("}", "").replace(" ", ""));
 	}
 
@@ -133,7 +169,7 @@ public class ESClient {
 			e.printStackTrace();
 		}
 	}
-	
+
 	//The following function was borrowed from our friends in team 9, who probably took it from the ESClient demo.
 	public String getEntityContent(HttpResponse response) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(
