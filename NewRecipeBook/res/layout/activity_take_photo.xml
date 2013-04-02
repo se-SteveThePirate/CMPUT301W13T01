@@ -31,6 +31,6 @@
         android:layout_above="@+id/Cancel"
         android:layout_alignParentRight="true"
         android:text="Accept"
-        android:onClick="onActivityResult" />
+        android:onClick="returnPhoto" />
 
 </RelativeLayout>
