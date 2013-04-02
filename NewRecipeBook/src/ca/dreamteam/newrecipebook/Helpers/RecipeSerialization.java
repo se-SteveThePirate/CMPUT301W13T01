@@ -1,5 +1,6 @@
 package ca.dreamteam.newrecipebook.Helpers;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -57,5 +58,10 @@ public class RecipeSerialization
             c.printStackTrace();
         }
         return r;
+    }
+    
+    public void deleteFile(String fileName){
+        File file = new File(fileName + ".ser");
+        file.delete();
     }
 }

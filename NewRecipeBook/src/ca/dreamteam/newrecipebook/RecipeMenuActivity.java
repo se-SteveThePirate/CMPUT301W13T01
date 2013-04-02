@@ -53,7 +53,7 @@ public class RecipeMenuActivity extends ListActivity {
             {
                 Recipe r = (Recipe)adapter.getItem(position);
 
-                Intent viewIntent = new Intent(getApplicationContext(), CreateRecipeActivity.class);
+                Intent viewIntent = new Intent(getApplicationContext(), RecipeViewActivity.class);
                 viewIntent.putExtra("Recipe", r);
                 startActivity(viewIntent);
             }

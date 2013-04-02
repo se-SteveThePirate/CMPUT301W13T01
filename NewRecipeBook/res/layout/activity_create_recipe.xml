@@ -74,6 +74,8 @@
             android:layout_below="@id/recipeInstructions"
             android:onClick="newRecipeSubmit"
             android:text="Submit Recipe!" />
+
+        
         
     </RelativeLayout>
 

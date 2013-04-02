@@ -14,10 +14,11 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int AcceptPhoto=0x7f07002a;
-        public static final int Cancel=0x7f070029;
+        public static final int AcceptPhoto=0x7f07002b;
+        public static final int Cancel=0x7f07002a;
+        public static final int Delete=0x7f070024;
         public static final int ScrollView01=0x7f070000;
-        public static final int TakeAPhoto=0x7f070027;
+        public static final int TakeAPhoto=0x7f070028;
         public static final int addIngredient=0x7f070005;
         public static final int button1=0x7f070017;
         public static final int button2=0x7f07001b;
@@ -26,22 +27,22 @@ public final class R {
         public static final int editText1=0x7f070012;
         public static final int editText2=0x7f070014;
         public static final int editText3=0x7f070019;
-        public static final int imageView1=0x7f07002b;
+        public static final int imageView1=0x7f07002c;
         public static final int ingredientAdd_multiPurposeButton=0x7f07000c;
         public static final int ingredientAdd_nameEdit=0x7f070008;
         public static final int ingredientAdd_nameLabel=0x7f070009;
         public static final int ingredientDeleteInstructions=0x7f07000a;
         public static final int ingredientDelete_multiPurposeButton=0x7f07000b;
-        public static final int keywordSearchButton=0x7f070025;
-        public static final int keywordSearchTerms=0x7f070026;
-        public static final int linearLayout2=0x7f070028;
+        public static final int keywordSearchButton=0x7f070026;
+        public static final int keywordSearchTerms=0x7f070027;
+        public static final int linearLayout2=0x7f070029;
         public static final int mainActivity_MyPantry=0x7f07000d;
         public static final int mainActivity_MySavedRecipes=0x7f07000e;
         public static final int mainActivity_SearchRecipes=0x7f07000f;
         public static final int mainActivity_TitleTextView=0x7f070010;
-        public static final int menu_settings=0x7f07002c;
+        public static final int menu_settings=0x7f07002d;
         public static final int newRecipeSubmit=0x7f070007;
-        public static final int pantrySearchButton=0x7f070024;
+        public static final int pantrySearchButton=0x7f070025;
         public static final int pictureGallery=0x7f070004;
         public static final int pictureMessage=0x7f070003;
         public static final int recipeActivity_emptyListViewText=0x7f07001d;

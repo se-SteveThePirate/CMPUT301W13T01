@@ -48,38 +48,7 @@ public class CreateRecipeActivity extends Activity {
         setContentView(R.layout.activity_create_recipe);
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
-        newRecipe = (Recipe)getIntent().getSerializableExtra("newRecipe");
-        
-        if (newRecipe == null)
-        {
-            Button buttonView = (Button)findViewById(R.id.newRecipeSubmit);
-            buttonView.setText("Submit Recipe");    
-            buttonView.setOnClickListener(new View.OnClickListener() {
-                
-                @Override
-                public void onClick(View v) {
-
-                    EditText recipeNameET = (EditText)findViewById(R.id.recipeName);
-                    EditText authorNameET = (EditText)findViewById(R.id.recipeAuthor);
-                    EditText recipeInstructionsET = (EditText)findViewById(R.id.recipeInstructions);
-
-                    RecipeSQLite datasource = new RecipeSQLite(getApplicationContext());
-                    datasource.createRecipe(recipeNameET.getText().toString());
-
-                    String recipeName = recipeNameET.getText().toString();
-                    String authorName = authorNameET.getText().toString();
-                    String recipeInstructions = recipeInstructionsET.getText().toString();
-
-                    recipeSerial.makeFile(recipeName, authorName, recipeInstructions);
-                    
-                    finish();
-                }
-        });
-            }
-        else {
-            this.newRecipe = (Recipe)getIntent().getSerializableExtra("newRecipe");
-            ((EditText)findViewById(R.id.recipeName)).setText(this.newRecipe.getName());
-        }
+     
 
             
         try {
@@ -160,6 +129,8 @@ public class CreateRecipeActivity extends Activity {
      * 
      * @param view
      */
+    
+    
     public void newRecipeSubmit(View view) {
 
         EditText recipeNameET = (EditText)findViewById(R.id.recipeName);
@@ -197,7 +168,7 @@ public class CreateRecipeActivity extends Activity {
             /**
              * Runs the database
              */
-            /*
+      /*      
             @Override
             public void run() {
                 try {
@@ -211,10 +182,10 @@ public class CreateRecipeActivity extends Activity {
                 }
             }
         }).start();
-*/
+
       //  finish();
 
-
+*/
         finish();
     }
 

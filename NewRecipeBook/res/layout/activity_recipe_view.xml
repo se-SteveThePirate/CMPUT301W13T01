@@ -6,9 +6,9 @@
         android:layout_alignParentTop="true"
    		tools:context=".RecipeViewActivity" >
 
-	    <RelativeLayout 
-    		android:layout_width="match_parent"
-    		android:layout_height="wrap_content" >
+	    <RelativeLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="427dp" >
     		
 	        <TextView
 	            android:id="@+id/recipeName"
@@ -52,22 +52,33 @@
 	      	    android:id="@+id/recipeView_ingredientsString"
 	      	    android:layout_width="wrap_content"
 	      	    android:layout_height="wrap_content"
-	      	    android:layout_alignLeft="@+id/recipeView_ingredientsLabel"
-	      	    android:layout_below="@+id/recipeGallery"
+	      	    android:layout_alignParentLeft="true"
+	      	    android:layout_below="@+id/recipeView_ingredientsLabel"
+	      	    android:ems="10"
 	      	    android:inputType="textMultiLine" >
 
 	      	    <requestFocus />
 	      	</EditText>
-	      	
-	      	<Button 
+
+	      	<Button
 	      	    android:id="@+id/recipeView_shareButton"
 	      	    android:layout_width="wrap_content"
 	      	    android:layout_height="wrap_content"
-	      	    android:layout_centerHorizontal="true"
-	      	    android:layout_below="@+id/recipeView_ingredientsString"
-	      	    android:text="Share"
+	      	    android:layout_alignParentBottom="true"
+	      	    android:layout_alignParentLeft="true"
+	      	    android:layout_toLeftOf="@+id/recipeAuthor"
 	      	    android:onClick="share"
-	      	    />
+	      	    android:text="Share" />
+
+	      	<Button
+	      	    android:id="@+id/Delete"
+	      	    android:layout_width="wrap_content"
+	      	    android:layout_height="wrap_content"
+	      	    android:layout_alignParentBottom="true"
+	      	    android:layout_alignParentRight="true"
+	      	    android:layout_toRightOf="@+id/recipeAuthor"
+	      	    android:onClick="deleteFile"
+	      	    android:text="Delete" />
 	      	
     	</RelativeLayout>
 </ScrollView>
