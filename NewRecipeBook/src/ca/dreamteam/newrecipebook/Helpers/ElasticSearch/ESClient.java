@@ -22,7 +22,14 @@ import ca.dreamteam.newrecipebook.Models.Recipe;
 
 import com.google.gson.Gson;
 
-//This code was modified from it's original form as hosted on : https://github.com/rayzhangcl/ESDemo
+/**
+ * This code was modified from it's original form as hosted on : https://github.com/rayzhangcl/ESDemo
+ * 
+ * @version RecipeBook Project 4
+ * @author Conner Bilec, David James, Steve Eckert and Maciej Ogrocki
+ * @date Monday 01 April 2013
+ *
+ */
 public class ESClient {
 
 	private static ESClient singletonInstance = null;
