@@ -1,5 +1,7 @@
 package ca.dreamteam.newrecipebook;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -9,8 +11,11 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.ContactsContract;
+import android.provider.MediaStore.Images.Media;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -48,8 +53,11 @@ public class CreateRecipeActivity extends Activity {
     //private RecipeSerialization recipeSerial = RecipeSerialization.getInstance(this);
     private Recipe newRecipe = new Recipe();
     private ArrayList<String> tempIngredientList = new ArrayList<String>();
-    private LinearLayout photoLayout;
+    private LinearLayout photoViewLayout;
     private TextView youScrewedUpTV;
+    private String imageFilePath;
+    private ImageView newImageView;
+
 /**
  * On creation waits for a button press at which point it will add the information in the text 
  * Fields and adds them to the database. Also uses serialization and will do nothing if the 
@@ -62,8 +70,9 @@ public class CreateRecipeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_recipe);
         getActionBar().setDisplayHomeAsUpEnabled(true);
-        photoLayout = (LinearLayout)findViewById(R.id.photoViewLayout);
+        photoViewLayout = (LinearLayout)findViewById(R.id.photoViewLayout);
         newRecipe.ingredients = new ArrayList<String>();
+        newRecipe.photos = new ArrayList<Bitmap>();
         youScrewedUpTV = (TextView)findViewById(R.id.youScrewedUp);
         youScrewedUpTV.setVisibility(View.GONE);
           
@@ -137,22 +146,25 @@ public class CreateRecipeActivity extends Activity {
         }
         if (requestCode == 2) //Used for getting Picture things
         {
-        	Bitmap photo = (Bitmap) data.getExtras().get("data");
-        	newRecipe.photos.add(photo);
-        	ImageView imageView = (ImageView) findViewById(R.id.recipeGallery);
-        	imageView.setPadding(5, 0, 0, 0);
-        	imageView.setImageBitmap(photo);
-        	photoLayout.addView(imageView);
+        	//Bitmap photo = Media.getBitmap(this.getContentResolver(), imageFileUri);
+			Bitmap photo = BitmapFactory.decodeFile(imageFilePath);
+			newRecipe.photos.add(photo);
+			/*ImageView imageView = (ImageView) findViewById(R.id.recipeGallery);
+			imageView.setPadding(5, 0, 0, 0);
+			imageView.setImageBitmap(photo);
+			photoLayout.addView(imageView);*/
+        	
+
         	
         	/*Bitmap newPhoto = BitmapFactory.decodeFile(data.getData().getPath());
         	if (newPhoto != null) {
-        		newRecipe.photos.add(newPhoto);
-        		ImageView newImageView = new ImageView(this);
+        		newRecipe.photos.add(newPhoto);*/
+        		newImageView = new ImageView(this);
         		newImageView.setPadding(5, 0, 0, 0);
-        		newImageView.setImageBitmap(newPhoto);
-        		photoLayout.addView(newImageView);
+        		newImageView.setImageBitmap(photo);
+        		photoViewLayout.addView(newImageView);
         			
-        	}*/
+        	
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
@@ -239,6 +251,19 @@ public class CreateRecipeActivity extends Activity {
  */
     public void newPicture(View view) {
     	Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+    	
+        String folder = Environment.getExternalStorageDirectory().getAbsolutePath() + "/tmp";
+        File folderF = new File(folder);
+        if (!folderF.exists()) {
+            folderF.mkdir();
+        }
+        
+        imageFilePath = folder + "/" + String.valueOf(System.currentTimeMillis()) + "jpg";
+        File imageFile = new File(imageFilePath);
+        //imageFileUri = Uri.fromFile(imageFile);
+        
+        //intent.putExtra("photoURI", imageFileUri);
+    	
     	startActivityForResult(intent, 2);
     }
 
