@@ -31,22 +31,34 @@ import com.google.gson.Gson;
  *
  */
 public class ESClient {
-
+	
+	/**
+	 * @var singletonInstance used for the ESClinet defeult state null
+	 */
 	private static ESClient singletonInstance = null;
 
 	protected ESClient(){
 		//Stops all instantiation
 	}
-
+	/**
+	 * If there is no singletonInstance it will create a new one and return it. 
+	 * 
+	 * @return
+	 */
 	public static ESClient getInstance(){
 		if (singletonInstance == null)
 			singletonInstance = new ESClient();
 
 		return singletonInstance;
 	}
-
+	/**
+	 * Creates a new httpClient
+	 */
 	private HttpClient httpClient = new DefaultHttpClient();
 
+	/**
+	 * creates a new gson
+	 */
 	private Gson gson = new Gson();
 
 	/**
@@ -88,7 +100,14 @@ public class ESClient {
 		deleteRecipe(recipe);
 		insertRecipe(recipe, false);
 	}
-
+	/**
+	 *If there is a request Id it will get the id and then update the recipe and add it into the file
+	 *
+	 * @param recipe
+	 * @param requiresID
+	 * @throws IOException
+	 * @throws IllegalStateException
+	 */
 	public void insertRecipe(Recipe recipe, Boolean requiresID) throws IOException, IllegalStateException{
 		//Set the ES ID to the next available ID number. (Avoid conflicts :) )
 		if(requiresID){
@@ -128,7 +147,11 @@ public class ESClient {
 
 		httpPost.releaseConnection();
 	}
-
+	/**
+	 * Attempts to connect to the json and then gets the next available Id
+	 * 
+	 * @return
+	 */
 	public int getNextAvailableId()
 	{
 		//Code borrowed from our friends in team 9, as they posted here: 
@@ -152,7 +175,11 @@ public class ESClient {
 		
 		return Integer.parseInt(json.split("nextID")[2].replace("\"", "").replace(":", "").replace("}", "").replace(" ", ""));
 	}
-
+	/**
+	 * Attempts to connect to the json entry and if successful sets the next available Id as the long past as Id in the param.
+	 * 
+	 * @param id
+	 */
 	public void setNextAvailableId(long id){
 		HttpPost httpPost = new HttpPost(
 				"http://cmput301.softwareprocess.es:8080/cmput301w13t01/recipelist/nextID");
@@ -182,6 +209,13 @@ public class ESClient {
 		httpPost.releaseConnection();
 	}
 
+	/**
+	 * Gets all the info from the json. and outputs.  Borrowed from team 9 cause they are nice people.
+	 * 
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 */
 	//The following function was borrowed from our friends in team 9, who probably took it from the ESClient demo.
 	public String getEntityContent(HttpResponse response) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(
