@@ -11,14 +11,6 @@
         android:layout_height="290dp" >
     </ListView>
     
-    <TextView
-        android:id="@+id/recipeActivity_emptyListViewText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:paddingBottom="135dp"
-        android:text="You havnt downloaded any recipes yet!" />
-    
    
 
     <Button
