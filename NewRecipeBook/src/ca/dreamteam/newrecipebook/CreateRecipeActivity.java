@@ -66,9 +66,7 @@ public class CreateRecipeActivity extends Activity {
         setContentView(R.layout.activity_create_recipe);
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
-     
-
-            
+          
         try {
             //Set Author's name.
             Cursor c = getContentResolver().query(ContactsContract.Profile.CONTENT_URI, null, null, null, null);
