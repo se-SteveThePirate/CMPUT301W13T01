@@ -36,12 +36,25 @@ import ca.dreamteam.newrecipebook.Models.Recipe;
 
 @TargetApi(14)
 public class CreateRecipeActivity extends Activity {
+	
+/**
+ * @var recipeCache used to hold recipe information on client side
+ * @var recipeSerilazion used to serialize information about client side
+ * @var newRecipe Temp new recipe object null by default
+ * @var tempIntgredientList a list of ingredients on the client side that is temp
+ */
     private RecipeSQLite recipeCache = new RecipeSQLite(this);
     private RecipeSerialization recipeSerial = new RecipeSerialization();
 
     private Recipe newRecipe = null;
     private ArrayList<String> tempIngredientList = new ArrayList<String>();
-
+/**
+ * On creation waits for a button press at which point it will add the information in the text 
+ * Fields and adds them to the database. Also uses serialization and will do nothing if the 
+ * text Fields are blank. 
+ * 
+ * @param savedInstanceState
+ */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -166,13 +179,13 @@ public class CreateRecipeActivity extends Activity {
 
     //    new Thread(new Runnable() {
             /**
-             * Runs the database
+             * Asynchronously push the recipe to the ES server.
              */
       /*      
             @Override
             public void run() {
                 try {
-                    ESClient.getInstance().insertRecipe(newRecipe);
+                    ESClient.getInstance().insertRecipe(newRecipe, true);
                 } catch (IllegalStateException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
