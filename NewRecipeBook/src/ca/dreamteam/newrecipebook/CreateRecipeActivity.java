@@ -53,6 +53,7 @@ public class CreateRecipeActivity extends Activity {
     private Recipe newRecipe = new Recipe();
     private ArrayList<String> tempIngredientList = new ArrayList<String>();
     private LinearLayout photoLayout;
+    private TextView youScrewedUpTV;
 /**
  * On creation waits for a button press at which point it will add the information in the text 
  * Fields and adds them to the database. Also uses serialization and will do nothing if the 
@@ -67,6 +68,8 @@ public class CreateRecipeActivity extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
         photoLayout = (LinearLayout)findViewById(R.id.photoViewLayout);
         newRecipe.ingredients = new ArrayList<String>();
+        youScrewedUpTV = (TextView)findViewById(R.id.youScrewedUp);
+        youScrewedUpTV.setVisibility(View.GONE);
           
         try {
             //Set Author's name.
@@ -175,9 +178,13 @@ public class CreateRecipeActivity extends Activity {
 
         recipeSerial.makeFile(recipeName, authorName, recipeInstructions);
         
-	        newRecipe.setName(recipeName);
-	        newRecipe.setAuthor(authorName);
-	        newRecipe.addInstructions(recipeInstructions);
+        newRecipe.setName(recipeName);
+        newRecipe.setAuthor(authorName);
+        newRecipe.addInstructions(recipeInstructions);
+        
+        if (recipeName.isEmpty() || authorName.isEmpty() || recipeInstructions.isEmpty()) {
+        	youScrewedUpTV.setVisibility(View.VISIBLE);
+        }
     
         //DO NOT TOUCH THIS. David's got this.
 

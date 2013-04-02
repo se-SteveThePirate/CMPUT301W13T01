@@ -10,6 +10,7 @@
         android:layout_alignBaseline="@+id/ingredientAdd_nameLabel"
         android:layout_alignBottom="@+id/ingredientAdd_nameLabel"
         android:layout_alignParentRight="true"
+        android:inputType="textCapSentences"
         android:ems="10"
         android:hint="Milk or Eggs"
         android:singleLine="true" >

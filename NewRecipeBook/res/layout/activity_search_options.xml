@@ -8,6 +8,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:hint="Keywords"
+            android:inputType="textCapSentences"
             android:paddingLeft="10dp"
             android:paddingTop="15dp"
             tools:ignore="HardcodedText" />
@@ -17,7 +18,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:hint="Tags"
-            android:layout_below="@+id/inputName"            
+            android:layout_below="@+id/inputName"   
+            android:inputType="textCapSentences"         
             android:paddingLeft="10dp"
             android:paddingTop="15dp"
             tools:ignore="HardcodedText" />
@@ -27,7 +29,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:hint="Ingredients"
-            android:layout_below="@+id/inputTags"            
+            android:layout_below="@+id/inputTags"  
+            android:inputType="textCapSentences"          
             android:paddingLeft="10dp"
             android:paddingTop="15dp"
             tools:ignore="HardcodedText" />
@@ -37,7 +40,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:hint="Author"
-            android:layout_below="@+id/inputIngredients"            
+            android:layout_below="@+id/inputIngredients"  
+            android:inputType="textCapSentences"          
             android:paddingLeft="10dp"
             android:paddingTop="15dp"
             tools:ignore="HardcodedText" />
