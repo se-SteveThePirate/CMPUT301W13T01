@@ -72,9 +72,7 @@ public class ESClient {
 		while ((output = br.readLine()) != null) {
 			System.err.println(output);
 		}
-		//EntityUtils.consume(entity);
-
-		httpDelete.releaseConnection();
+		entity.consumeContent();
 	}
 
 	/**
@@ -89,7 +87,7 @@ public class ESClient {
 		insertRecipe(recipe, false);
 	}
 
-	public void insertRecipe(Recipe recipe, Boolean requiresID) throws IOException, IllegalStateException{
+	public long insertRecipe(Recipe recipe, Boolean requiresID) throws IOException, IllegalStateException{
 		//Set the ES ID to the next available ID number. (Avoid conflicts :) )
 		if(requiresID){
 			recipe.id = getNextAvailableId();
@@ -121,12 +119,13 @@ public class ESClient {
 
 		HttpEntity entity = response.getEntity();
 		try {
-			EntityUtils.consume(entity);
+			entity.consumeContent();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 
-		httpPost.releaseConnection();
+		return recipe.getId();
+		//httpPost.releaseConnection();
 	}
 
 	public int getNextAvailableId()
@@ -148,7 +147,7 @@ public class ESClient {
 
 		//String[] jsonSplit = json.split("nextID");
 		//String importantValue = jsonSplit[2]; //":1 }}
-		getRequest.releaseConnection();
+		//getRequest.releaseConnection();
 		
 		return Integer.parseInt(json.split("nextID")[2].replace("\"", "").replace(":", "").replace("}", "").replace(" ", ""));
 	}
@@ -172,6 +171,7 @@ public class ESClient {
 		HttpResponse response = null;
 		try {
 			response = httpClient.execute(httpPost);
+			response.getEntity().consumeContent();
 		} catch (ClientProtocolException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -179,7 +179,7 @@ public class ESClient {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		httpPost.releaseConnection();
+		//httpPost.releaseConnection();
 	}
 
 	//The following function was borrowed from our friends in team 9, who probably took it from the ESClient demo.

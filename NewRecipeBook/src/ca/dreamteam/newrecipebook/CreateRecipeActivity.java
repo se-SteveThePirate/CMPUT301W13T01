@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.provider.ContactsContract;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
@@ -61,6 +62,9 @@ public class CreateRecipeActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_recipe);
+        
+        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitNetwork().build());
+        
         getActionBar().setDisplayHomeAsUpEnabled(true);
         photoLayout = (LinearLayout)findViewById(R.id.photoViewLayout);
         newRecipe.ingredients = new ArrayList<String>();
@@ -178,8 +182,6 @@ public class CreateRecipeActivity extends Activity {
         String authorName = authorNameET.getText().toString();
         String recipeInstructions = recipeInstructionsET.getText().toString();
 
-       
-        
         newRecipe.setName(recipeName);
         newRecipe.setAuthor(authorName);
         newRecipe.addInstructions(recipeInstructions);
@@ -188,26 +190,15 @@ public class CreateRecipeActivity extends Activity {
         	youScrewedUpTV.setVisibility(View.VISIBLE);
         }
     
-        //DO NOT TOUCH THIS. David's got this.
-
-        new Thread(new Runnable() {
-            /**
-             * Asynchronously push the recipe to the ES server.
-             */
-           
-            @Override
-            public void run() {
-                try {
-                    ESClient.getInstance().insertRecipe(newRecipe, true);
-                } catch (IllegalStateException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-        }).start();
+        try {
+			newRecipe.id = ESClient.getInstance().insertRecipe(newRecipe, true);
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
        
 
         recipeCache.createRecipe(newRecipe);

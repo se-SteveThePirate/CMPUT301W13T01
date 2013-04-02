@@ -3,6 +3,7 @@ package ca.dreamteam.newrecipebook;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -88,6 +89,10 @@ public class RecipeViewActivity extends Activity {
         emailIntent.setType("plain/text");
         emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "A friend has recommended a recipe for you!");
         emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, Html.fromHtml(recipe.toString()));
+        
+        Uri uri = Uri.parse("file://" + this.getFilesDir() + "/" + recipe.id + ".ser");
+        emailIntent.putExtra(android.content.Intent.EXTRA_STREAM, uri);
+        
         startActivity(Intent.createChooser(emailIntent, "Share a recipe..."));
     }	
 

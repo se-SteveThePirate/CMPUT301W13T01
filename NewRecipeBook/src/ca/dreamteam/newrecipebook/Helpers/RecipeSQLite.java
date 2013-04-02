@@ -35,20 +35,22 @@ public class RecipeSQLite{
         return recipe;
     }
 
-    public Recipe createRecipe(Recipe recipe){
+    public void createRecipe(Recipe recipe){
         if(database == null){
             this.open();
         }
         ContentValues values = new ContentValues();
+        values.put(RecipeSqlTable.COLUMN_ID, recipe.getId());
         values.put(RecipeSqlTable.COLUMN_NAME, recipe.getName());
-        long insertId = database.insert(RecipeSqlTable.TABLE_RECIPES, null, values);
-        Cursor cursor = database.query(RecipeSqlTable.TABLE_RECIPES,
+        database.insert(RecipeSqlTable.TABLE_RECIPES, null, values);
+        //long insertId = database.insert(RecipeSqlTable.TABLE_RECIPES, null, values);
+        /*Cursor cursor = database.query(RecipeSqlTable.TABLE_RECIPES,
                 allColumns, RecipeSqlTable.COLUMN_ID + " = " + insertId, null,
                 null, null, null);
         cursor.moveToFirst();
         Recipe newRecipe = cursorToRecipe(cursor);
         cursor.close();
-        return newRecipe;
+        return newRecipe;*/
     }
 
     public void deleteRecipe(Recipe recipe) {
