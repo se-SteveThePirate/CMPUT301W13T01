@@ -78,6 +78,7 @@ public class ESClient {
 	 * @throws IOException
 	 */
 	public void updateRecipe(Recipe recipe) throws IllegalStateException, IOException{
+		deleteRecipe(recipe);
 		insertRecipe(recipe, false);
 	}
 
@@ -117,8 +118,8 @@ public class ESClient {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
-		
+
+		httpPost.releaseConnection();
 	}
 
 	public int getNextAvailableId()
@@ -140,7 +141,8 @@ public class ESClient {
 
 		//String[] jsonSplit = json.split("nextID");
 		//String importantValue = jsonSplit[2]; //":1 }}
-
+		getRequest.releaseConnection();
+		
 		return Integer.parseInt(json.split("nextID")[2].replace("\"", "").replace(":", "").replace("}", "").replace(" ", ""));
 	}
 
@@ -170,6 +172,7 @@ public class ESClient {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		httpPost.releaseConnection();
 	}
 
 	//The following function was borrowed from our friends in team 9, who probably took it from the ESClient demo.

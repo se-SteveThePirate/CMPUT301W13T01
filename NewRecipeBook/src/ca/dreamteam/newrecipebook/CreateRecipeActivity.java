@@ -137,17 +137,22 @@ public class CreateRecipeActivity extends Activity {
         }
         if (resultCode == 2) //Used for getting Picture things
         {
-        	Bitmap newPhoto = BitmapFactory.decodeFile(data.getData().getPath());
+        	Bitmap photo = (Bitmap) data.getExtras().get("data");
+        	newRecipe.photos.add(photo);
+        	ImageView imageView = (ImageView) findViewById(R.id.recipeGallery);
+        	imageView.setPadding(5, 0, 0, 0);
+        	imageView.setImageBitmap(photo);
+        	imageView.
+        	
+        	/*Bitmap newPhoto = BitmapFactory.decodeFile(data.getData().getPath());
         	if (newPhoto != null) {
         		newRecipe.photos.add(newPhoto);
         		ImageView newImageView = new ImageView(this);
         		newImageView.setPadding(5, 0, 0, 0);
         		newImageView.setImageBitmap(newPhoto);
         		photoLayout.addView(newImageView);
-        		
-        		
-        		
-        	}
+        			
+        	}*/
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
@@ -232,8 +237,8 @@ public class CreateRecipeActivity extends Activity {
  * @param view
  */
     public void newPicture(View view) {
-    	Intent intent = new Intent(this, TakePhotoActivity.class);
-    	startActivityForResult(intent,2);
+    	Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+    	startActivityForResult(intent, 2);
     }
 
 }
