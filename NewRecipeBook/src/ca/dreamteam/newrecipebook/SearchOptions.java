@@ -27,7 +27,7 @@ public class SearchOptions extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_search_options, menu);
+        //getMenuInflater().inflate(R.menu.activity_search_options, menu);
         return true;
     }
     

@@ -50,7 +50,14 @@ public class RecipeViewActivity extends Activity {
 
         ((TextView)findViewById(R.id.recipeName)).setText(recipe.getName());
         ((TextView)findViewById(R.id.recipeAuthor)).setText(recipe.getAuthor());
+        ((TextView)findViewById(R.id.instructions)).setText(recipe.getInstructions());
         
+        String ingredientsString = "";
+        for (String s : recipe.getIngredients())
+        {
+            ingredientString = ingredientsString.append(s + "\n");
+        }
+        ((TextView)findViewById(R.id.ingredientsList)).setText(ingredientsString);
 
 
 
