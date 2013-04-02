@@ -83,7 +83,7 @@ public class Recipe implements Serializable {
 		this.instructions = instructions;
 	}
 	
-	public String setInstructions(){
+	public String getInstructions(){
 	    return instructions;
 	}
 }

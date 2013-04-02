@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import ca.dreamteam.newrecipebook.Helpers.RecipeSQLite;
+import ca.dreamteam.newrecipebook.Helpers.RecipeSerialization;
 import ca.dreamteam.newrecipebook.Models.Recipe;
 
 /**
@@ -31,6 +32,7 @@ public class RecipeMenuActivity extends ListActivity {
      */
     private RecipeSQLite datasource;
     private ArrayAdapter<Recipe> adapter;
+    private RecipeSerialization recipeSerial;
     @Override
     /**
      * Links the database to the program and opens the data base. Allows the used to click on 
@@ -54,7 +56,8 @@ public class RecipeMenuActivity extends ListActivity {
                 Recipe r = (Recipe)adapter.getItem(position);
 
                 Intent viewIntent = new Intent(getApplicationContext(), RecipeViewActivity.class);
-                viewIntent.putExtra("Recipe", r);
+                                
+                viewIntent.putExtra("recipe", r);
                 startActivity(viewIntent);
             }
         });
@@ -129,19 +132,6 @@ public class RecipeMenuActivity extends ListActivity {
         startActivity(intent);
     }
 
-    /**
-     * Deletes the data of something in the list by clicking on it
-     *     
-     * @param l
-     * @param v
-     * @param position
-     * @param id
-     */
-    protected void onListItemClick(ListView l, View v, int position, long id) {
-        Recipe recipeToDelete = (Recipe)getListView().getItemAtPosition(position);
-        datasource.deleteRecipe(recipeToDelete);
-        adapter.notifyDataSetChanged();
-    }
-
+    
 }
 

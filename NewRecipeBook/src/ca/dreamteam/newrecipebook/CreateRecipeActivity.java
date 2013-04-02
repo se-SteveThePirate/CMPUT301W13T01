@@ -2,7 +2,7 @@ package ca.dreamteam.newrecipebook;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
+import ca.dreamteam.newrecipebook.Helpers.RecipeSerialization;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
@@ -202,6 +202,7 @@ public class CreateRecipeActivity extends Activity {
         finish();
     }
 
+   
     public void onResume(){
         recipeCache.open();
         super.onResume();
