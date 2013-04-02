@@ -103,7 +103,13 @@ public class AddIngredientForRecipeActivity extends ListActivity{
 			((EditText)findViewById(R.id.ingredientAdd_nameEdit)).setText(this.ingredient.getName());
 		}
     }
-	
+	/**
+	 * Allows the activies to share lists
+	 * 
+	 * @param requestCode
+	 * @param resultCode
+	 * @param data
+	 */
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data)
 	{
@@ -111,7 +117,14 @@ public class AddIngredientForRecipeActivity extends ListActivity{
 		this.ingredientList = (ArrayList<String>)data.getStringArrayListExtra("includedIngredients");
 		super.onActivityResult(requestCode, resultCode, data);
 	}
-	
+	/** 
+	 * Deletes selected list entry by the user
+	 * 
+	 * @param l
+	 * @param v
+	 * @param position
+	 * @param id
+	 */
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		ingredientList.remove(position);
 		adapter.notifyDataSetChanged();
