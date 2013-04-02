@@ -113,10 +113,12 @@ public class ESClient {
 
 		HttpEntity entity = response.getEntity();
 		try {
-			//EntityUtils.consume(entity);
+			EntityUtils.consume(entity);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+		
+		
 	}
 
 	public int getNextAvailableId()
