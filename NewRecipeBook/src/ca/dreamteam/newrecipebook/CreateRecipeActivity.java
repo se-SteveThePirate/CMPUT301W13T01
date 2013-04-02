@@ -45,7 +45,7 @@ public class CreateRecipeActivity extends Activity {
  * @var tempIntgredientList a list of ingredients on the client side that is temp
  */
     private RecipeSQLite recipeCache = new RecipeSQLite(this);
-    private RecipeSerialization recipeSerial = RecipeSerialization.getInstance(this);
+    //private RecipeSerialization recipeSerial = RecipeSerialization.getInstance(this);
     private Recipe newRecipe = new Recipe();
     private ArrayList<String> tempIngredientList = new ArrayList<String>();
     private LinearLayout photoLayout;
@@ -135,14 +135,14 @@ public class CreateRecipeActivity extends Activity {
                 newRecipe.ingredients = (ArrayList<String>)data.getStringArrayListExtra("newIngredients");
             }
         }
-        if (resultCode == 2) //Used for getting Picture things
+        if (requestCode == 2) //Used for getting Picture things
         {
         	Bitmap photo = (Bitmap) data.getExtras().get("data");
         	newRecipe.photos.add(photo);
         	ImageView imageView = (ImageView) findViewById(R.id.recipeGallery);
         	imageView.setPadding(5, 0, 0, 0);
         	imageView.setImageBitmap(photo);
-        	imageView.
+        	photoLayout.addView(imageView);
         	
         	/*Bitmap newPhoto = BitmapFactory.decodeFile(data.getData().getPath());
         	if (newPhoto != null) {
@@ -211,7 +211,7 @@ public class CreateRecipeActivity extends Activity {
        
 
         recipeCache.createRecipe(newRecipe);
-        recipeSerial.makeFile(newRecipe);
+        RecipeSerialization.getInstance(this).makeFile(newRecipe);
 
 
         finish();
