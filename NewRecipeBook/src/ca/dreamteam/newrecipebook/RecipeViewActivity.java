@@ -49,7 +49,7 @@ public class RecipeViewActivity extends Activity {
         recipe = recipeSerial.readFile(recipe.getId());
 
         ((TextView)findViewById(R.id.recipeName)).setText(recipe.getName());
-
+        ((TextView)findViewById(R.id.recipeAuthor)).setText(recipe.getAuthor());
         
 
 
