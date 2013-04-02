@@ -2,30 +2,26 @@ package ca.dreamteam.newrecipebook;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import ca.dreamteam.newrecipebook.Helpers.RecipeSerialization;
+
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import ca.dreamteam.newrecipebook.Helpers.IngredientDatabaseHelper;
 import ca.dreamteam.newrecipebook.Helpers.RecipeSQLite;
 import ca.dreamteam.newrecipebook.Helpers.RecipeSerialization;
 import ca.dreamteam.newrecipebook.Helpers.ElasticSearch.ESClient;
-import ca.dreamteam.newrecipebook.Models.Ingredient;
 import ca.dreamteam.newrecipebook.Models.Recipe;
 
 /**
@@ -49,7 +45,7 @@ public class CreateRecipeActivity extends Activity {
  * @var tempIntgredientList a list of ingredients on the client side that is temp
  */
     private RecipeSQLite recipeCache = new RecipeSQLite(this);
-    private RecipeSerialization recipeSerial = new RecipeSerialization();
+    private RecipeSerialization recipeSerial = RecipeSerialization.getInstance(this);
     private Recipe newRecipe = new Recipe();
     private ArrayList<String> tempIngredientList = new ArrayList<String>();
     private LinearLayout photoLayout;
@@ -176,7 +172,7 @@ public class CreateRecipeActivity extends Activity {
         String authorName = authorNameET.getText().toString();
         String recipeInstructions = recipeInstructionsET.getText().toString();
 
-        recipeSerial.makeFile(recipeName, authorName, recipeInstructions);
+       
         
         newRecipe.setName(recipeName);
         newRecipe.setAuthor(authorName);
@@ -209,7 +205,7 @@ public class CreateRecipeActivity extends Activity {
        
 
         recipeCache.createRecipe(newRecipe);
-        recipeSerial.makeFile(recipeName, authorName, recipeInstructions);
+        recipeSerial.makeFile(newRecipe);
 
 
         finish();
