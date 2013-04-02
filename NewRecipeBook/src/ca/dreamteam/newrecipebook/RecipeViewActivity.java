@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.Html;
 import android.view.Menu;
 import android.view.View;
@@ -55,7 +56,7 @@ public class RecipeViewActivity extends Activity {
         String ingredientsString = "";
         for (String s : recipe.getIngredients())
         {
-            ingredientString = ingredientsString.append(s + "\n");
+            ingredientsString = ingredientsString.concat(s + "\n");
         }
         ((TextView)findViewById(R.id.ingredientsList)).setText(ingredientsString);
 
