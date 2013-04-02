@@ -52,7 +52,7 @@ public class CreateRecipeActivity extends Activity {
     private RecipeSerialization recipeSerial = new RecipeSerialization();
     private Recipe newRecipe = new Recipe();
     private ArrayList<String> tempIngredientList = new ArrayList<String>();
-    private LinearLayout photoLayout = (LinearLayout)findViewById(R.id.photoViewLayout);
+    private LinearLayout photoLayout;
 /**
  * On creation waits for a button press at which point it will add the information in the text 
  * Fields and adds them to the database. Also uses serialization and will do nothing if the 
@@ -65,6 +65,7 @@ public class CreateRecipeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_recipe);
         getActionBar().setDisplayHomeAsUpEnabled(true);
+        photoLayout = (LinearLayout)findViewById(R.id.photoViewLayout);
 
      
 
