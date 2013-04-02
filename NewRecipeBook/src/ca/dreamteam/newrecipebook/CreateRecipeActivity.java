@@ -18,6 +18,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import ca.dreamteam.newrecipebook.Helpers.IngredientDatabaseHelper;
 import ca.dreamteam.newrecipebook.Helpers.RecipeSQLite;
@@ -48,12 +50,9 @@ public class CreateRecipeActivity extends Activity {
  */
     private RecipeSQLite recipeCache = new RecipeSQLite(this);
     private RecipeSerialization recipeSerial = new RecipeSerialization();
-
-    private Recipe newRecipe = null;
-<<<<<<< HEAD
-
-=======
+    private Recipe newRecipe = new Recipe();
     private ArrayList<String> tempIngredientList = new ArrayList<String>();
+    private LinearLayout photoLayout = (LinearLayout)findViewById(R.id.photoViewLayout);
 /**
  * On creation waits for a button press at which point it will add the information in the text 
  * Fields and adds them to the database. Also uses serialization and will do nothing if the 
@@ -61,7 +60,6 @@ public class CreateRecipeActivity extends Activity {
  * 
  * @param savedInstanceState
  */
->>>>>>> 04a175c609ae781e1f64c7ca87bdbdbeea10c5b3
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -142,8 +140,16 @@ public class CreateRecipeActivity extends Activity {
         if (resultCode == 2) //Used for getting Picture things
         {
         	Bitmap newPhoto = BitmapFactory.decodeFile(data.getData().getPath());
-        	if (newPhoto != null)
+        	if (newPhoto != null) {
         		newRecipe.photos.add(newPhoto);
+        		ImageView newImageView = new ImageView(this);
+        		newImageView.setPadding(5, 0, 0, 0);
+        		newImageView.setImageBitmap(newPhoto);
+        		photoLayout.addView(newImageView);
+        		
+        		
+        		
+        	}
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
