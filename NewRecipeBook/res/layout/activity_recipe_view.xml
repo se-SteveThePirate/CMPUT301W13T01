@@ -1,15 +1,15 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    	xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-   		tools:context=".RecipeViewActivity" >
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentTop="true"
+    tools:context=".RecipeViewActivity" >
 
 	    <RelativeLayout
 	        android:layout_width="match_parent"
 	        android:layout_height="427dp" >
-    		
+
 	        <TextView
 	            android:id="@+id/recipeName"
 	            android:layout_width="wrap_content"
@@ -19,81 +19,91 @@
 	            android:text="Recipe Name"
 	            android:textAppearance="?android:attr/textAppearanceMedium"
 	            tools:ignore="HardcodedText" />
-	      	
-	      	<TextView
-	      	    android:id="@+id/recipeAuthor"
-	      	    android:layout_width="wrap_content"
-	      	    android:layout_height="wrap_content"
-	      	    android:layout_below="@+id/recipeName"
-	      	    android:layout_centerHorizontal="true"
-	      	    android:text="Recipe Author"
-	      	    android:textAppearance="?android:attr/textAppearanceSmall"
-	      	    tools:ignore="HardcodedText" />
 
-	      	<Gallery
-	      	    android:id="@+id/recipeGallery"
-	      	    android:layout_width="fill_parent"
-	      	    android:layout_height="wrap_content"
-	      	    android:layout_centerHorizontal="true"
-	      	    android:layout_below="@+id/recipeAuthor" />
-    	
-	      	<TextView
-	      	    android:id="@+id/recipeView_ingredientsLabel"
-	      	    android:layout_width="wrap_content"
-	      	    android:layout_height="wrap_content"
-	      	    android:layout_alignParentLeft="true"
-	      	    android:layout_below="@+id/recipeGallery"
-	      	    android:paddingLeft="15dp"
-	      	    android:text="Ingredients:"
-	      	    tools:ignore="HardcodedText" />
+	        <TextView
+	            android:id="@+id/recipeAuthor"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_below="@+id/recipeName"
+	            android:layout_centerHorizontal="true"
+	            android:text="Recipe Author"
+	            android:textAppearance="?android:attr/textAppearanceSmall"
+	            tools:ignore="HardcodedText" />
 
-	      	<Button
-	      	    android:id="@+id/recipeView_shareButton"
-	      	    android:layout_width="wrap_content"
-	      	    android:layout_height="wrap_content"
-	      	    android:layout_alignParentBottom="true"
-	      	    android:layout_alignParentLeft="true"
-	      	    android:layout_toLeftOf="@+id/recipeAuthor"
-	      	    android:onClick="share"
-	      	    android:text="Share" />
+	        <Button
+	            android:id="@+id/recipeView_shareButton"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentBottom="true"
+	            android:layout_alignParentLeft="true"
+	            android:layout_toLeftOf="@+id/recipeAuthor"
+	            android:onClick="share"
+	            android:text="Share" />
 
-	      	<Button
-	      	    android:id="@+id/Delete"
-	      	    android:layout_width="wrap_content"
-	      	    android:layout_height="wrap_content"
-	      	    android:layout_alignParentBottom="true"
-	      	    android:layout_alignParentRight="true"
-	      	    android:layout_toRightOf="@+id/recipeAuthor"
-	      	    android:onClick="DeleteRecipe"
-	      	    android:text="Delete" />
+	        <Button
+	            android:id="@+id/Delete"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentBottom="true"
+	            android:layout_alignParentRight="true"
+	            android:layout_toRightOf="@+id/recipeAuthor"
+	            android:onClick="DeleteRecipe"
+	            android:text="Delete" />
 
-	      	<TextView
-	      	    android:id="@+id/instructions"
-	      	    android:layout_width="wrap_content"
-	      	    android:layout_height="wrap_content"
-	      	    android:layout_alignParentLeft="true"
-	      	    android:layout_alignParentRight="true"
-	      	    android:layout_centerVertical="true"
-	      	    android:text="Instructions" />
+	        <TextView
+	            android:id="@+id/tags"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentLeft="true"
+	            android:layout_alignParentRight="true"
+	            android:layout_marginTop="320dp"
+	            android:text="Tags" />
 
-	      	<TextView
-	      	    android:id="@+id/ingredientsList"
-	      	    android:layout_width="wrap_content"
-	      	    android:layout_height="wrap_content"
-	      	    android:layout_alignParentLeft="true"
-	      	    android:layout_alignRight="@+id/recipeView_ingredientsLabel"
-	      	    android:layout_below="@+id/recipeView_ingredientsLabel"
-	      	    android:layout_marginTop="28dp"
-	      	    android:text="Ingredient List" />
+	        <TextView
+	            android:id="@+id/instrucional"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentLeft="true"
+	            android:layout_marginTop="180dp"
+	            android:text="Instructions:" />
 
-	      	<TextView
-	      	    android:id="@+id/tags"
-	      	    android:layout_width="wrap_content"
-	      	    android:layout_height="wrap_content"
-	      	    android:layout_alignParentLeft="true"
-	      	    android:layout_alignParentRight="true"
-	      	    android:layout_marginTop="320dp"
-	      	    android:text="Tags" />
-	      	
-    	</RelativeLayout>
+	        <TextView
+	            android:id="@+id/recipeView_ingredientsLabel"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentLeft="true"
+	            android:layout_below="@+id/recipeAuthor"
+	            android:layout_marginTop="19dp"
+	            android:paddingLeft="15dp"
+	            android:text="Ingredients:"
+	            tools:ignore="HardcodedText" />
+
+	        <TextView
+	            android:id="@+id/instructions"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentLeft="true"
+	            android:layout_below="@+id/instrucional"
+	            android:layout_marginTop="48dp"
+	            android:text="Instruction list" />
+
+	        <TextView
+	            android:id="@+id/ingredientsList"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentLeft="true"
+	            android:layout_below="@+id/recipeView_ingredientsLabel"
+	            android:layout_marginTop="33dp"
+	            android:text="Ingredient List" />
+
+	        <ImageView
+	            android:id="@+id/imageViewFood"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignRight="@+id/recipeName"
+	            android:layout_below="@+id/instructions"
+	            android:src="@drawable/ic_menu_name" />
+
+	    </RelativeLayout>
+
 </ScrollView>

@@ -3,6 +3,7 @@ package ca.dreamteam.newrecipebook;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -10,7 +11,9 @@ import android.os.Environment;
 import android.text.Html;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+import ca.dreamteam.newrecipebook.Helpers.ImageConverter;
 import ca.dreamteam.newrecipebook.Helpers.RecipeSQLite;
 import ca.dreamteam.newrecipebook.Helpers.RecipeSerialization;
 import ca.dreamteam.newrecipebook.Helpers.ElasticSearch.ESClient;
@@ -31,6 +34,7 @@ public class RecipeViewActivity extends Activity {
     private RecipeSQLite recipeCache = new RecipeSQLite(this);
     private RecipeSerialization recipeSerial = RecipeSerialization.getInstance(this);
     private Recipe recipe = null;
+    private ImageConverter imgcon = new ImageConverter();
 
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     @Override
@@ -49,18 +53,19 @@ public class RecipeViewActivity extends Activity {
         this.recipe = (Recipe)getIntent().getSerializableExtra("recipe");
         
         recipe = recipeSerial.readFile(recipe.getId());
+        
+        ImageView imageview = (ImageView) findViewById(R.id.imageViewFood);
+        Bitmap bitmap = imgcon.getBitmapFromString(recipe.getJsonString());
+        
+        imageview.setImageBitmap(bitmap);
 
         ((TextView)findViewById(R.id.recipeName)).setText(recipe.getName());
-        ((TextView)findViewById(R.id.recipeAuthor)).setText(recipe.getAuthor());
+        ((TextView)findViewById(R.id.recipeAuthor)).setText("Author: " + recipe.getAuthor());
         ((TextView)findViewById(R.id.instructions)).setText(recipe.getInstructions());
-                
-        String tagsString = "";
-        for (String t : recipe.getTags())
-        {
-            tagsString = tagsString.concat(t + "\n");
-        }
-        ((TextView)findViewById(R.id.tags)).setText(tagsString);
+        ((TextView)findViewById(R.id.tags)).setText(recipe.getTags());        
         
+        
+       
         
         String ingredientsString = "";
         for (String s : recipe.getIngredients())

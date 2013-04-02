@@ -25,6 +25,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import ca.dreamteam.newrecipebook.Helpers.ImageConverter;
 import ca.dreamteam.newrecipebook.Helpers.RecipeSQLite;
 import ca.dreamteam.newrecipebook.Helpers.RecipeSerialization;
 import ca.dreamteam.newrecipebook.Helpers.ElasticSearch.ESClient;
@@ -58,6 +59,7 @@ public class CreateRecipeActivity extends Activity {
     private TextView youScrewedUpTV;
     private String imageFilePath;
     private ImageView newImageView;
+    private String jsonString;
 
 /**
  * On creation waits for a button press at which point it will add the information in the text 
@@ -76,7 +78,7 @@ public class CreateRecipeActivity extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
         photoViewLayout = (LinearLayout)findViewById(R.id.photoViewLayout);
         newRecipe.ingredients = new ArrayList<String>();
-        newRecipe.photos = new ArrayList<Bitmap>();
+        //newRecipe.jsonString = jsonString;
         youScrewedUpTV = (TextView)findViewById(R.id.youScrewedUp);
         youScrewedUpTV.setVisibility(View.GONE);
           
@@ -152,7 +154,9 @@ public class CreateRecipeActivity extends Activity {
         {
         	//Bitmap photo = Media.getBitmap(this.getContentResolver(), imageFileUri);
 			Bitmap photo = BitmapFactory.decodeFile(imageFilePath);
-			newRecipe.photos.add(photo);
+			ImageConverter imgcon = new ImageConverter();
+			jsonString = imgcon.getJsonString(photo);    //converts bitmap to a JsonString 
+			newRecipe.setJsonString(jsonString); //stores JsonString in the new recipe
 			/*ImageView imageView = (ImageView) findViewById(R.id.recipeGallery);
 			imageView.setPadding(5, 0, 0, 0);
 			imageView.setImageBitmap(photo);

@@ -19,10 +19,10 @@ public class Recipe implements Serializable {
     public long id;
     public String name;
     public String author;
-    public ArrayList<Bitmap> photos;
+    public String jsonString;
     public ArrayList<String> ingredients;
     public String instructions;
-    public ArrayList<String> tags;
+    public String tags;
     public ArrayList<String> comments;
     public Boolean favorited;
     public int favorite;
@@ -56,12 +56,20 @@ public class Recipe implements Serializable {
     public void setIngredients (ArrayList<String> ingredients){
         this.ingredients = ingredients;
     }
+    
+    public void setJsonString(String jsonString){
+        this.jsonString = jsonString;
+    }
+    
+    public String getJsonString(){
+        return jsonString;
+    }
 
-    public void setTags (ArrayList<String> tags){
+    public void setTags (String tags){
         this.tags = tags;
     }
     
-    public ArrayList<String> getTags(){
+    public String getTags(){
         return tags;
     }
 
