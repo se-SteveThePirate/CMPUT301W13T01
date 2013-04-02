@@ -166,38 +166,26 @@ public class CreateRecipeActivity extends Activity {
         EditText authorNameET = (EditText)findViewById(R.id.recipeAuthor);
         EditText recipeInstructionsET = (EditText)findViewById(R.id.recipeInstructions);
 
-        RecipeSQLite datasource = new RecipeSQLite(getApplicationContext());
-        datasource.createRecipe(recipeNameET.getText().toString());
+      //  RecipeSQLite datasource = new RecipeSQLite(getApplicationContext());
+      //  datasource.createRecipe(newRecipe);
 
         String recipeName = recipeNameET.getText().toString();
         String authorName = authorNameET.getText().toString();
         String recipeInstructions = recipeInstructionsET.getText().toString();
 
         recipeSerial.makeFile(recipeName, authorName, recipeInstructions);
-        /*
+        
 	        newRecipe.setName(recipeName);
 	        newRecipe.setAuthor(authorName);
 	        newRecipe.addInstructions(recipeInstructions);
-
-	        recipeCache.createRecipe(newRecipe);
-	        recipeSerial.makeFile(newRecipe);
-
-         */
-
-        /*
-	        recipeCache.open();
-
-	        recipeCache.close();
-         */
-
-
+    
         //DO NOT TOUCH THIS. David's got this.
 
-    //    new Thread(new Runnable() {
+        new Thread(new Runnable() {
             /**
              * Asynchronously push the recipe to the ES server.
              */
-      /*      
+           
             @Override
             public void run() {
                 try {
@@ -211,10 +199,12 @@ public class CreateRecipeActivity extends Activity {
                 }
             }
         }).start();
+       
 
-      //  finish();
+        recipeCache.createRecipe(newRecipe);
+        recipeSerial.makeFile(recipeName, authorName, recipeInstructions);
 
-*/
+
         finish();
     }
 
