@@ -12,38 +12,62 @@ import ca.dreamteam.newrecipebook.Models.Ingredient;
 
 public class IngredientDatabaseHelper
 {
-    //These statements create instances of the classes who's methods we use
-    //in this class
+    /**
+     *  create instances of the classes who's methods we use
+     *  in this class
+     *  
+     *  @version RecipeBook Project 4
+     *  @author Conner Bilec, David James, Steve Eckert and Maciej Ogrocki
+     *  @date Monday 01 April 2013
+     */
 
     private SQLiteDatabase database;
     private IngredientSqlHelper dbHelper;
     private String[] allColumns = { IngredientSqlHelper.COLUMN_ID,
             IngredientSqlHelper.COLUMN_INGREDIENT };
 
-    //creates a usable context for IngredientSqlHelper
+    /**creates a usable context for IngredientSqlHelper
+     * 
+     * @param context
+     */
     public IngredientDatabaseHelper(Context context) {
         dbHelper = new IngredientSqlHelper(context);
 
     }
 
-    //Opens the database
+    /**Opens the database
+     * 
+     * @throws SQLException
+     */
     public void open() throws SQLException {
         database = dbHelper.getWritableDatabase();
     }
 
-    //Closes the database
+    /**
+     * Closes the database  
+     */
     public void close() {
         dbHelper.close();
     }
 
-    //Creates a cursor to move through all elements in the database
+    /**
+     * Creates a cursor to move through all elements in the database
+     * 
+     * @param cursor
+     * @return
+     */
     private Ingredient cursorToIngredient(Cursor cursor) {
         Ingredient ingredient = new Ingredient(cursor.getString(1));
         ingredient.setId(cursor.getLong(0));
         return ingredient;
     }
 
-    //Creates ingredients and inserts them into the database
+    /**
+     * Creates ingredients and inserts them into the database
+     * 
+     * @param ingredient
+     * @return
+     */
     public Ingredient createIngredient(String ingredient){
         if(database == null){
             this.open();
@@ -60,7 +84,11 @@ public class IngredientDatabaseHelper
         return newIngredient;
     }
 
-    //Deletes selected ingredient from the database
+    /**
+     * Deletes selected ingredient from the database
+     * 
+     * @param ingredient
+     */
     public void deleteIngredient(Ingredient ingredient) {
         long id = ingredient.getId();
         System.out.println("Ingredient deleted with id: " + id);
@@ -68,7 +96,11 @@ public class IngredientDatabaseHelper
                 + " = " + id, null);
     }
 
-    //Returns all of the ingredients in the database
+    /**
+     * Returns all of the ingredients in the database
+     * 
+     * @return ingredients
+     */
     public List<Ingredient> getAllIngredients(){
         List<Ingredient> ingredients = new ArrayList<Ingredient>();
         Cursor cursor = database.query(IngredientSqlHelper.TABLE_INGREDIENTS,
@@ -84,8 +116,11 @@ public class IngredientDatabaseHelper
         return ingredients;
     }
 
-    //Updates ingredients that have already been inserted or created in the SQL
-    //database
+    /**
+     * Updates ingredients that have already been inserted or created in the SQL
+     * database
+     * @param ingredient
+     */
     public void updateIngredient(Ingredient ingredient)
     {
         long id = ingredient.getId();
