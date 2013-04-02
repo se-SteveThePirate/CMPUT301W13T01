@@ -70,16 +70,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/addIngredient"
-            android:layout_above="@+id/recipeInstructions"
+            android:layout_above="@+id/recipeTags"
             android:onClick="newPicture"
             android:text="Take a picture!" />
+        
+        <EditText
+            android:id="@+id/recipeTags"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/addIngredient"
+            android:inputType="textCapSentences"
+            android:hint="Enter Tags separated by commas"
+            tools:ignore="HardcodedText" >
+        </EditText>
 
         <EditText
             android:id="@+id/recipeInstructions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_below="@id/addIngredient"
+            android:layout_below="@+id/recipeTags"
             android:inputType="textCapSentences"
             android:ems="10"
             android:hint="Instructions"
