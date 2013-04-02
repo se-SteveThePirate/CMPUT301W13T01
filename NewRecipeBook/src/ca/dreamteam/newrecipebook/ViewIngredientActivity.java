@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import ca.dreamteam.newrecipebook.Helpers.IngredientDatabaseHelper;
 import ca.dreamteam.newrecipebook.Models.Ingredient;
 
@@ -36,6 +37,8 @@ public class ViewIngredientActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingredient_view);
+        TextView deletions = (TextView)findViewById(R.id.ingredientDeleteInstructions);
+        deletions.setVisibility(View.GONE);
  
         ingredient = (Ingredient)getIntent().getSerializableExtra("ingredient");
         

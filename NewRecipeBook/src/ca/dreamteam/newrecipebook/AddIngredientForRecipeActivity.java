@@ -57,8 +57,6 @@ public class AddIngredientForRecipeActivity extends ListActivity{
         adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,
                 ingredientList);
         listView.setAdapter(adapter);
-        TextView deletions = (TextView)findViewById(R.id.ingredientDeleteInstructions);
-        deletions.setVisibility(View.GONE);
  
         //ingredient = (Ingredient)getIntent().getSerializableExtra("ingredient");
         
