@@ -37,16 +37,15 @@
 	      	    android:layout_centerHorizontal="true"
 	      	    android:layout_below="@+id/recipeAuthor" />
     	
-	      	<TextView 
+	      	<TextView
 	      	    android:id="@+id/recipeView_ingredientsLabel"
 	      	    android:layout_width="wrap_content"
 	      	    android:layout_height="wrap_content"
-	      	    android:layout_below="@+id/recipeGallery"
 	      	    android:layout_alignParentLeft="true"
+	      	    android:layout_below="@+id/recipeGallery"
 	      	    android:paddingLeft="15dp"
 	      	    android:text="Ingredients:"
-	      	    tools:ignore="HardcodedText"
-	      	    />
+	      	    tools:ignore="HardcodedText" />
 
 	      	<Button
 	      	    android:id="@+id/recipeView_shareButton"
@@ -67,6 +66,24 @@
 	      	    android:layout_toRightOf="@+id/recipeAuthor"
 	      	    android:onClick="DeleteRecipe"
 	      	    android:text="Delete" />
+
+	      	<TextView
+	      	    android:id="@+id/instructions"
+	      	    android:layout_width="wrap_content"
+	      	    android:layout_height="wrap_content"
+	      	    android:layout_alignParentLeft="true"
+	      	    android:layout_alignParentRight="true"
+	      	    android:layout_centerVertical="true"
+	      	    android:text="Instructions" />
+
+	      	<TextView
+	      	    android:id="@+id/ingredientsList"
+	      	    android:layout_width="wrap_content"
+	      	    android:layout_height="wrap_content"
+	      	    android:layout_alignParentLeft="true"
+	      	    android:layout_below="@+id/recipeView_ingredientsLabel"
+	      	    android:layout_marginTop="28dp"
+	      	    android:text="Ingredient List" />
 	      	
     	</RelativeLayout>
 </ScrollView>

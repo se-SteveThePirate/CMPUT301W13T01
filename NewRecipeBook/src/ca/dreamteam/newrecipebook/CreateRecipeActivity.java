@@ -164,6 +164,7 @@ public class CreateRecipeActivity extends Activity {
         EditText recipeNameET = (EditText)findViewById(R.id.recipeName);
         EditText authorNameET = (EditText)findViewById(R.id.recipeAuthor);
         EditText recipeInstructionsET = (EditText)findViewById(R.id.recipeInstructions);
+        
 
       //  RecipeSQLite datasource = new RecipeSQLite(getApplicationContext());
       //  datasource.createRecipe(newRecipe);
