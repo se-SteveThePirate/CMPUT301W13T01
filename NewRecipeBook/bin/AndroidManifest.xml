@@ -70,6 +70,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ca.dreamteam.newrecipebook.RecipeViewActivity" />
         </activity>
-        <activity android:name="ca.dreamteam.newrecipebook.TakePhotoActivity"></activity>
+        <activity android:name=".TakePhotoActivity"></activity>
     </application>
 </manifest>
