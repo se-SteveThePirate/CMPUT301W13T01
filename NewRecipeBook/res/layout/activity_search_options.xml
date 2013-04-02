@@ -82,6 +82,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_marginBottom="27dp"
+            android:onClick="search"
             android:text="Search!" />
 
 </RelativeLayout>
