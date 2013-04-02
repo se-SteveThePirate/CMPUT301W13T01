@@ -1,9 +1,7 @@
-package ca.dreamteam.newrecipebookjUnitTests;
+package ca.dreamteam.newrecipebook.jUnitTests;
 
 import static org.junit.Assert.*;
-
 import java.util.ArrayList;
-
 import org.junit.Test;
 import ca.dreamteam.newrecipebook.CreateRecipeActivity;
 import ca.dreamteam.newrecipebook.Models.Ingredient;
