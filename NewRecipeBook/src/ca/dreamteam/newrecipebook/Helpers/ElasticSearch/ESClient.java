@@ -103,10 +103,11 @@ public class ESClient {
 	 *
 	 * @param recipe
 	 * @param requiresID
+	 * @return 
 	 * @throws IOException
 	 * @throws IllegalStateException
 	 */
-	public void insertRecipe(Recipe recipe, Boolean requiresID) throws IOException, IllegalStateException{
+	public long insertRecipe(Recipe recipe, Boolean requiresID) throws IOException, IllegalStateException{
 	//Set the ES ID to the next available ID number. (Avoid conflicts :) )
 		if(requiresID){
 			recipe.id = getNextAvailableId();
